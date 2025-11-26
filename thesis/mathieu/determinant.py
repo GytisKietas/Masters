@@ -80,3 +80,4 @@ plt.title(r'Determinant Zero Curve: $\det(\epsilon,\delta)=0$')
 plt.grid(alpha=0.3)
 plt.savefig("matheius_curves.png", dpi=300, bbox_inches='tight')
 print("Image saved")
+#THIS IS A TEST
