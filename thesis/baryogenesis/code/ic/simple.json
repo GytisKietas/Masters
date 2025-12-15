@@ -1,0 +1,33 @@
+{
+    "num_modes": 2,
+
+    "initial_state": {
+        "phi": [0.0, 1.0],
+        "chi_dot": [0.0, 0.0],
+        "chi": [0.1, 0.1]
+    },
+
+    "parameters": {
+        "alpha": 3.0,
+        "k_min": 6.0,
+        "k_max": -6.0,
+
+        "g": 1.0,
+        "phi_sbp": 0.0,
+        "lambda": 0.1,
+        "f": 1.0,
+
+        "kappa": 1.0,
+        "V0": 1.0,
+        "b": 1.0,
+        "M_pl": 1.0,
+
+        "weights": 0.001
+    },
+
+    "t_span": {
+        "t0": 0.0,
+        "t_end": 10.0,
+        "dt": 0.01
+    }
+}
