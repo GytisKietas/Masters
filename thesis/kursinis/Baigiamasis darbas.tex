@@ -1,0 +1,177 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{tgtermes}
+\usepackage{newtxmath}
+\renewcommand{\familydefault}{\rmdefault}
+\usepackage[L7x,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=1.5cm}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{color}
+\usepackage[english, lithuanian]{babel}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amsmath}
+
+\onehalfspacing
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
+ {hyperref}
+\hypersetup{
+ pdfstartview=FitH, bookmarksopen=true, hidelinks=true,  pdfdisplaydoctitle=true, pdfpagemode=UseNone}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\providecommand{\LyX}{\texorpdfstring%
+  {L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newlength{\lyxlabelwidth}      % auxiliary length 
+
+\@ifundefined{date}{}{\date{}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+% Dokumento autoriai Jevgenij Chmeliov ir Andrius Gelžinis, (c) 2018
+\usepackage{tocloft}
+\usepackage{indentfirst}
+\frenchspacing
+\usepackage{cite}
+\usepackage{upgreek}
+\usepackage{siunitx} % dydžių vienetams
+\sisetup{
+output-decimal-marker = {,},
+exponent-product = \cdot,
+inter-unit-product = \ensuremath{\cdot} }
+
+\usepackage[labelsep=space]{caption}
+\captionsetup[figure]{name=Fig., labelsep=space}
+\captionsetup[table]{name=Table, labelsep=space}
+\usepackage{float}
+
+
+% \usepackage[labelsep=space]{caption}
+% \DeclareCaptionLabelFormat{pav}{#2~#1}
+% \captionsetup[figure]{labelformat=pav, name=pav.}
+% \captionsetup[table]{labelformat=pav, name=lentelė.}
+
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Imag}{Im}
+\DeclareMathOperator{\gradient}{grad}
+\DeclareMathOperator{\divergence}{div}
+\DeclareMathOperator{\rotor}{rot}
+\DeclareMathOperator{\trace}{Tr}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\figurename}{Fig.}
+
+\newcommand\mpl{M_{\rm pl}}
+
+\makeatother
+
+\begin{document}
+\global\long\def\imath{\mathrm{i}}%
+ 
+\global\long\def\ddiff{\mathrm{d}}%
+ 
+\global\long\def\d{\mathrm{d}}%
+ 
+\global\long\def\vect#1{\mathbf{#1}}%
+ 
+\global\long\def\oper#1{\hat{#1}}%
+ 
+\global\long\def\emath{\mathrm{e}}%
+ 
+
+\global\long\def\ket#1{\left|#1\right\rangle }%
+\global\long\def\bra#1{\left\langle #1\right|}%
+\global\long\def\braket#1#2{\left\langle #1\middle|#2\right\rangle }%
+ 
+\global\long\def\braketop#1#2#3{\left\langle #1\middle|#2\middle|#3\right\rangle }%
+\global\long\def\si#1#2{\SI{#1}{#2}}%
+
+
+\rhead{}
+
+\lhead{}
+
+\cfoot{\thepage}
+
+\normalfont
+\selectlanguage{lithuanian}
+\thispagestyle{empty}
+\begin{center}
+Vilniaus universitetas\\
+Fizikos fakultetas\\
+Teorinės fizikos ir astronomijos institutas
+\par\end{center}
+
+\vspace{3.5cm}
+
+\begin{center}
+Gytis Vėjelis
+\par\end{center}
+
+\begin{center}
+\textbf{The formation of primordial black holes due to resonant processes during cosmic inflation}\vspace{0.8cm}
+\par\end{center}
+
+\begin{center}
+MAGISTRANTŪROS STUDIJŲ MOKSLO TIRIAMOSIOS PRAKTIKOS ATASKAITA
+\par\end{center}
+
+\begin{center}
+\vspace{0.8cm}
+Teorinės fizikos ir asrtofizikos studijų programa
+\par\end{center}
+
+\begin{center}
+\vspace{3.5cm}
+\par\end{center}
+
+\begin{tabular*}{0.9\textwidth}{@{\extracolsep{\fill}}ll}
+Studentas & Gytis Vėjelis\tabularnewline[0.5cm]
+Darbo vadovas & dr. Mindaugas Karčiauskas\tabularnewline[0.5cm]
+Instituto direktorius & prof. Darius Abramavičius\tabularnewline
+\end{tabular*}
+\begin{center}
+\vfill{}
+\par\end{center}
+
+\begin{center}
+Vilnius 2026
+\par\end{center}
+
+\newpage{}
+\selectlanguage{english}
+\normalfont\tableofcontents{}
+
+\newpage{}
+
+\addcontentsline{toc}{section}{Santrauka}
+
+\include{chapters/santrauka}
+
+\include{chapters/introduction}
+
+\include{chapters/results}
+
+\include{chapters/conclusions}
+
+\addcontentsline{toc}{section}{Conclusions}
+
+
+\addcontentsline{toc}{section}{References}\bibliographystyle{BibStyle}
+\bibliography{Bibliography}
+
+
+\end{document}

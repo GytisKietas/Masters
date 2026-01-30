@@ -1,0 +1,261 @@
+\section{Introduction}
+
+Cosmology is the study of the Universe as a whole. How does the Universe evolve? What are the physical laws that shape its large scale structures? For most of the human history nobody knew the answers to these questions. The Universe was thought to be static, eternal, unchanging \cite{palmer2008parmenides}. Even the existence of other galaxies is a relatively modern discovery \cite{hubble1925cepheids}. During the twentieth century these questions got new answers. New observations and physical theories showed that the Universe is not in fact static. This history of the Universe implied that the Universe looked very different than it does now.  
+
+The idea that the Universe is expanding was one of the first major revolutions \cite{hubble1929relation}. Once this expansion was established, it became natural to imagine rewinding cosmic history. If space is stretching today, then the Universe must have been more compressed, meaning denser and hotter in the past. This reasoning gave rise to the Hot Big Bang framework \cite{alpher1948origin}, which successfully explains many observed features of the cosmos, including the abundance of light elements and the existence of the cosmic microwave background radiation.
+
+However, as cosmology matured into a precision science, it became clear that the standard Big Bang picture leaves important questions unanswered. Why does the Universe look so similar in all directions, even across regions that seem too far apart to have ever been in contact? Why is the geometry of space so close to flat? And where did the tiny initial irregularities come from that later grew into galaxies?
+
+In response to the apparent limitations of the Hot Big Bang (HBB) model, the theory of cosmic inflation was proposed. Today it plays a central part in cosmological research. With growing interest in the field, inflationary cosmology has had major developments and thus various theories alongside many observations \cite{levi2019dark} \cite{aghanim2020planck}. This raises a challenge: a successful theory not only has to be mathematically correct, but also fit the known observations and hopefully provide additional explanations for dark energy, dark matter, baryogenesis or other phenomena. One of the theories will be investigated in this work.
+
+The goal of this work is to investigate the inflaton field equations of motion with numerical methods and obtain numerical solutions of inflaton field for the $V(\phi) = V_0 \exp ( - \kappa \exp(\frac{\phi}{b M_{\rm pl}})) $ potential. With the aim to apply the results obtained later to a more diffuclut equations of coupled fields.
+
+In the following work natural units will be used $c=\hbar=1$.
+
+\subsection{Cosmology and Inflation}
+
+Cosmology aims to investigate the Universe on the largest scales. It requires the best known theories of physics, namely, Einstein's General Relativity (GR) \cite{carroll2019spacetime} and Quantum Field Theory \cite{zee2010quantum}. The former describes the dynamics of spacetime using the Einstein's field equations
+
+\begin{equation}\label{eq: einsteins field equations}
+    G_{\mu \nu} = 8 \pi G T_{\mu \nu},
+\end{equation}
+where $G_{\mu \nu}$ is the Einstein tensor, $T_{\mu \nu}$ is the energy-momentum tensor and $G$ is the Newton's gravitational constant. This relation provoked the well known quote by John Archibald Wheeler "Spacetime tells matter how to move; matter tells spacetime how to curve." This is because the Einstein tensor depends on the spacetime metric, while the energy-momentum tensor describes the energy distribution of the system. In addition, there are several symmetries which one can take advantage of when deriving the equation. In the study of cosmology two main assumptions are made: first, that on sufficiently large scales the Universe is homogeneous (though some recent investigations start to question this assumption \cite{simpson2025beyond}) and secondly, that it is isotropic. Furthermore, we know that the Universe is expanding, hence the spacetime geometry is well described by the Friedmann Lemaître Robertson Walker (FLRW) metric \cite{friedmann1922125}
+
+\begin{equation}
+    ds^2 = - dt^2 + a(t)^2 \left[ \frac{dr^2}{1-kr^2} + r^2 (d \theta^2 + \sin^2 \theta \d \phi^2) \right],
+\end{equation}
+where $a(t)$ is the scale factor for the expanding Universe, $k \in \{ 0, +1, -1 \}$ determines the spatial curvature (flat space, positive curvature and negative curvature accordingly). Assuming isotropic space, spherical coordinate system was used. In addition, assuming homogeneous space, the Universe can be modeled as a perfect fluid with $T^{\mu \nu} = \mathrm{diag}(\rho, p, p,p)$, where  $p$ is pressure and $\rho$ is the energy density. The dynamics of this fluid in an expanding background is described by the Friedmann equations
+
+\begin{align}
+    H^2 &\equiv \left( \frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \rho - \frac{k}{a^2}, \label{eq: Friedmann equation} \\
+    \frac{\ddot{a}}{a} &= -\frac{4 \pi G}{3} (\rho + 3 p) \label{eq: acceleration equation},
+\end{align}
+here $H(t)$ is the Hubble parameter. Observations indicate that the Universe had an accelerated expansion in the early Universe, which we call inflation. During this period the Universe had to have negative pressure and a quasi-exponential growth in the scale factor
+
+\begin{equation}
+    a(t) \propto \exp(Ht), \qquad \ddot{a}>0 \quad \text {with} \quad \rho + 3p<0.
+\end{equation}
+
+There are several problems in cosmology such as the flatness problem and the horizon problem \cite{dimopoulos2020introduction}. Inflation not only offers solutions to these problems, but also has a possibility of describing baryogenesis (matter creation in the early Universe) and a possible solution to dark matter. The details of these explanations highly depend on the choice of inflation mechanisms. In many models, inflation is described by the spin-0 scalar field $\phi$ called the inflaton field that roll down the potential $V(\phi)$. The evolution of the field can then be derived using the aforementioned quantum field theory. The action in general is given by
+
+\begin{equation}
+    S = \int d^4 x \sqrt{-g} \left[ \frac{\mpl^2}{2}R - \frac{1}{2} g^{\mu \nu} \partial_{\mu} \phi \partial_{\nu} \phi - V(\phi) \right],
+\end{equation}
+where $\mpl = (8 \pi G)^{-1/2}$ often taken to be 1. After varying the action with respect to the metric $g_{\mu \nu}$ we reobtain the equations (\ref{eq: einsteins field equations}) and by varying $\phi$ we get the Klein-Gordon equation in an expanding background \cite{kofman1997towards}
+
+\begin{eqnarray}
+    \ddot{\phi} + 3H \dot{\phi} + V_{, \phi}(\phi) = 0.
+\end{eqnarray}
+There are several useful parameters that describe inflation. We can define $\epsilon$ as the background expansion parameter:
+
+\begin{equation}
+    \epsilon \equiv - \frac{\dot{H}}{H^2}.
+\end{equation}
+Then inflation happens when $\ddot{a} > 0 $, which implies that $\epsilon < 1$, analagously we can state that inflation ends when $\epsilon = 1$ and using
+
+\begin{equation}
+    \epsilon = \frac{\dot{\phi}^2}{2 \mpl^2 H^2}
+\end{equation}
+we can compute the $\dot{\phi}$ at the end of inflation. In addition, there is the Hubble flow parameter $\eta$ defined as
+
+\begin{equation}
+    \eta \equiv \frac{\dot{\epsilon}}{H \epsilon}.
+\end{equation}
+This parameter measures how fast $\epsilon$ changes. Often, the models for inflation are too difficult to solve analytically, hence numerical simulations are used. However, it still useful to analyse limiting cases, for several reasons. First, analytic solutions in some regime might give a way to check wheather numerical calculations are correct and coincide in some range. Secondly, analytic solutions often give physical insights that numerical solutions can not provide. There are two popular limits concerning the evolution of the inflaton field. Slow-roll inflation happens at the beggining of inflation. This approximation happens when the field rolls so slowly that we can neglect the kinetic term, meaning $\frac{1}{2} \dot{\phi}^2 \ll V(\phi)$. This now gives the justification as to why there was negative pressure and why it caused accelerated expansion. Using the spacial part of the energy-momentum tensor, taking the slow-roll limit and equation (\ref{eq: acceleration equation})
+
+\begin{equation}
+    p = \frac{1}{2} \dot{\phi} - V(\phi) \quad \Rightarrow \quad p \approx -V \quad \Rightarrow \quad \ddot{a} > 0
+\end{equation}
+Additionaly, in this limit, the Friedmann equations (\ref{eq: Friedmann equation}) and (\ref{eq: acceleration equation}) simplify to
+
+\begin{equation}
+    H^2 \approx \frac{V(\phi)}{3 \mpl^2} \quad \text{and} \quad 3 H \dot{\phi} = - V^{\prime}(\phi),
+\end{equation}
+where the slow-roll requires that $\epsilon \ll 1$ and $\eta \ll 1$ \cite{kofman1994reheating}. These conditions often simplify the equations enough, so that analytic solutions could be obtained. While slow-roll approximation gives the approximation for the slow evolution of inflaton field, conversely kination acts in the opposite regime. After inflation, we can also investigate the regime where the kinetic energy of the field dominates the potential, meaning $\frac{1}{2} \dot{\phi}^2 \gg V(\phi)$, then
+
+\begin{eqnarray}
+    \rho_{\phi} \approx \frac{1}{2} \dot{\phi}^2 \qquad \text{and} \qquad p_{\phi} \approx \frac{1}{2} \dot{\phi}^2.
+\end{eqnarray}
+With a negligible $V^{\prime}(\phi)$, the equation of motion for the inflaton field then becomes very simple
+
+\begin{equation}
+    \ddot{\phi} + 3 H \dot{\phi} \approx 0.
+\end{equation}
+Which implies that $\dot{\phi} \propto a^{-3}$ and $\rho_{\phi} \propto a^{-6}$, which is a much faster dilution of energy density than that of the matter or radiation fluids.
+
+Thus far we have not considered any coupling to the inflton field. Additional massive spinnor fields must be added to model to model the decay of the inflaton field into particles in order to reproduce the Universe we see today. It will be shown that the inflaton field, through the process of preheating and reheating, decays into these spinor fields.
+
+\subsection{Reheating and Preheating}
+
+It can be shown that the temperature of the thermal bath filling the Universe decreases with the expansion of the Universe $T \propto \frac{1}{a}$ \cite{dimopoulos2020introduction}. Thus the early Universe is not only dense, but also very hot. After the rapid expansion which occurs during inflation the Universe enters a phase called reheating. The energy stored in the inflaton field decays and turns into a hot plasma of relativistic particles. These particles can be considered as radiation as they are extremely relativistic (for massive particles $E \gg m$). This gives the explanation of why the Universe after inflation is radiation dominated and thermalised.
+
+At the end of inflation the inflaton field $\phi$ begins to oscillate around the minimum of $V(\phi)$. It should be noted, however, that in this work an alternative approach is considered - oscillation around a symmetry breaking point. As the inflaton oscillates it excites other fields, transfering energy to them and decreasing oscillating amplitude. More concretely, consider the potential $V(\phi) = \frac{1}{2}m^2(\phi - \sigma)^2$, where $\sigma$ is the minimum of the potential. Shifting $\phi - \sigma \rightarrow \phi$ leads to symmetry breaking, and we get interaction terms for scalar field $\chi$ and spinor field $\psi$
+\begin{equation}
+    \mathcal{L}_{\rm int} = -g^2 \sigma \phi \chi - h \bar{\psi} \psi \phi
+\end{equation}
+which eventually leads to inflaton decays
+
+\begin{equation}
+    \Gamma(\phi \rightarrow \chi \chi) = \frac{g^4 \sigma^2}{8 \pi m} \quad \text{and} \quad \Gamma(\phi \rightarrow \bar{\psi} \psi) = \frac{h^2 m }{8 \pi}
+\end{equation}
+In addition, it can be shown that during this time the inflaton field oscillates as $\phi(t) \approx \Phi(t) \sin (mt)$. Finally, it is possible to obtain the Boltzmann equation for the number density $n_{\phi}$ and energy density $\rho_{\phi}$
+
+\begin{equation}
+    \frac{d}{dt} (a^3 n_{\phi}) = -a^3 n_{\phi} \Gamma \quad \text{and} \quad \frac{d}{dt} (a^3 \rho_{\phi}) = - \Gamma a^3 \rho_{\phi}
+\end{equation}
+which shows that that the comoving number density of $\phi$ particles, together with the energy density of the field exponetnially decays with the rate $\Gamma$. Reheating finishes roughly at $H ~ \Gamma$, giving $T_r \approx 0.2 \sqrt{\Gamma \mpl}$. 
+
+The early stages of reheating, called preheating, are non-pertubative and thus require different analytical methods.
+
+The early part of reheating, called preheating, can be analysed seperately, as it involves non-pertubative dynamics. Particle production during preheating comes from nonlinear resonant instabilities in equations with parametric resonance. Continuing our discussion of reheating, we can also look at the evolution of the matter field $\chi$. After quantisation we obtain that each Fourier mode $\chi_k(t)$ must satisfy:
+
+\begin{eqnarray}
+    \ddot{\chi}_k + 3 \frac{\dot{a}}{a}\dot{\chi}_k + \left( \frac{k^2}{a^2} + m_{\chi} + g^2 \phi^2 \right) \chi = 0.
+\end{eqnarray}
+Due to time depensence of $\phi(t)$, this equation basically describes a harmonic oscillator with variable frequency, otherwise known as paramatric oscillator. Since the field makes so many oscillations over one Hubble time, we can neglect the expansion of the Universe. Take $a=1$ and after rearranging some terms and using the solution for the inflaton field we obtain the Mathieu equation
+
+\begin{equation}
+    \chi_k^{\prime \prime} + (A_k - 2 q \cos 2 z) \chi_k = 0
+\end{equation}
+where $A_k = \frac{k^2}{m^2} + 2q$ and $q = \frac{g^2 \Phi^2}{4 m^2}$. Equations with periodic forcing terms are analysed with Floquet theory \cite{brown2012floquet}, and in the case of Mathieu's equations stability/instability bands were computed in this work.
+
+% \begin{center}
+%     \includegraphics[width=300pt]{images/matheius_curves.png}
+% \end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=300pt]{images/matheius_curves.png}
+    \caption{Stability/instability structure of the Mathieu equation in the $(A_k,q)$ parameter plane. The blue curves mark the boundaries of the resonance bands obtained numerically in this work using Floquet analysis, showing (shaded) regions where solutions for $\chi_k$ grow exponentially (parametric resonance) versus remain bounded (unshaded).}
+    \label{fig:matheius_curves}
+\end{figure}
+
+This gives us insights into parametric resonance of the $\chi$ equations of motion. Parametric resonance is often referred to as the engine of preheating. It is an explosive amplification of field fluctuations caused by the inflaton field oscillations. Since inflaton is coupled to matter fields like $\chi$, it transfers its energy and the effective mass term of the $\chi$ field becomes time dependent. Hence knowing the stability bands allows us to see where the instabilities and resonances happen. Similarly as before, we can compute the comoving occupation number of particles $n_k$ in the mode $k$ in an expanding Universe
+
+\begin{equation}
+    n_k = \frac{\omega_k}{2} \left( \frac{|\dot{\chi}|^2}{\omega_k^2} + |\chi_k|^2 \right) - \frac{1}{2}
+\end{equation}
+where
+\begin{equation}
+    \omega^2_k = \frac{k^2}{a^2(t)} + g^2 \Phi^2 \sin^2 mt + m_\chi^2 - \frac{3}{2} \left( \frac{\dot{a}}{a} \right) - \frac{3}{2} \frac{\ddot{a}}{a}
+\end{equation}
+Note that this function does not have any factors inversely proportional to the volume $a^3$. These factors appear when the number density of particles is calculated in non-comoving coordinates. Hence we can plot the evolution of some $k$-modes during the early stages of parametric resonance. Different Fourier $k$-modes will experience resonance differently. This can be easily seen in the following graphs
+
+% \begin{center}
+%     \includegraphics[width=300pt]{images/k050.png}
+% \end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=300pt]{images/k050.png}
+    \caption{Early-stage parametric resonance for the mode $k=0.50\,m$ in the simplified preheating model. Top: time evolution of the field mode $\chi_k(t)$ showing the onset of amplification driven by the oscillating inflaton background. Bottom: corresponding comoving occupation number $\ln n_k$, computed numerically in this work from the mode functions, illustrating the growth of particle production in the resonant regime.}
+
+    \label{fig:k050}
+\end{figure}
+
+% \begin{center}
+%     \includegraphics[width=300pt]{images/k300.png}
+% \end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=300pt]{images/k300.png}
+    \caption{Early-stage parametric resonance for the mode $k=3.00\,m$. Top: evolution of $\chi_k(t)$ exhibiting a different amplification pattern compared to smaller $k$. Bottom: numerical evolution of $\ln n_k$ obtained in this work, demonstrating mode-dependent particle production and resonance strength.}
+    \label{fig:k300}
+\end{figure}
+
+% \begin{center}
+%     \includegraphics[width=300pt]{images/k570.png}
+% \end{center}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=300pt]{images/k570.png}
+    \caption{Parametric resonance behaviour for the mode $k=5.70\,m$. Top: numerical solution for $\chi_k(t)$ showing oscillatory dynamics with bursts of amplification. Bottom: $\ln n_k$ computed in this work, where the step-like growth and temporary drops reflect the use of comoving variables rather than physical number density, not actual particle destruction.}
+    \label{fig:k570}
+\end{figure}
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=300pt]{images/k1000.png}
+%     \caption{Large-$k$ mode evolution for $k\simeq 10\,m$ obtained numerically in this work.  Top: the rescaled mode function $X_k^{(\mathrm{plot})}=\chi_k\,t/t_0$ remains small during the early evolution and then undergoes a rapid amplification at later times, indicating the onset of a resonant instability for this high-momentum mode.  Bottom: the corresponding comoving occupation number $\ln n_k$ shows an overall growth with step-like features, reflecting non-adiabatic particle production in an oscillating inflaton background; the small oscillations and plateaus are characteristic of the comoving definition of $n_k$ and do not imply physical particle destruction.}
+%     \label{fig:k1000}
+% \end{figure}
+
+Notice that the particle number doesn't increase monotonically. The drops in the number of particles does not mean that the particles are being destroyed.
+
+
+\subsection{Primordial black holes and pertubations of spacetime}
+Primordial black holes (PBHs) are black holes that could have formed in the early Universe, long before stars and galaxies existed. Unlike astrophysical black holes, which form from stellar collapse at late times, PBHs may originate from large primordial perturbations generated in the very early Universe \cite{carr1974black}.
+
+In inflationary cosmology, quantum fluctuations of light fields are stretched to macroscopic scales by the accelerated expansion. These fluctuations appear as perturbations of the spacetime curvature and later translate into density perturbations of the cosmic plasma. In most regions the perturbations are small and eventually lead to the formation of large scale structure, but in rare cases the perturbation amplitude might be unusually large. If such an overdense region re-enters the horizon during the radiation dominated era, exceeding some critical threshold, pressure forces would be unable to prevent gravitational collapse, and the region could form a black hole \cite{carr1974black}.
+
+Putting this more concretely, consider the FLRW metric with a Newtonian gauge is given by \cite{karciauskas2025primordial}
+
+\begin{equation}
+    ds^2 = -(1 + 2\Phi)dt^2 + a^2(t)(1 - 2 \Phi) \delta_{ij}dx^i dx^j,
+\end{equation}
+where we used the Einstein summation convention, with $\delta_{ij}$ being the kronecker delta and $\Phi$ being the metric perturbation variable. Scalar fields $\phi$ and $\chi$ are also perturbed,  and assuming that the homogeneous value is much greater than the perturbations $\bar{\phi} \gg \delta \phi$ allows us to write the equations of motion for the homogeneous and perturbed components seperately. Homogeneous equations are
+\begin{equation}
+    \ddot{\phi} + 3H \dot{\phi} + V_{, \phi} = 0 \quad \text{and} \quad \ddot{\chi} + 3H \dot{\chi} + V_{, \chi} = 0,
+\end{equation}
+where the Hubble parameter is $3H^2 = \frac{1}{2}\dot{\phi}^2 + \frac{1}{2}\dot{\chi}^2 + V$. In the Newtonian gauge the perturbation equations are then
+\begin{align}
+\delta \ddot{\phi}_k + 3H\,\delta \dot{\phi}_k
++ \left(\frac{k^2}{a^2} + V_{,\phi\phi}\right)\delta \phi_k
+&= 2\left(2\dot{\phi}\,\dot{\Phi}_k - V_{,\phi}\Phi_k\right) - V_{,\phi\chi}\delta \chi_k, \\[6pt]
+\delta \ddot{\chi}_k + 3H\,\delta \dot{\chi}_k
++ \left(\frac{k^2}{a^2} + V_{,\chi\chi}\right)\delta \chi_k
+&= 2\left(2\dot{\chi}\,\dot{\Phi}_k - V_{,\chi}\Phi_k\right) - V_{,\phi\chi}\delta \phi_k, \\[6pt]
+\dot{\Phi}_k + H\Phi_k
+&= \frac{1}{2}\left(\dot{\phi}\,\delta \phi_k + \dot{\chi}\,\delta \chi_k\right).
+\end{align}
+with the Einstein equation acting as a constraint equation
+\begin{equation}
+\left(\dot{\phi}^{2} + \chi^{2} - 2\frac{k^{2}}{a^{2}}\right)\Phi_{k}
+= \dot{\phi}\,\delta\dot{\phi}_{k} + \dot{\chi}\,\delta\dot{\chi}_{k}
+- \ddot{\phi}\,\delta\phi_{k} - \ddot{\chi}\,\delta\chi_{k}.
+\end{equation}
+Note that these equations of $\delta \phi_k$, $\delta \chi_k$ and $\Phi_k$ describe the evolution of the Fourier modes of perturbation variables $\delta \phi$, $\delta \chi$ and $\delta \Phi$ respectively. The solutions of these equations allows us to compute the power spectrum $\mathcal{P}_{\zeta}(k)$ of primordial curvature pertubations $\zeta$:
+\begin{equation*}
+    \mathcal{P}_{\zeta}(k) = \frac{k^3}{2 \pi^2} |\zeta_k|^2 \quad \text{where} \quad \zeta_k
+= \Phi_k + 2H\,\frac{\dot{\Phi}_k + H\Phi_k\left(1+\frac{1}{3}\frac{k^2}{a^2H^2}\right)}
+{\dot{\phi}^2 + \dot{\chi}^2}. 
+\end{equation*}
+
+Power spectrum gives the description of the typical size of primordial fluctuations $\zeta$ at some scale $k$. Meaning that if $\mathcal{P}_k$ is sufficiently small then the Universe is smooth, while a large $\mathcal{P}_k$ would mean a strongly perturbed space. PBHs form when perturbations on some small scale are large enough. To coincide with observations the power spectrum should be nearly scale-invariant in the order of CMB. While on small scales the power spectrum should enhance, so that sufficiently large overdensities can collapse into black holes. Depending on their abundance and mass distribution, PBHs have been studied as possible contributors to dark matter \cite{karciauskas2025primordial}.
+
+\subsection{Numerical simulation}
+
+In many physical and mathematical models the evolution of some system is given by a system of ordinary differential equations
+
+\begin{equation}
+    \frac{dy}{dt} = f(t,y),
+\end{equation}
+with some initial conditions $y(t_0) = y_0$, where $y(t)$ is the unknown function and $f(t,y)$ describes how the system changes in time. Unfortunately, many systems cannot be solved analytically, hence numerical methods are used. The idea behind these methods is that they discretise the domain of the independent variable and integrate along small steps. If the steps are small enough, then the error accumulation is negligible. In this work fourth-order Runge-Kutta method (RK4) will be used. It is one of the most popular algorithms as it provides high accuracy while remaining relatively simple to implement \cite{chapra2012applied}, \cite{butcher2016numerical}. The algorithm approximates the solution over a small step $h$ from $t_n$ to $t_{n+1} = t_n + h$ by combining slope estimates. Other, less accurate methods use slopes at the beginning of the step, thus quickly accumulating errors. RK4 on the other hand evaluates the slope at intermediate points and forms a weighted average. This provides stability and accuracy for the solution. Given the current $y_n \approx y(t_n)$, four intermediate values are computed
+
+\begin{align}
+k_1 &= f(t_n, y_n), \\
+k_2 &= f\!\left(t_n+\frac{h}{2},\, y_n+\frac{h}{2}k_1\right), \\
+k_3 &= f\!\left(t_n+\frac{h}{2},\, y_n+\frac{h}{2}k_2\right), \\
+k_4 &= f\!\left(t_n+h,\, y_n+h k_3\right).
+\end{align}
+
+then the solution is updated as
+
+\begin{equation}
+    y_{n+1}=y_n+\frac{h}{6}\left(k_1+2k_2+2k_3+k_4\right).
+\end{equation}
+
+The fourth order of the RK4 extremely improves error rates since they are of order $\mathcal{O}(h^4)$ and the local truncation error per step is of order $\mathcal{O}(h^5)$
+
+It should be noted that in many physical systems the equations of motion are usually second-order derivatives. They however can be viewed as a system of two ordinary differential equations
+
+\begin{equation}
+    \frac{d^2 y}{dt^2} = f(\dot{y}, y, t) \quad \Rightarrow \quad
+        u = \frac{dy}{dt} \quad \text {and} \quad
+        \frac{du}{dt} = f(u, y, t)
+\end{equation}
+
+These are usually written as vectors and the equations are then vectorised. In the following section we implement the above RK4 scheme to evolve the inflaton field numerically in an expanding Universe with application to a novel inflation theory \cite{dimopoulos2002modeling}.

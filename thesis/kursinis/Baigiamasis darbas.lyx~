@@ -1,0 +1,1346 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+% Dokumento autoriai Jevgenij Chmeliov ir Andrius Gelžinis, (c) 2018
+\usepackage{tocloft}
+\usepackage{indentfirst}
+\frenchspacing
+\usepackage{cite}
+\usepackage{upgreek}
+\usepackage{siunitx} % dydžių vienetams
+\sisetup{
+output-decimal-marker = {,},
+exponent-product = \cdot,
+inter-unit-product = \ensuremath{\cdot} }
+
+
+\usepackage[labelsep=space]{caption}
+\DeclareCaptionLabelFormat{pav}{#2~#1}
+\captionsetup[figure]{labelformat=pav, name=pav.}
+\captionsetup[table]{labelformat=pav, name=lentelė.}
+
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Imag}{Im}
+\DeclareMathOperator{\gradient}{grad}
+\DeclareMathOperator{\divergence}{div}
+\DeclareMathOperator{\rotor}{rot}
+\DeclareMathOperator{\trace}{Tr}
+
+\renewcommand{\headrulewidth}{0pt}
+\end_preamble
+\use_default_options true
+\begin_modules
+enumitem
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 35
+Requires	amsthm,amsmath
+NoStyle Chapter
+NoCounter chapter
+NoStyle Chapter*
+NoStyle Paragraph
+NoStyle Subparagraph
+NoStyle Paragraph*
+NoStyle Subparagraph*
+NoStyle Quotation
+NoStyle Quote
+NoStyle Verse
+NoStyle Abstract
+NoStyle Address
+NoStyle "Right Address"
+\end_local_layout
+\language lithuanian
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "times" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "newtxmath" "auto"
+\font_default_family rmdefault
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "pdfstartview=FitH, bookmarksopen=true, hidelinks=true,  pdfdisplaydoctitle=true, pdfpagemode=UseNone"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 2
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2cm
+\rightmargin 1.5cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style german
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\imath}{\mathrm{i}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\ddiff}{\mathrm{d}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\d}{\mathrm{d}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\vect}[1]{\mathbf{#1}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\oper}[1]{\hat{#1}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\emath}{\mathrm{e}}
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\ket}[1]{\left|#1\right\rangle }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\bra}[1]{\left\langle #1\right|}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle }
+{\left\langle #1|#2\right\rangle }
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\braketop}[3]{\left\langle #1\middle|#2\middle|#3\right\rangle }
+{\left\langle #1|#2|#3\right\rangle }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\si}[2]{\SI{#1}{#2}}
+{\begin{subarray}{cc}
+#1 & \textrm{#2}\end{subarray}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Header
+
+\end_layout
+
+\begin_layout Left Header
+
+\end_layout
+
+\begin_layout Center Footer
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalfont
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+Vilniaus universitetas
+\begin_inset Newline newline
+\end_inset
+
+Fizikos fakultetas
+\begin_inset Newline newline
+\end_inset
+
+Cheminės fizikos institutas / Fotonikos nanotechnologijų institutas / ...
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 3.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+Vardas Pavardaitis
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+DARBO PAVADINIMAS
+\series default
+
+\begin_inset VSpace 0.8cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+BAKALAURO / MAGISTRANTŪROS STUDIJŲ BAIGIAMASIS DARBAS 
+\end_layout
+
+\begin_layout Standard
+\align center
+[ ARBA PROFESINĖS PRAKTIKOS / MOKSLO TIRIAMOSIOS PRAKTIKOS ATASKAITA ]
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace 0.8cm
+\end_inset
+
+Fizikos / Taikomosios fizikos / ...
+ studijų programa
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace 3.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features tabularvalignment="middle" tabularwidth="90text%">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<row bottomspace="0.5cm">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Studentas
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vardas Pavardaitis
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Leista ginti 
+\color blue
+[tik baigiamajam darbui]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2022-05-20
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomspace="0.5cm">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Darbo vadovas
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+doc.
+ Vardenis Pavardenis
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomspace="0.5cm">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Konsultantas 
+\color blue
+[tik baigiamajam darbui, jei reikia]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+dr.
+ Vardė Pavardienė
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Instituto/Centro direktorius/atstovas
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+prof.
+ Vardis Pavardis
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+Vilnius 2022
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalfont
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Įvadas
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Įvadas}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Kompiliuodami šį pavyzdį nepamirškite
+\end_layout
+
+\begin_layout Standard
+\align center
+\SpecialChar LyX
+ 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ Preferences 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ Output 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ LaTeX 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ Use LaTeX font encoding
+\end_layout
+
+\begin_layout Standard
+\noindent
+nustatyti reikšmės 
+\begin_inset Quotes gld
+\end_inset
+
+L7x,T1
+\begin_inset Quotes grd
+\end_inset
+
+ (eiliškumo tvarka svarbi, tai leis pasirinkti šriftą ne tik anglų, bet
+ ir lietuvių kalba parašytam tekstui).
+ 
+\end_layout
+
+\begin_layout Standard
+Žemiau pateiktos kelios svarbiausios ištraukos iš 
+\begin_inset Quotes gld
+\end_inset
+
+VU FF studijuojančiųjų rašto darbų rengimo, gynimo ir kaupimo tvarkos
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Visą dokumentą galima rasti 
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "čia"
+target "https://www.ff.vu.lt/external/ff/files/studentams_dokumentai/VU_FF_ra%C5%A1to_darb%C5%B3_rengimo_gynimo_ir_kaupimo_tvarka_suvestin%C4%97_redakcija_2020.pdf"
+literal "false"
+
+\end_inset
+
+
+\color inherit
+.
+\end_layout
+
+\begin_layout Itemize
+Darbas turi būti parengtas taisyklinga lietuvių kalba.
+ Tais atvejais, kai studijų programa vykdoma ne lietuvių kalba arba kai
+ Darbo vadovas arba konsultantas – užsienio dėstytojas / užsienio mokslo
+ darbuotojas, Darbas rengiamas anglų kalba.
+\end_layout
+
+\begin_layout Itemize
+Baigiamasis darbas turi turėti: antraštinį lapą, turinį, įvadą su darbo
+ tikslu, pagrindinį tekstą, išvadas, bibliografinių nuorodų (literatūros)
+ sąrašą, santrauką.
+ Baigiamojo darbo antraštinis lapas privalo būti parengtas pagal pateiktą
+ pavyzdį (taip, kaip šiame šablone) lietuvių kalba (ir tuo atveju, kai darbas
+ parengtas anglų kalba).
+ Darbo apimtis turi būti ne mažesnė nei 20 puslapių ir neturi viršyti 80
+ puslapių.
+\end_layout
+
+\begin_layout Itemize
+Darbas ir jo apipavidalinimas turi atitikti moksliniam darbui keliamus reikalavi
+mus, t.
+\begin_inset space ~
+\end_inset
+
+y.
+ turi būti išdėstyta nagrinėjamoji problema bei pasirinktas ir pagrįstas
+ jos sprendimo būdas, aptarti šia tema esami (literatūroje skelbti) rezultatai,
+ aprašyta naudota tyrimo metodika ir aparatūra, aprašyti ir išanalizuoti
+ darbe gauti rezultatai bei pateiktos išvados (turėtų būti glaustos, rekomenduoj
+amos 3–5 išvados).
+ Įvade būtinai turi būti suformuluotas darbo tikslas (
+\begin_inset Quotes gld
+\end_inset
+
+Šio darbo tikslas ...
+\begin_inset Quotes grd
+\end_inset
+
+) .
+ Darbo gale pateikiama santrauka anglų kalba – nurodoma autoriaus vardas
+ ir pavardė bei darbo pavadinimas, joje taip pat formuluojamas darbo tikslas
+ ir pagrindinės išvados.
+ Jei darbas parašytas anglų kalba, reikalinga išplėstinė darbo santrauka
+ lietuvių kalba.
+ Darbas turi atitikti raštvedybos taisyklių ir bibliografinių nuorodų ir
+ jų sąrašo sudarymo studijų bei mokslo darbuose metodikos reikalavimus.
+ Literatūros sąraše turi būti nurodomi straipsnių pavadinimai.
+\end_layout
+
+\begin_layout Itemize
+Jei Studijuojantysis panaudoja jo paties parengtų kitų darbų dalis Baigiamajame
+ darbe, minėti kiti darbai turi būti cituojami laikantis bibliografinių
+ nuorodų reikalavimų.
+ 
+\end_layout
+
+\begin_layout Standard
+Šio šablono antraštinis puslapis jau yra parengtas pagal minėtus VU FF tarybos
+ patvirtintus reikalavimus.
+ Šio puslapio apačioje turi būti nurodomi metai, kuriais yra ginamas darbas
+ (o ne semestro pradžios metai).
+ Jei Darbas parengtas anglų kalba, reikalingi du antraštiniai lapai: pirmasis
+ – lietuvių kalba, antrasis – anglų kalba.
+\end_layout
+
+\begin_layout Standard
+Kadangi dažniausiai ir ypač atidžiai skaitomos Darbo dalys yra įvadas ir
+ išvados, joms patartina skirti daugiau dėmesio: nuosekliai ir logiškai
+ išdėstyti mintis, patikrinti skyrybą ir rašybą.
+ Perskaičius darbo įvadą turėtų būti aišku, kokia problema yra nagrinėjama
+ darbe.
+ Įvade būtinai turi būti suformuluotas darbo tikslas (paprastai tai būna
+ paskutinė įvado pastraipa, prasidedanti žodžiais 
+\begin_inset Quotes gld
+\end_inset
+
+
+\series bold
+Šio darbo tikslas
+\series default
+ ...
+\begin_inset Quotes grd
+\end_inset
+
+).
+ Įvadas Darbo turinyje nenumeruojamas.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Pirmasis skyrius
+\end_layout
+
+\begin_layout Subsection
+Bendri darbo formatavimo patarimai
+\end_layout
+
+\begin_layout Standard
+Darbo skyriai turi būti pradedami naujame puslapyje ir jie turi būti numeruojami.
+ Išimtis – Įvadas ir Išvados, kurie nėra numeruojami.
+ Paprastai Darbo metodologinę dalį sudaro 1–2 skyriai, kuriuose pateikiami
+ Darbe nagrinėjamų reiškinių teorinis aprašymas, naudota aparatūra ir pan.
+ Atskirame skyriuje aprašomi ir išanalizuojami Darbe gauti rezultatai.
+\end_layout
+
+\begin_layout Standard
+Nelietuviškus asmenvardžius ir vietovardžius reikėtų rašyti nuosekliai:
+ arba visur lietuvinant rašybą (pvz., Niutonas, Dirakas, Lagranžas, Laplasas,
+ Furjė), arba paliekant originalios kalbos rašybą (Newton, Dirac, Lagrange,
+ Laplace, Fourier).
+ Nelietuviškų asmenvardžių ir vietovardžių gramatinimo taisykles galite
+ rasti 
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "čia"
+target "http://www.vlkk.lt/naujienos/pakomisiu-naujienos/daugiau-galimybiu-bet-ir-daugiau-sumanumo-gramatinimo-rekomendacijos-komentaras"
+literal "false"
+
+\end_inset
+
+
+\color inherit
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Simboliai ir rašmenys paveiksliukuose turėtų būti įskaitomi (žr.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:1"
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+pav.).
+ Spalvotos paveikslėlių kreivės dažniausiai tampa neatskiriamos nespalvotai
+ atspausdintame darbe.
+ Taip pat geriau vengti per didelių šriftų – geriausia, jeigu paveiksliuko
+ šrifto dydis yra maždaug toks pats, kaip ir teksto.
+ Tą patį galima pasakyti ir dėl pranešimo skaidrėse naudojamų paveiksliukų.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !b
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig_H_energy.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Vandenilio atomo spektras
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Paveiksliukų antraštė rašoma po pačiu paveiksliuku, lentelių – virš jos
+ (žr.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:1"
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+lentelę).
+ Jei antraštę sudaro vienas ar keli sakiniai, gale dedamas taškas; jei antraštė
+ yra tiesiog trumpas pavadinimas (be tarinio), gale taško dėti nereikia.
+\end_layout
+
+\begin_layout Standard
+Žodžiai 
+\begin_inset Quotes gld
+\end_inset
+
+hamiltonianas
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+lagranžianas
+\begin_inset Quotes grd
+\end_inset
+
+ ir panašūs rašomi iš mažosios raidės.
+ Matematiniai simboliai rašomi kursyvu, jų matavimo vienetai – stačiu šriftu
+ (pvz., 
+\begin_inset Formula $E=\si 1{V/m}$
+\end_inset
+
+), matematinės konstantos (
+\begin_inset Formula $\emath\approx\num{2,718}$
+\end_inset
+
+; 
+\begin_inset Formula $\imath=\sqrt{-1}$
+\end_inset
+
+) bei diferencialo simbolis (
+\begin_inset Formula $\ddiff x$
+\end_inset
+
+) – stačiu šriftu, matematinių simbolių indeksai, reiškiantys žodžio santrumpą
+ – taip pat stačiu šriftu (pavyzdžiui, Boltzmano konstanta 
+\begin_inset Formula $k_{\mathrm{B}}=\si{1,38E-23}{J/K}$
+\end_inset
+
+).
+ Taip pat atkreipiame dėmesį, jog lietuvių kalboje dešimtainis simbolis,
+ atskiriantis skaičiaus sveiką dalį, yra kablelis, o ne taškas.
+ Po matematinės išraiškos žodis 
+\begin_inset Quotes gld
+\end_inset
+
+kur
+\begin_inset Quotes grd
+\end_inset
+
+ nevartojamas.
+ Vietoje jo reikėtų vartoti žodį 
+\begin_inset Quotes gld
+\end_inset
+
+čia
+\begin_inset Quotes grd
+\end_inset
+
+, pvz.:
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{2\pi}\int_{-\infty}^{\infty}\emath^{\imath kx}\,\ddiff x=\delta\left(k\right),\label{eq:DirakoFunkcija}
+\end{equation}
+
+\end_inset
+
+čia 
+\begin_inset Formula $\delta\left(k\right)$
+\end_inset
+
+ – Dirako delta funkcija.
+ Tekste nuorodos į formules rašomos skliausteliuose 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:DirakoFunkcija"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Vektoriai (
+\begin_inset Formula $\vect E=-\gradient\varphi$
+\end_inset
+
+ arba 
+\begin_inset Formula $\vec{E}=-\gradient\varphi$
+\end_inset
+
+), operatoriai (
+\begin_inset Formula $\oper H\psi=E\psi$
+\end_inset
+
+) ir pan.
+ visur turi būti žymimi vienodai ir nuosekliai.
+ Ypač negražiai atrodo skirtingas tokių objektų žymėjimas vienoje lygybėje.
+ To paties kintamojo nevertėtų naudoti skirtingiems dydžiams žymėti.
+ Po matematinių operacijų pavadinimų (grad, rot, Re ir kt.) turi būti paliekamas
+ tarpas.
+ Šio dokumento preambulėje jie yra apibrėžti kaip matematiniai operatoriai,
+ prireikus šių operatorių sąrašą galite papildyti.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tašelio nueito kelio priklausomybė nuo laiko
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features booktabs="true" tabularvalignment="middle" tabularwidth="5cm">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $t$
+\end_inset
+
+ (s)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $s$
+\end_inset
+
+ (cm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Patarimai, padėsiantys užtikrinti sklandų Darbo ruošimą 
+\end_layout
+
+\begin_layout Standard
+Nors Darbo apimtis nėra tokia didelė, reikia turėti omenyje, kad paruošti
+ aiškų, sklandų ir tvarkingą Darbą užtrunka gerokai ilgiau negu vieną ar
+ dvi naktis.
+ Dėl to patartina Darbo rašymą pradėti kuo anksčiau.
+ Geriausia kuo anksčiau paruošti pradinį Darbo variantą, kuriame jau būtų
+ sudėliotos visos dalys.
+ Tada šį variantą galima taisyti ir tobulinti, kas kartą paruošiant vis
+ geresnę Darbo versiją.
+ 
+\end_layout
+
+\begin_layout Standard
+Patartina Darbą duoti perskaityti vadovui ne vieną kartą, kad jis spėtų
+ rasti klaidas ir pateikti patarimų.
+ Taip pat labai svarbu nepateikti Darbo vadovui paskutinę naktį, nes vadovai
+ irgi yra žmonės ir gali paprasčiausiai nespėti skirti Darbo perskaitymui
+ pakankamai laiko.
+\end_layout
+
+\begin_layout Standard
+Pats darbo rašymas yra nemenkas iššūkis.
+ Ne visiems paprasta drąsiai žiūrėti į tuščius puslapius.
+ Tačiau, kaip ir bet kokia kita techninė problema, rašymo baimė yra įveikiama
+ paprastais techniniais sprendimais.
+ Pirma, atkreipkite dėmesį, kurias darbo dalis rašyti yra sunkiausia, o
+ kurias – lengviau.
+ Dažnai lengviausia parašyti yra teorinį įvadą/aparatūros aprašymą, nes
+ šie dalykai rašančiajam yra geriausiai žinomi.
+ Šiek tiek sudėtingiau yra aprašyti Darbo rezultatus, dar sunkiau
+\begin_inset space ~
+\end_inset
+
+– jų analizę, o sunkiausia parašyti Įvadą ir Išvadas.
+ Visada patogiausia pradėti rašyti Darbą nuo lengviausių dalių.
+ Tai suteikia dvigubą naudą.
+ Viena vertus, gana greitai auga Darbo tekstas.
+ Kita vertus, didėja motyvacija rašyti, kai Darbą sudaro nebe tušti lapai.
+ Nebijokite Darbo skyrių rašyti ne eilės tvarka.
+ Praktikoje dažnai pasitaiko, kad Įvadas (ir net Darbo tikslas) yra parašomas
+ jau parašius išvadas.
+ 
+\end_layout
+
+\begin_layout Standard
+Kita problema, smarkiai lėtinanti darbo rašymą, yra noras iš karto parašyti
+ gražų ir švarų tekstą.
+ Prie vieno sakinio galima prasikankinti ir porą valandų.
+ Šitą problemą nesunku apeiti, kai suvokiama, kad pirma ar antra Darbo versijos
+ dar gali būti labai netobulos.
+ Todėl rašant pirmąjį variantą, neretai galima rašyti gerokai atlaidžiau,
+ nesistengiant idealiai gražiai ir tiksliai sudėlioti mintis.
+ Jeigu pasilikote Darbo rašymui pakankamai laiko, geresnė Darbo versija
+ gali būti kokia ketvirta ar penkta, o tai visai nieko blogo.
+\end_layout
+
+\begin_layout Standard
+Viena esminė problema, pasitaikanti rašant darbą, yra neteisingas turimo
+ darbo laiko padalinimas į rašymo laiką ir taisymo laiką.
+ Pradedantieji dažnai mano, kad darbo parašymas yra didžioji dalis, o taisymui
+ galima palikti kur kas mažiau laiko (pvz., santykiu 8:2 ar 9:1).
+ Tokio mąstymo rezultatas, deja, dažnai būna netvarkingas ir 
+\begin_inset Quotes gld
+\end_inset
+
+nenušlifuotas
+\begin_inset Quotes grd
+\end_inset
+
+ darbas, kuris jį skaitančiam palieka gana slogų įspūdį.
+ Kur kas geriau yra darbo taisymui palikti bent pusę (iš tikrųjų, kuo daugiau,
+ tuo geriau) viso numatyto darbo laiko.
+ Taip galima paruošti eilę darbo versijų, kurių kiekviena yra vis švaresnė.
+ Turėkite mintyje, kad, jeigu darbo skaitymo metu radote daug klaidų, tai
+ tikriausiai išgaudėte ne visas.
+ Galima tarti, kad vienas atidus darbo taisymas leidžia išgaudyti apie 80%
+ klaidų, tad norint jų skaičių minimizuoti, darbo taisymų turi būti bent
+ trys.
+\end_layout
+
+\begin_layout Standard
+Taip pat atkreipsime dėmesį, kad taisyti svetimas klaidas yra žymiai lengviau
+ negu savas.
+ Todėl, esant galimybei, patartina duoti Darbą paskaityti kažkam iš šalies.
+ Taip pat verta paminėti, kad daugeliui žmonių spausdintą tekstą taisyti
+ yra lengviau negu matomą ekrane.
+ Todėl kartais pravartu darbinius Darbo variantus atsispausdinti.
+\end_layout
+
+\begin_layout Standard
+Pabaigai paminėsime, kad geri Darbai yra tokie, į kuriuos autorius įdeda
+ šiek tiek sielos :)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Antrasis skyrius
+\end_layout
+
+\begin_layout Standard
+Darbo gale (po išvadų) turi būti pateikiamas naudotos literatūros sąrašas.
+ Jo pateikimo stilių galima naudoti bet kokį – vienintelis reikalavimas
+ yra nurodyti mokslinių straipsnių pavadinimus.
+ Tačiau reikėtų laikytis nuoseklumo: žurnalų pavadinimai turi būti sutrumpinami,
+ prie kiekvieno straipsnio turi būti nurodytas žurnalas, išleidimo metai,
+ tomas ir puslapiai (arba straipsnio numeris) 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Moerner:1989gp,Mohseni:2014mg,Price2006sf"
+literal "true"
+
+\end_inset
+
+.
+ Jeigu darbe naudojama medžiaga iš anksčiau rašyto kursinio darbo, jį taip
+ pat būtina pacituoti 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pavardaitis:2018df"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Išsamesnės informacijos ir patarimų apie rašto darbų rengimą galima rasti
+ P.
+\begin_inset space ~
+\end_inset
+
+J.
+\begin_inset space ~
+\end_inset
+
+Žilinsko knygoje 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zilinskas:2015dg"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Parašius Darbą, patartina jį dar visą atidžiai perskaityti, kad jame neliktų
+ klaidų ir/ar redakcinio pobūdžio pastabų, skirtų pačiam autoriui, pvz.,
+ 
+\begin_inset Quotes gld
+\end_inset
+
+čia reikės pabaigti
+\begin_inset Quotes grd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Kad pranešimo skaidrės būtų geriau suderintos su VU FF auditorijose esančiais
+ projektoriais, patartina jas rengti 4:3 formatu.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Išvados
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Išvados}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Išvadų skyrius turėtų būti atskirtas nuo rezultatų skyriaus ir turinyje
+ nenumeruojamas.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Išvados turėtų būti glaustos, jų neturėtų būti daugiau nei 3–5.
+ Geriausia jas rašyti kaip atskiras numeruotas ar tabuliacijos simboliais
+ pažymėtas pastraipas.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Literatūra}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "Bibliography"
+options "BibStyle"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+\size large
+Darbo pavadinimas anglų kalba
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+Vardas Pavardaitis
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+Summary
+\end_layout
+
+\begin_layout Standard
+Baigiamasis darbas turi turėti santrauką anglų kalba (
+\begin_inset Quotes gld
+\end_inset
+
+Summary
+\begin_inset Quotes grd
+\end_inset
+
+), kurioje turi būti nurodyti autoriaus vardas ir pavardė bei darbo pavadinimas.
+ Santraukoje turi būti suformuluotas darbo tikslas ir pateiktos pagrindinės
+ išvados.
+ Santraukos ilgis – iki vieno puslapio.
+ Jeigu Darbas parašytas anglų kalba, angliškos santraukos nereikia – vietoje
+ jos pateikiama išsami santrauka (1–2 puslapiai) lietuvių kalba.
+\end_layout
+
+\end_body
+\end_document

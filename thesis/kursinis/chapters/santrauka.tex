@@ -1,0 +1,86 @@
+% \begin{center}
+% \textbf{\large{}Pirminių juodųjų skylių susidarymas dėl rezonansinių procesų kosminės infliacijos metu}{\large\par}
+% \par\end{center}
+
+% \begin{center}
+% \textbf{Gytis Vėjelis}
+% \par\end{center}
+
+% \begin{center}
+% \textbf{Santrauka}
+% \par\end{center}
+
+% Šiame darbe nagrinėjama ankstyvosios Visatos dinamika infliacijos epochoje, ypatingą dėmesį skiriant rezonansiniams procesams, kurie gali turėti reikšmę pirminių juodųjų skylių (PJS) susidarymui. Kosmologija tiria Visatą ir jos raidą didžiausiu įmanomu masteliu. Šiuolaikinė kosmologinė paradigma remiasi dviem pagrindinėmis teorijomis: bendrąja reliatyvumo teorija (BRT), aprašančia erdvėlaikio geometriją bei gravitaciją, ir kvantine lauko teorija (KLT), kuri yra būtina dalelių fizikai ir laukų dinamikai ankstyvojoje Visatoje.
+
+% Darbo pradžioje aptariami pagrindiniai kosmologijos principai, tokie kaip homogeniškumo ir izotropiškumo prielaidos, leidžiančios Visatos metriką aprašyti Friedmanno Lemaître’o Robertsono Walkerio (FLRW) metrika. Iš jos gaunamos Friedmanno lygtys, kurios nusako Visatos plėtimosi greitį ir pagreitį per energijos tankį $\rho$ bei slėgį $p$. Infliacija apibrėžiama kaip ankstyvasis Visatos spartaus pagreitinto plėtimosi etapas. Tokia būsena natūraliai atsiranda, jei Visatos energijos tankį dominuoja skaliarinis laukas $\phi$ (inflatonas) su potencialu $V(\phi)$.
+
+% Infliacijos dinamikai aprašyti naudojamas Klein–Gordono tipo judėjimo dėsnis besiplečiančiame fone:
+% \begin{equation*}
+%     \ddot{\phi} + 3 H \dot{\phi} + V_{, \phi} = 0,
+% \end{equation*}
+
+% čia $H$ yra Hablo parametras. Įvedami pagrindiniai infliaciją apibūdinantys parametrai: $\epsilon$ ir $\eta$. Parametras
+% \begin{equation*}
+%     \epsilon = -\frac{\dot{H}}{H^2}
+% \end{equation*}
+
+% leidžia sekti inflacijos evoliuciją. Infliacijos pabaiga apibrėžiama $\epsilon = 1$. Darbe taip pat aptariami du svarbūs ribiniai rėžimai: lėto riedėjimo (slow-roll) ir kinacijos (kination). Lėto riedėjimo atveju kinetinė energija yra daug mažesnė už potencinę, todėl laukas juda lėtai ir palaiko ilgalaikę infliaciją. Kinacijos rėžime kinetinė energija dominuoja, o energijos tankis mažėja labai greitai ($\rho_{\phi} \propto a^{-6}$)
+
+% Toliau darbe pereinama prie laikotarpio po infliacijos, angliškai vadinamu reheating (peršildymu). Infliacijai pasibaigus inflatonas pradeda osciliuoti aplink potencialo minimumą (arba simetrijos lūžio tašką), o jo energija perduodama kitoms dalelėms. Tai veda prie reliatyvistinės plazmos susidarymo ir radiacinės Visatos stadijos. Aptariamas perturbatyvus dalelių gamybos mechanizmas, kai inflatono skilimas aprašomas naudojant $\Gamma$ faktorių, ir peršildymo pabaiga apytiksliai nustatoma su $H ~ \Gamma$. Taip pat pristatomas ankstyvojo prieš-peršildymo modelis, kai inflatonas sąveikauja su papildomu skaliariniu lauku $\chi$ per sąveikos narį $\frac{1}{2}g^2 \phi^2 \chi^2$.
+
+% Svarbi darbo dalis skirta parametriniam rezonansui, kuris laikomas pagrindiniu peršildymo ``varikliu''. Iš kvantuoto lauko $\chi_k(t)$ judėjimo lygčių, tam tikrose aproksimacijose gaunama Mathieu lygtis, kurios sprendinių stabilumo juostos nusako, kada lauko svyravimai yra nestabilūs ir rezonensiniai. Šiame darbe stabilumo ir nestabilumo sritys buvo apskaičiuotos Floquet teorijos metodais, o gautos rezonansinės juostos pateiktos grafiškai (stabilumo kreivės $(A_k,q)$ plokštumoje). Be to, nagrinėjamas dalelių užimtumo skaičius $n_k$, kuris leidžia stebėti dalelių gamybos stiprėjimą skirtinguose $k$-modose. Pateikiami keli skirtingų $k$ reikšmių pavyzdžiai, parodantys, kad rezonansas yra labai priklausomas nuo impulso, kai kuriuose rėžimuose dalelių gamyba vyksta "šuoliais", o kitur yra silpnesnė arba beveik nevyksta.
+
+% Kadangi dauguma aptariamų judėjimo lygčių neturi paprastų analitinių sprendinių, darbe akcentuojamas skaitinis modeliavimas. Naudotas ketvirtos eilės Runge–Kutta (RK4) metodas, kuris pasižymi geru tikslumo ir paprastumo balansu. Parodoma, kaip antros eilės diferencialinės lygtys perrašomos į pirmos eilės sistemą įvedant pagalbinį kintamąjį $v = \dot{x}$. Tai leidžia tiesiogiai taikyti RK4 integravimo schemą.
+
+% Rezultatų dalyje pristatomas tiriamas teorinis modelis, kuriame be inflatono $\phi$ įtraukiamas kompleksinis skaliarinis laukas $\psi$, turintis masės narį, priklausantį nuo $\phi$, ir savisąveiką $\lambda |\psi|^4$. Kompleksinis laukas išskaidomas į radialinę ir kampinę dalis $\chi$ ir $\theta$, kas leidžia gauti atskiras judėjimo lygtis šioms lauko komponentėms bei išvesti dalelių skaičiaus tankio evoliuciją. Taip pat aptariamas Hartree–Fock aproksimacijos taikymas, kai netiesiniai nariai pakeičiami vidurkiais, pvz. $\chi^3 \rightarrow 3 \langle \chi^2 \rangle \chi$, kas supaprastina skaitinį sprendimą inhomogeniškiems laukams.
+
+% Praktinei analizei pradžioje pasirenkamas supaprastintas atvejis – nagrinėjama tik inflatono dinamika, laikant $\langle \chi \rangle = \langle \theta \rangle = 0$. Inflatonui naudojamas specifinis potencialas
+
+% \begin{equation*}
+%     V(\phi) = V_0 \exp \left[ - \kappa \exp \left( \frac{\phi}{b \mpl} \right) \right]
+% \end{equation*}
+
+% kuris pasižymi beveik plokščia sritimi mažoms $\phi$ reikšmėms ir staigiu kritimu tam tikrame intervale. Tokia forma yra svarbi, nes plokščias potencialas leidžia palaikyti lieto riedėjimo infliaciją, o staigus kritimas lemia greitą infliacijos pabaigą. Darbe pateikiamas šio potencialo grafikas, sugeneruotas skaitiniu būdu.
+
+% Taip pat analitiškai išvedamas lieto riedėjimo sprendinys $\phi(N)$ kai laikas pakeičiamas e-foldų skaičiumi $N = \ln a$. Tai suteikia paprastą atskaitos tašką skaitinių rezultatų patikrinimui. Be to, aptariamas kinacijos režimas ir parodoma, kad šiuo atveju sprendinys artėja prie atraktoriaus
+
+% \begin{equation*}
+%     \phi(N) = \phi_* \pm \sqrt{6} (N - N_*)
+% \end{equation*}
+
+% Skaitinių skaičiavimų dalyje pateikiama integravimo strategija: pradinės sąlygos parenkamos lėto riedėjimo režime, tuomet sistema integruojama iki infliacijos pabaigos ($\epsilon = 1$). Gautuose rezultatuose matyti, kad inflatono laukas $\phi(N)$ auga sparčiai, o infliacija baigiasi ties $N_{\rm pabaiga} \approx 12.59$. Kadangi supaprastintame modelyje neįtraukti energijos nuostoliai į kitus laukus, inflatono dinamika po infliacijos tampa ``neapribota`` (nėra efektyvios trinties). Pateikiamas ir dalelių gamybos indikatorius $\ln n_k$, kuris rodo augimą su ``šuoliška'' struktūra. Pažymima, kad tokie šuoliai ir laikini kritimai nebūtinai reiškia fizinį dalelių naikinimą – tai gali būti komovinių kintamųjų ir pasirinktos $n_k$ definicijos pasekmė.
+
+% Darbo pabaigoje pateikiamos išvados ir darbo rezultatai:
+% \begin{itemize}
+%     \item buvo ištirtos infliacijos judėjimo lygtys pasirinktam potencialui,
+%     \item sukurta skaitinė RK4 integravimo programa,
+%     \item gauti rezultatai dera su lėto riedėjimo ir kinacijos ribiniais atvejais, o pilnam modelio realizmui būtina įtraukti $\chi$ ir $\theta$ laukus, jų vidurkius bei korekcijas (pvz., 2PI), kad būtų galima aprašyti backreaction ir reheating fiziką.
+% \end{itemize}
+
+% Apibendrinant, šis darbas sukuria teorinį ir skaitinį pagrindą tolesniems tyrimams, kuriuose rezonansiniai procesai infliacijos ir preheating metu gali sustiprinti fluktuacijas ir potencialiai prisidėti prie pirminių juodųjų skylių susidarymo scenarijų analizės.
+
+\section*{Santrauka}
+
+Šiame darbe nagrinėjama ankstyvosios Visatos dinamika infliacijos epochoje ir po jos, ypatingą dėmesį skiriant rezonansiniams procesams, kurie gali sustiprinti laukų fluktuacijas ir sudaryti sąlygas pirminių juodųjų skylių (PJS) susidarymui. Kosmologija, siekia aprašyti Visatos raidą didžiausiais masteliais, tačiau standartinis didžiojo sprogimo palieka daug neatsakytų klausimų. Dėl šių trūkumų kosminės infliacijos teorija buvo pasiūlyta. Nūdien, kosmologija yra labai pažengus, tačiau vis dar nėra gerų paaiškinimų tamsiajai materijai, tamsiajai energijai ir kitiems fenomenams.
+
+Darbe taikomos homogeniškumo ir izotropiškumo prielaidos, leidžiančios Visatos metriką aprašyti kaip idealaus skysčio, neturinčio vidinės trinties, dinamiką, besiplečiančiame fone. Tiksliau, infliacijos dinamika aprašoma skaliariniu lauku $\phi$ (inflatonu), judančiu savo potenciale $V(\phi)$. Šiame darbe nagrinėjamas konkretus potencialas
+
+\begin{equation*}
+V(\phi)=V_0\exp\!\left[-\kappa\exp\!\left(\frac{\phi}{bM_{\rm Pl}}\right)\right],
+\end{equation*}
+kuris pasižymi beveik plokščia sritimi mažoms $\phi$ reikšmėms ir staigiu kritimu tam tikrame intervale. Tokia forma yra svarbi, nes plokščias potencialas palaiko lėto-riedėjimo (slow-roll) infliaciją, o staigus kritimas lemia greitą infliacijos pabaigą ir perėjimą į kitą dinamikos režimą. Infliacijai apibūdinti įvedami standartiniai parametrai $\epsilon$ ir $\eta$, o infliacijos pabaiga apibrėžiama sąlyga $\epsilon=1$. Taip pat aptariami du ribiniai režimai: lėto riedėjimo režimas, kai potencinė energija dominuoja kinetinę, ir kinacijos (kination) režimas, kai kinetinė energija tampa svarbiausia ir inflatono energijos tankis mažėja kaip $\rho_\phi \propto a^{-6}$. Šie ribiniai atvejai naudojami kaip analitiniai orientyrai skaitiniams rezultatams patikrinti.
+
+Toliau darbe nagrinėjamas laikotarpis po infliacijos, vadinamas reheating (peršildymu), kurio metu inflatono energija perduodama kitoms dalelių rūšims ir susidaro karšta reliatyvistinė plazma, užtikrinanti perėjimą į spinduliuotės dominuojamą Visatos stadiją. Pabrėžiama, kad ankstyvoji
+peršildymo stadija (preheating) dažnai vyksta neperturbatyviai, todėl ją būtina analizuoti atskirai. Preheating metu dalelių kūrimasis gali būti itin intensyvus dėl parametrinio rezonanso: dėl osciliuojančio inflatono foninio lauko kitų laukų efektyvioji masė tampa laiko atžvilgiu periodiška,
+o judėjimo lygtys įgauna parametrinio osciliatoriaus formą. Tam tikrose aproksimacijose gaunama Mathieu lygtis, kurios stabilumo ir nestabilumo juostos nusako, kuriuose parametrų režimuose lauko Fourier modai auga eksponentiškai. Šiame darbe rezonansinės sritys apskaičiuojamos Floquet teorijos metodais, o rezultatai pateikiami stabilumo diagramose $(A_k,q)$ plokštumoje. Papildomai nagrinėjamas dalelių užimtumo skaičius $n_k$, leidžiantis stebėti dalelių gamybos stiprėjimą skirtinguose impulsų $k$-moduose.
+
+Darbo dalis skirta pirminių juodųjų skylių susidarymo idėjai. PJS gali formuotis ankstyvojoje Visatoje, jei tam tikruose masteliuose susidaro pakankamai didelės tankio pertubacijos. Infliacijos metu kvantinės fluktuacijos yra ištempiamos iki kosmologinių mastelių, o vėliau jos virsta kreivumo ir tankio netolygumais. Jei pertubacija yra pakankamai didelė, jai iš naujo įėjus į horizontą spinduliuotės dominavimo epochoje, slėgis nebesugeba sustabdyti gravitacinio kolapso ir gali susiformuoti juodoji skylė. Darbe pateikiama metrikos pertubacijų analizė Niutono kalibravimo sąlyga (Newtonian gauge), išvedamos perturbuotos lauko lygtys Fourier erdvėje ir parodoma, kaip iš sprendinių galima apskaičiuoti pirminių kreivumo pertubacijų galios spektrą $P_\zeta(k)$. Aptariama, kad
+stebėjimams suderintas modelis turi būti beveik mastelio invariantinis kosminės foninės spinduliuotės masteliuose, tačiau mažesniuose masteliuose galios spektras turi sustiprėti, kad būtų įmanomas PJS
+formavimasis.
+
+Kadangi dauguma aptariamų diferencialinių lygčių neturi paprastų analitinių sprendinių, darbe akcentuojamas skaitinis modeliavimas. Naudotas ketvirtos eilės Runge-Kutta (RK4) metodas, kuris pasižymi geru tikslumo ir paprastumo balansu. Parodoma, kaip antros eilės differencialinės lygtys perrašomos į pirmos eilės sistemą įvedant pagalbinį kintamąjį, todėl galima tiesiogiai taikyti RK4 integravimo schemą. Rezultatų dalyje pristatomas tiriamas teorinis modelis, kuriame be inflatono $\phi$ įtraukiamas kompleksinis skaliarinis laukas $\psi$, turintis $\phi$ priklausantį masės narį ir savisąveiką $\lambda|\psi|^4$. Kompleksinis laukas išskaidomas į radialinę ir kampinę dalis $\chi$ ir $\theta$, išvedamos atskiros judėjimo lygtys šioms komponentėms bei dalelių skaičiaus tankio evoliucija per Noether srovę. Taip pat aptariamas Hartree-Fock aproksimacijos taikymas, kai netiesiniai nariai pakeičiami vidurkiais, kas supaprastina inhomogeniškų laukų skaitinį sprendimą.
+
+Kosminės infliacijos metu galima laikyti, kad $\langle\chi\rangle=\langle\theta\rangle=0$. Tai leidžia patikimai nustatyti infliacijos pabaigą ir patikrinti, kad skaitiniai sprendiniai dera su lėto riedėjimo ir kinacijos ribiniais atvejais. Skaitiniai rezultatai rodo, kad inflatono laukas $\phi(N)$ sparčiai auga, o infliacija baigiasi ties $N_{\rm end}\approx 12.59$, kai $\epsilon=1$. Taip pat pateikiamas dalelių skaičius $\ln n_k$, kuriame matomas augimas su charakteristine struktūra. Aptariama, bendra kompiuterinio algoritmo strategija, naudota išspręsti dabartines lygtis ir kaip šį algoritmą būtų galima taikyti toliau, norint įtraukti vėlesnes Visatos raidos epochas. 
+
+Apibendrinant, šiame darbe nagrinėtas kosminės infliacijos modelis:
+išanalizuota pirmąją Visatos epochą šiame modelyje. Sukurtas teorinis ir skaitinis pagrindas tolesniems tyrimams, kuriuose rezonansiniai procesai infliacijos ir preheating metu gali sustiprinti fluktuacijas ir potencialiai prisidėti prie pirminių juodųjų skylių susidarymo scenarijų analizės.
