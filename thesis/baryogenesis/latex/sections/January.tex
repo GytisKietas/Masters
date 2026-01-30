@@ -1,0 +1,228 @@
+\section*{January}
+
+Notes from end of January
+
+\subsection*{01 28}
+I want to apply slowroll approximation to the inflaton evolution and only then change variables to the number of efolds. I had this solved numerically previously, but I think I accidentally removed it. Either way it's good to do it again and compare numerical calculations with analytic calculations.
+
+In slow-roll regime kinetic energy is negligable compared to the potential and acceleration if negligible
+
+\begin{equation*}
+    \dot{\phi} \ll V(\phi) \quad \text{and} \quad |\ddot{\phi}| \ll |3H \dot{\phi}|
+\end{equation*}
+
+Then Friedmann equation simplifies to
+
+\begin{equation*}
+    H^2 = \frac{1}{3 \mpl^2} \left( \frac{1}{2} \dot{\phi}^2 + V(\phi) \right) \quad \rightarrow \quad H^2 = \frac{V(\phi)}{3 \mpl^2}
+\end{equation*}
+and the equation of motion for the inflaton simplifies to
+
+\begin{equation*}
+    3H \dot{\phi} + V_{,\phi} (\phi) = 0
+\end{equation*}
+Now switch integration variables.
+
+\subsection*{01 29}
+
+Switching the integration variable to the number of efolds
+
+\begin{equation*}
+    3H^2 \phi^{\prime} = -V_{, \phi} \quad \Rightarrow \quad \phi^{\prime} = - \frac{V_{, \phi}(\phi)}{V(\phi)}
+\end{equation*}
+where we used $\mpl=1$. With $V(\phi) = V_0 \exp \left[ - \kappa e^{\frac{\phi}{b}} \right]$ and $V(\phi)_{, \phi} = V(\phi) \frac{-\kappa}{b} \exp \left({\frac{\phi}{b}} \right) $  we're left with
+
+\begin{equation*}
+    \phi^{\prime} = \frac{\kappa}{b} \exp \left({\frac{\phi}{b}} \right) \Rightarrow \int_{\phi_i}^{\phi_f} \frac{b}{\kappa} \exp \left(-{\frac{\phi}{b}} \right) d \phi = N_{i} - N_{f} = \Delta N
+\end{equation*}
+
+Integrating and inverting to obtain phi, we have
+\begin{equation*}
+    \Delta N = \frac{b^2}{\kappa} \left( e^{-\phi_i/b} - e^{- \phi_f / b} \right) \Rightarrow \phi_f = -b \ln \left( e^{- \phi_i/b} - \frac{\kappa}{b^2} \Delta N \right)
+\end{equation*}
+
+At the start of inflation, by definition $N_i = 0$ (if we define $N(t) \equiv \ln \frac{a(t)}{a(t_{i})}$), we have then that slow-roll up until inflation end looks like:
+\begin{equation}\label{eq: slowroll phi of N}
+    \phi (N) = -b \ln \left( e^{- \phi_i/b} + \frac{\kappa}{b^2} N \right)
+\end{equation}
+
+Implemented the numerical solution and compared with analytic solution:
+\begin{center}
+    \includegraphics[width=250pt]{../plot/PLOTS/slowroll.png}
+\end{center}
+They are so extremely close you can't even see the analytic solution. Next, I want to learn a bit about perturbations. I've found slides \href{https://tu-dresden.de/mn/physik/iktp/ressourcen/dateien/seminar/2017_06_19_JinsuKIM_minilecture.pdf?lang=en}{"Cosmic Inflation - Mini Lecture" by Jinsu Kim}
+ 
+They say that once the scalar potential $V(\phi)$ is given, then you can compute cosmological observables
+
+\begin{itemize}
+    \item Calculate slow-roll parameters:
+    \begin{equation*}
+        \epsilon = \frac{\mpl^2}{2} \left( \frac{V_{, \phi}}{V} \right)^2, \qquad \text{and} \qquad \eta = \mpl^2 \frac{V_{, \phi \phi}}{V}
+    \end{equation*}
+
+    \item Find the end of inflation $\epsilon \approx 1$
+    
+    \item Find the horizon-crossing point $N = 60$ (i.e. CMB scale)
+    \begin{equation*}
+        N = \int H dt, \qquad H^2 \approx \frac{V}{3 \mpl^2}
+    \end{equation*}
+
+    \item Compute cosmological observables at the horizon-crossing point:
+    \begin{equation*}
+        \mathcal{P}_s = \frac{V}{24 \pi^2 \mpl^4 \epsilon}, \quad n_s = 1 + 6 \epsilon + 2 \eta, \quad r=16 \epsilon
+    \end{equation*}
+\end{itemize}
+
+We know that there were perturbations at some point in the early universe due to the large scale structures we observe today, hence we need to spoil homogeneity and isotropy of the Universe. Assume that the inflaton field $\phi$ is decomposed as
+
+\begin{equation*}
+    \phi(t, \bm{x}) = \varphi(t) + \delta \phi(t, \bm{x})
+\end{equation*}
+where $\varphi(t)$ is the background field, only time dependent, $\delta \phi(t, \bm{x})$ is the perturbation (function of spacetime). The action is given by
+
+\begin{align}
+    S_{EH} &= \frac{\mpl^2}{2} \int d^4 x \sqrt{- g} R, \notag \\
+    S_{\phi} &= \int d^4x \sqrt{-g} \left[ -\frac{1}{2} g^{\mu \nu} \partial_{\mu} \phi \partial_{\nu} \phi - V(\phi) \right] \label{eq: phi action}
+\end{align}
+with $S = S_{EH} + S_{\phi}$. The equations of motion for the inflaton is obtained by varying the acrtion wrt $\phi$ (we treat $g_{\mu \nu}$ as fixed).
+
+\begin{equation*}
+    \delta S_{\phi} = \int d^4 x \sqrt{-g} \left[ - \frac{1}{2} g^{\mu \nu} \delta(\partial_{\mu} \phi \partial_{\nu} \phi) - V_{, \phi}(\phi) \delta \phi \right]
+\end{equation*}
+Then using the product rule and $\delta (\partial_\mu \phi) = \partial_{\mu} (\delta \phi)$
+
+\begin{equation*}
+    \delta(\partial_{\mu} \phi \partial_{\nu} \phi) = (\partial_{\mu} \delta \phi) \partial_{\nu} \phi + \partial_{\mu} \phi (\partial_{\nu} \delta \phi)
+\end{equation*}
+
+\begin{equation*}
+    -\frac{1}{2} g^{\mu \nu} (\partial_{\mu} \delta \phi) \partial_{\nu} \phi + -\frac{1}{2} g^{\mu \nu} \partial_{\mu} \phi (\partial_{\nu} \delta \phi)
+\end{equation*}
+but if we switch $\mu \leftrightarrow \nu$ on the second term and commute then we the same thing. Yielding
+
+\begin{equation*}
+    \delta S = \int d^4 x \sqrt{-g} [- g^{\mu \nu} \partial_{\mu} \phi \partial_{\nu} (\delta \phi) - V^{\prime}]
+\end{equation*}
+As is usual in these sort of variations we integrate by parts and the boundary term vanished. In order to have the correct integration measure we also factor out $\sqrt{-g}$ hence
+
+\begin{equation*}
+    \delta S = \int d^4 \delta \phi [\partial_{\nu} (\sqrt{-g} g^{\mu \nu} \delta_{\mu} \phi) - \sqrt{-g} V_{, \phi}(\phi)] = \int d^4 \sqrt{-g} \delta \phi \left[ \frac{1}{\sqrt{-g}} \partial_{\nu} (\sqrt{-g} g^{\mu \nu} \delta_{\mu} \phi) - \sqrt{-g} V_{, \phi}(\phi) \right]
+\end{equation*}
+and finally $\delta S = 0$ for arbitrary $\delta \phi$, hence we obtain the Euler-Lagrange equation and in principle we are done:
+
+\begin{equation*}
+    \frac{1}{\sqrt{-g}} \partial_{\nu} (\sqrt{-g} g^{\mu \nu} \delta_{\mu} \phi) - \sqrt{-g} V_{, \phi}(\phi) = 0.
+\end{equation*}
+However, we can remember that the divergence of a vector $\nabla_{\mu} V^{\mu} = \frac{1}{\sqrt{-g}} \partial_{\mu} (\sqrt{-g} V^{\mu})$, but $\nabla^{\mu} \phi = \partial^{\mu} \phi = g^{\mu \nu} \partial_{\nu} \phi$ defines a vector, hence
+
+\begin{equation}\label{eq: divergence}
+    \Box \phi \equiv \nabla_{\mu} \nabla^{\mu} \phi = \frac{1}{\sqrt{-g}} \partial_{\mu} (\sqrt{-g} g^{\mu \nu} \partial_{\nu} \phi)
+\end{equation}
+where the $\Box$ is the curved d`Alembertian. Leaving the Klein-Gordon equation
+
+\begin{equation*}
+    \Box \phi - V^{\prime}(\phi) = 0.
+\end{equation*}
+Again, in principle we are done, however for cosmology we use FLRW metric with homogeneous $\phi(t)$ and note that FLRW assumes isotropy hence we use spherical coordinates
+
+\begin{equation*}
+    ds^2 = -dt^2 + a^2(t) \left[ \frac{dr^2}{1-kr^2} + r^2(d \theta^2 + \sin^2 \theta d \varphi^2) \right],
+\end{equation*}
+
+\begin{equation*}
+    g_{\mu \nu} = {\rm diag} \left( -1, \frac{a^2}{1-kr^2}, a^2 r^2, a^2 r^2 \sin^2 \theta \right),
+\end{equation*}
+
+\begin{equation*}
+    g = \det(g_{\mu \nu}) = (-1) \cdot \frac{a^2}{1-kr^2} \cdot a^2 r^2 \cdot a^2 r^2 \sin^2 \theta = -a^6 r^4 \sin^2 \theta.
+\end{equation*}
+This now allows us to compute $\Box$, using equation (\ref{eq: divergence})
+
+\begin{align*}
+    \Box \phi &= \frac{1}{\sqrt{a^6 r^4 \sin^2 \theta}} \partial_{\mu} (\sqrt{a^6 r^4 \sin^2 \theta} g^{\mu t} \partial_{t} \phi) \\
+    &= \frac{1}{a^3} \partial{t} (a^3 \dot{\varphi}) \\
+    &= \frac{1}{a^3} [3a^2 \dot{a} \dot{\varphi} + a^3 \ddot{\varphi}] \\
+    &= \ddot{\varphi} + 3H \dot{\varphi}
+\end{align*}
+where $H = \frac{\dot{a}}{a}$ is the hubble parameter. Finally giving the Klein-Gordon equation that we know
+
+\begin{equation*}
+    \boxed{\ddot{\varphi} + 3H \dot{\varphi} + V^{\prime} (\varphi) = 0}
+\end{equation*}
+
+Next we take a general expression for the energy-momentum tensor
+
+\begin{equation*}
+    T_{\mu \nu} = -\frac{2}{\sqrt{-g}} \frac{\delta S_{\phi}}{\delta g^{\mu \nu}}
+\end{equation*}
+Note that to compute a general functional derivative $\frac{\delta S}{\delta X}$ we use
+
+\begin{equation*}
+    \delta S = \int d^4 x \frac{\delta S}{\delta X(x)} \delta X(x). 
+\end{equation*}
+Notice that there is no integration measure $\sqrt{-g}$! Roughly speaking, the energy momentum tensor is just a special case with the functional derivative being wrt the metric. So we again vary the action (\ref{eq: phi action}), but this time wrt the metric.
+
+\begin{align*}
+    \delta S_{\phi} &= \int dx^4 \sqrt{-g} \delta(\sqrt{-g}) \left[ -\frac{1}{2} g^{\mu \nu} \partial_{\mu} \phi \partial_{\nu} \phi - V(\phi) \right] + \sqrt{-g} \left[ -\frac{1}{2} \delta(g^{\mu \nu}) \partial_{\mu} \phi \partial_{\nu} \phi\right] \\
+    &= \int dx^4 \left\{ \left( -\frac{1}{2} \sqrt{-g} g_{\mu \nu} \right) \left[ -\frac{1}{2} g^{\alpha \beta} \partial_{\alpha} \phi \partial_{\beta} \phi - V(\phi) \right] + \sqrt{-g} \left[ -\frac{1}{2} \partial_{\mu} \phi \partial_{\nu} \phi\right] \right\} \delta g^{\mu \nu}
+\end{align*}
+We identify the integrand as $\delta S_{\phi} / \delta g^{\mu \nu}$ and the energy-momentum tensor is then
+
+\begin{equation*}
+    T_{\mu\nu} = \partial_\mu \phi \partial_\nu \phi - g_{\mu \nu} \left[ \frac{1}{2} g^{\alpha\beta} \partial_\alpha \phi \partial_\beta \phi + V(\phi) \right]
+\end{equation*}
+The energy density $\rho = T^0_0$ and pressure $p \delta^i_j = T^i_j$ are
+
+\begin{equation*}
+    \rho = \frac{1}{2} \dot{\varphi}^2 + V(\varphi), \qquad p = \frac{1}{2} \dot{\varphi}^2 - V(\varphi).
+\end{equation*}
+
+This is all nice, but let's move on to perturbations!!! Cosmological perturbations are cool since the large scale structure of our Universe can also be accounted for by inflation. Remember how we decomposed $\phi$, likewise we can decompose the spacetime metric $g_{\mu \nu}$ as its background homogeneous and isotropic FLRW metric $g^(0)_{\mu \nu}(t)$, which is only time dependent, and the perturbation part $\delta g_{\mu \nu}$, which is spacetime dependent:
+
+\begin{align*}
+    \phi(x) &= \varphi(t) + \delta \phi(x)\\
+    g_{\mu \nu} &= g^{(0)}_{\mu \nu}(t) + \delta g_{\mu \nu}(x)
+\end{align*}
+
+
+\subsection*{01 30}
+Had a meeting today with Mindaugas, to determine the initial value for $\phi_i$ we basically can pick any $N$ since it's relative and a free variable, like time. There are basically three stages. First we determine the initial values analytically, integrate until $\phi_{SBP}$ (which we ourselves pick) and then go a bit back and integrate with all the $\chi$ and $\theta$ fields. Also instead of using $b = \sqrt{\alpha}$ I should just use $\alpha$. Another useful graph to make would be $\phi-\dot{\phi}$ graph.
+
+Again, we look at slowroll. Using $\epsilon$
+\begin{equation*}
+    \epsilon = \frac{1}{2} \left( \frac{V_{, \phi}}{V} \right)^2 = \frac{1}{2} \left( \frac{\kappa}{b} \right)^2 \exp \left( \frac{2 \phi}{b} \right),
+\end{equation*}
+we know that at the end of inflation $\epsilon = 1$, hence we can determine the value of $\phi_{\rm end}$
+
+\begin{equation*}
+    \phi_{\rm end} = \frac{b}{2} \ln \left( \frac{2 b^2}{\kappa^2} \right)
+\end{equation*}
+then from the derived slowroll formula (\ref{eq: slowroll phi of N}) assuming inflation ends at $N_{\rm end}$ we have
+
+\begin{align}
+    &\phi_{\rm end} = -b \ln \left( e^{-\phi_{i}/b} + \frac{\kappa}{b^2} N_{\rm end}\right) \notag \\
+    \Rightarrow & e^{-\phi_{\rm end}/b} = e^{-\phi_{i}/b} + \frac{\kappa}{b^2} N_{\rm end} \label{eq: phi exponent trick} \\
+    \Rightarrow & \phi_{i} = -b \ln \left( e^{-\phi_{\rm end}/b} + \frac{\kappa}{b^2} N_{\rm end} \right) = -b \ln \left( \frac{\kappa}{\sqrt{2} b} - \frac{\kappa}{b^2}N_{\rm end} \right). \notag
+\end{align}
+But notice that this puts a constraint on the possible values for $N_{end}$ or $b$
+
+\begin{equation*}
+    \frac{\kappa}{b^2} N_{\rm end} < \frac{\kappa}{\sqrt{2} b} \quad \Rightarrow \quad  N_{\rm end} < \frac{b}{\sqrt{2}} \quad \text{or} \quad b > \sqrt{2} N_{\rm end}.
+\end{equation*}
+
+To find the initial value for $\phi^{\prime}$ we first find the derivative and then similarly compute $\phi^{\prime}_{\rm end}$
+
+\begin{equation*}
+    \phi^{\prime}(N) = -\frac{\kappa}{b} \frac{1}{e^{- \phi_i/b} + \frac{\kappa}{b^2}N}
+\end{equation*}
+we can do a little trick by noticing that the denominator contains the same terms as the equation ($\ref{eq: slowroll phi of N}$) hence using (\ref{eq: phi exponent trick}) we have
+
+\begin{equation*}
+    \phi^{\prime} (N) = -\frac{\kappa}{b} \frac{1}{e^{\phi(N)/b}}
+\end{equation*}
+where I intentionally left the exponential in the denominator, for later convenience. Finally at $N=0$ we have $\phi(N=0)=\phi_i$, whose value we already determinmed. Plugging it in and cleaning up we're left with
+
+\begin{equation*}
+    \phi^{\prime} (0) = \frac{1}{\frac{N_{\rm end}}{b} - \frac{1}{\sqrt{2}}}
+\end{equation*}
+Now that we have all of the inital conditions we're able to integrate!!! For convenience here are all of the important formulas with $b=\sqrt{\alpha}$ inserted

@@ -1,0 +1,17 @@
+{
+  "initial_state": {
+    "phi": 1.0,
+    "phi_prime_squared": 2
+  },
+
+  "parameters": {
+    "kappa": 1.0,
+    "b": 1.0
+  },
+
+  "t_span": {
+    "t0": 0.0,
+    "t_end": 20.0,
+    "dt": 0.01
+  }
+}

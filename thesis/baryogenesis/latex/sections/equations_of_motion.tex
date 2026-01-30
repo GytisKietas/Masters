@@ -1,0 +1,118 @@
+\section{Equations Of Motion}
+
+From Apostolos derivations we have:
+
+\begin{equation}\label{phi evolution}
+\ddot{\phi} + 3H \dot{\phi}
+ - \frac{\kappa V_0}{b M_{\rm Pl}}
+ \exp\!\left[\frac{\phi}{b M_{\rm Pl}} - \kappa e^{\frac{\phi}{b M_{\rm Pl}}}\right]
+ + g^2 \langle \chi^2 \rangle (\phi - \phi_{\rm SBP}) = 0
+\end{equation}
+
+\begin{equation}\label{chi evolution}
+\ddot{\tilde{\chi}}_{\mathbf{k}} + 3H \dot{\tilde{\chi}}_{\mathbf{k}}
++ \left[
+\frac{k^2}{a^2}
++ g^2 (\phi - \phi_{\rm SBP})^2
+- \lambda f^2
++ 3 \lambda \langle \chi^2 \rangle + \langle \dot{\theta}^2 \rangle
++ \frac{1}{a^2} \langle (\nabla \theta)^2 \rangle
+\right]
+\tilde{\chi}_{\mathbf{k}} = 0
+\end{equation}
+
+\begin{equation}\label{theta evolution}
+\langle \chi^2 \rangle \ddot{\tilde{\theta}}_{\mathbf{k}}
++ (2 \langle \chi \dot{\chi} \rangle + 3H \langle \chi^2 \rangle) \dot{\tilde{\theta}}_{\mathbf{k}}
++ \frac{k^2}{a^2} \langle \chi^2 \rangle \tilde{\theta}_{\mathbf{k}} = 0
+\end{equation}
+
+where the averages are
+
+\begin{equation*}
+\langle \chi^2 \rangle
+= \int_{\mathbb{R}^3} \frac{d^3 p}{(2\pi)^3}
+\left[ |\tilde{\chi}_{\mathbf{p}}(t)|^2 + \text{2PI-corrections} \right]
+\end{equation*}
+
+\begin{equation*}
+\langle \dot{\theta}^2 \rangle
+= \int_{\mathbb{R}^3} \frac{d^3 p}{(2\pi)^3}
+\left[ |\dot{\tilde{\theta}}_{\mathbf{p}}(t)|^2 + \text{2PI-corrections} \right]
+\end{equation*}
+
+I want to rewrite these equations in a "vector" form for numerical integration, such that for instance
+
+\begin{equation*}
+    x = \tilde{\chi}_\mathbf{k} \quad \text{and} \quad v = \dot{\tilde{\chi}}_{\mathbf{k}}
+\end{equation*}
+
+so that
+
+\begin{equation*}
+    X = 
+    \begin{bmatrix}
+        x \\
+        v
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        \tilde{\chi}_\mathbf{k} \\
+        \dot{\tilde{\chi}}_{\mathbf{k}}
+    \end{bmatrix}
+\end{equation*}
+
+Then 
+
+\begin{equation*}
+\dot{v} + 3H v
++ \left[
+\frac{k^2}{a^2}
++ g^2 (\phi - \phi_{\rm SBP})^2
+- \lambda f^2
++ 3 \lambda \langle \chi^2 \rangle + \langle \dot{\theta}^2 \rangle
++ \frac{1}{a^2} \langle (\nabla \theta)^2 \rangle
+\right]
+x = 0
+\end{equation*}
+
+To get a better understanding of these equations I will first compact some terms. Changing (\ref{phi evolution}) into:
+
+\begin{equation*}
+\ddot{\phi} + 3H \dot{\phi}
+ - V(\phi, \langle \chi \rangle) = 0
+\end{equation*}
+
+with
+\begin{equation*}
+V(\phi, \langle \chi^2 \rangle) = \frac{\kappa V_0}{b M_{\rm Pl}}
+ \exp \left[\frac{\phi}{b M_{\rm Pl}} - \kappa e^{\frac{\phi}{b M_{\rm Pl}}}\right]
+ + g^2 \langle \chi^2 \rangle (\phi - \phi_{\rm SBP})
+\end{equation*}
+
+Then (\ref{chi evolution})
+\begin{equation*}
+    \ddot{\tilde{\chi}}_{\mathbf{k}} + 3H \dot{\tilde{\chi}}_{\mathbf{k}} + 
+    \omega \tilde{\chi}_{\mathbf{k}} = 0
+\end{equation*}
+
+\begin{equation*}
+    \omega = \omega(\phi, \langle \chi^2 \rangle, \langle \dot{\theta} \rangle, \langle (\nabla \theta)^2 \rangle) = 
+    \frac{k^2}{a^2}
+    + g^2 (\phi - \phi_{\rm SBP})^2
+    - \lambda f^2
+    + 3 \lambda \langle \chi^2 \rangle + \langle \dot{\theta}^2 \rangle
+    + \frac{1}{a^2} \langle (\nabla \theta)^2 \rangle
+\end{equation*}
+
+and for (\ref{theta evolution}) I am pretty sure I can just divide by $\langle \chi^2 \rangle$
+
+\begin{equation*}
+    \ddot{\tilde{\theta}}_{\mathbf{k}}
++ \left( 2 \frac{\langle \chi \dot{\chi} \rangle}{\langle \chi^2 \rangle} + 3H \right) \dot{\tilde{\theta}}_{\mathbf{k}}
++ \frac{k^2}{a^2} \tilde{\theta}_{\mathbf{k}} = 0
+\end{equation*}
+
+To make this managable computable, I think I need to first compute the averages of all.
+
+
