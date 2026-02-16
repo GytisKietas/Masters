@@ -1,0 +1,142 @@
+\section{Preliminaries}
+
+\subsection{Conventions and Units}
+We use natural units:
+\begin{equation}
+\hbar = c = 1.
+\end{equation}
+Mass, energy, momentum have the same dimensions:
+\begin{equation}
+[E]=[p]=[m]=L^{-1}.
+\end{equation}
+
+\subsection{Indices and Metric}
+Spacetime coordinates:
+\begin{equation}
+x^\mu = (t,\mathbf{x}), \qquad \mu=0,1,2,3.
+\end{equation}
+Metric signature (choose one and be consistent). Common choice:
+\begin{equation}
+\eta_{\mu\nu}=\mathrm{diag}(1,-1,-1,-1).
+\end{equation}
+Scalar product:
+\begin{equation}
+x\cdot y := x^\mu y_\mu = x^0 y^0 - \mathbf{x}\cdot \mathbf{y}.
+\end{equation}
+Raising/lowering indices:
+\begin{equation}
+x_\mu = \eta_{\mu\nu}x^\nu.
+\end{equation}
+
+Derivatives:
+\begin{equation}
+\partial_\mu := \frac{\partial}{\partial x^\mu}, \qquad \partial^\mu = \eta^{\mu\nu}\partial_\nu.
+\end{equation}
+D'Alembertian:
+\begin{equation}
+\square := \partial_\mu \partial^\mu = \partial_t^2 - \nabla^2.
+\end{equation}
+
+\subsection{Lorentz Transformations}
+Lorentz transformation:
+\begin{equation}
+x'^\mu = \Lambda^\mu_{\ \nu}x^\nu,
+\end{equation}
+with invariance condition:
+\begin{equation}
+\eta_{\rho\sigma}\Lambda^\rho_{\ \mu}\Lambda^\sigma_{\ \nu}=\eta_{\mu\nu}.
+\end{equation}
+Invariant interval:
+\begin{equation}
+x^2 = x_\mu x^\mu = t^2-|\mathbf{x}|^2.
+\end{equation}
+
+\subsection{Momentum, On-shell Condition}
+Four-momentum:
+\begin{equation}
+p^\mu=(E,\mathbf{p}), \qquad p^2 = p_\mu p^\mu = E^2-|\mathbf{p}|^2.
+\end{equation}
+Mass shell condition:
+\begin{equation}
+p^2 = m^2 \quad \Rightarrow \quad E = \pm \sqrt{|\mathbf{p}|^2+m^2}.
+\end{equation}
+Usually take positive energy:
+\begin{equation}
+E_{\mathbf{p}}:=\sqrt{|\mathbf{p}|^2+m^2}.
+\end{equation}
+
+\subsection{Fourier Transform Conventions}
+A common convention in QFT:
+\begin{align}
+f(x) &= \int \frac{d^4p}{(2\pi)^4}\, e^{-ip\cdot x}\,\tilde f(p),\\
+\tilde f(p) &= \int d^4x\, e^{ip\cdot x}\, f(x).
+\end{align}
+
+Spatial Fourier transform:
+\begin{align}
+f(\mathbf{x}) &= \int \frac{d^3p}{(2\pi)^3}\, e^{i\mathbf{p}\cdot\mathbf{x}}\,\tilde f(\mathbf{p}),\\
+\tilde f(\mathbf{p}) &= \int d^3x\, e^{-i\mathbf{p}\cdot\mathbf{x}}\, f(\mathbf{x}).
+\end{align}
+
+Useful identity:
+\begin{equation}
+\int d^4x\, e^{i(p-q)\cdot x} = (2\pi)^4\delta^{(4)}(p-q).
+\end{equation}
+
+\subsection{Delta Functions}
+Dirac delta (1D):
+\begin{equation}
+\int_{-\infty}^{\infty} dx\, \delta(x-a) f(x) = f(a).
+\end{equation}
+Scaling rule:
+\begin{equation}
+\delta(ax)=\frac{1}{|a|}\delta(x).
+\end{equation}
+
+Multi-dimensional delta:
+\begin{equation}
+\delta^{(n)}(\mathbf{x})=\prod_{i=1}^n \delta(x_i),
+\qquad
+\int d^n x\, \delta^{(n)}(\mathbf{x}-\mathbf{a}) f(\mathbf{x})=f(\mathbf{a}).
+\end{equation}
+
+\subsection{Distributions and the $i\epsilon$ Prescription}
+A key distribution identity:
+\begin{equation}
+\frac{1}{x\pm i\epsilon} = \mathcal{P}\left(\frac{1}{x}\right)\mp i\pi \delta(x),
+\qquad \epsilon\to 0^+.
+\end{equation}
+Here $\mathcal{P}$ denotes the Cauchy principal value.
+
+\subsection{Heaviside Step Function}
+Definition:
+\begin{equation}
+\theta(t)=
+\begin{cases}
+1, & t>0,\\
+0, & t<0.
+\end{cases}
+\end{equation}
+Distribution derivative:
+\begin{equation}
+\frac{d}{dt}\theta(t)=\delta(t).
+\end{equation}
+
+\subsection{Useful Integrals and Identities}
+Gaussian integral (real, $a>0$):
+\begin{equation}
+\int_{-\infty}^{\infty} dx\, e^{-ax^2} = \sqrt{\frac{\pi}{a}}.
+\end{equation}
+
+Integration by parts (fields vanish at infinity):
+\begin{equation}
+\int d^4x\, (\partial_\mu f) g = -\int d^4x\, f (\partial_\mu g).
+\end{equation}
+
+\subsection{Notation Summary}
+\begin{align}
+x^\mu &= (t,\mathbf{x}), &
+p^\mu &= (E,\mathbf{p}),\\
+x\cdot p &= x^\mu p_\mu = Et-\mathbf{p}\cdot\mathbf{x}, &
+\square &= \partial_\mu\partial^\mu.
+\end{align}

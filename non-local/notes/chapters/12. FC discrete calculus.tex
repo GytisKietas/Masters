@@ -1,0 +1,176 @@
+% ============================================================
+% Notes: Fractional calculus via discrete calculus
+% Topics: Grünwald--Letnikov derivative, discrete origin,
+%         nonlocality (memory), numerical interpretation
+% Source: Herrmann, Fractional Calculus: An Introduction for Physicists
+% ============================================================
+
+\section{Fractional calculus using discrete calculus}
+
+\subsection{Discrete derivative and finite differences}
+Start from the forward difference operator:
+\begin{equation}
+(\Delta_h f)(t) := f(t+h)-f(t),
+\end{equation}
+and the backward difference:
+\begin{equation}
+(\nabla_h f)(t) := f(t)-f(t-h).
+\end{equation}
+
+For integer order $n\in\mathbb{N}$, the $n$th backward difference is
+\begin{equation}
+\nabla_h^n f(t)
+=
+\sum_{k=0}^{n}(-1)^k\binom{n}{k}f(t-kh).
+\end{equation}
+
+The classical derivative is recovered as
+\begin{equation}
+f'(t)=\lim_{h\to 0^+}\frac{\nabla_h f(t)}{h}.
+\end{equation}
+
+% ------------------------------------------------------------
+
+\section{Grünwald--Letnikov (GL) fractional derivative}
+
+\subsection{Definition}
+The Grünwald--Letnikov fractional derivative extends the finite-difference form
+from integer $n$ to real $\alpha$ by replacing $\binom{n}{k}$ with $\binom{\alpha}{k}$:
+\begin{equation}
+\boxed{
+(D_{GL}^\alpha f)(t)
+=
+\lim_{h\to 0^+}\frac{1}{h^\alpha}
+\sum_{k=0}^{\lfloor t/h\rfloor}(-1)^k\binom{\alpha}{k}\,f(t-kh).
+}
+\end{equation}
+
+Here
+\begin{equation}
+\boxed{
+\binom{\alpha}{k}
+=
+\frac{\Gamma(\alpha+1)}{\Gamma(k+1)\Gamma(\alpha-k+1)}.
+}
+\end{equation}
+
+\subsection{Consistency with integer derivatives}
+If $\alpha=n\in\mathbb{N}$, then
+\[
+\binom{n}{k}=0\quad \text{for }k>n,
+\]
+so the sum truncates and GL reduces to the standard $n$th derivative limit.
+
+\subsection{Alternative coefficient form}
+Define coefficients
+\begin{equation}
+c_k^{(\alpha)} := (-1)^k\binom{\alpha}{k}.
+\end{equation}
+Then
+\begin{equation}
+(D_{GL}^\alpha f)(t)
+=
+\lim_{h\to 0^+}\frac{1}{h^\alpha}
+\sum_{k=0}^{\lfloor t/h\rfloor}c_k^{(\alpha)}f(t-kh).
+\end{equation}
+
+\subsection{Recursive computation of coefficients (useful numerically)}
+The binomial coefficients satisfy a recursion:
+\begin{equation}
+c_0^{(\alpha)}=1,
+\qquad
+c_k^{(\alpha)}=\left(1-\frac{\alpha+1}{k}\right)c_{k-1}^{(\alpha)}
+\quad (k\ge 1).
+\end{equation}
+This allows efficient evaluation of the GL derivative on a grid.
+
+% ------------------------------------------------------------
+
+\section{Relation to non-locality (memory)}
+
+\subsection{GL derivative is explicitly nonlocal}
+The GL derivative at time $t$ uses \emph{all past values}
+\[
+f(t),\ f(t-h),\ f(t-2h),\dots,f(t-\lfloor t/h\rfloor h).
+\]
+So the derivative at $t$ depends on the entire history on $[0,t]$.
+
+This is the discrete analogue of Volterra-type memory integrals emphasized in nonlocality theory. :contentReference[oaicite:1]{index=1}
+
+\subsection{Memory kernel behavior (long-range influence)}
+For non-integer $\alpha$, the coefficients $c_k^{(\alpha)}$ do not truncate.
+They decay slowly with $k$ (power-law type), so distant past contributes.
+
+Hence fractional differentiation encodes \textbf{long memory}:
+\begin{equation}
+(D^\alpha f)(t)\ \text{depends on}\ \{f(\tau):0\le \tau\le t\}.
+\end{equation}
+
+\subsection{Local limit}
+In the limit $\alpha\to 1$, the GL derivative approaches the ordinary derivative
+(which is local in the continuum limit):
+\begin{equation}
+\lim_{\alpha\to 1}D_{GL}^\alpha f(t) = f'(t).
+\end{equation}
+
+% ------------------------------------------------------------
+
+\section{GL derivative vs Riemann--Liouville / Caputo}
+
+\subsection{Equivalence (conceptual)}
+Under suitable smoothness assumptions, the GL derivative coincides with the
+Riemann--Liouville derivative:
+\begin{equation}
+D_{GL}^\alpha f(t) = D_{RL}^\alpha f(t),
+\end{equation}
+so GL provides a \textbf{discrete definition} of the RL derivative.
+
+\subsection{Why GL is important in applications}
+\begin{itemize}
+\item It gives an immediate \textbf{finite-difference discretization} for fractional PDEs/ODEs.
+\item It makes nonlocality obvious: the derivative is a weighted sum of the entire past.
+\item It naturally leads to numerical ``history'' terms (memory cost grows with time).
+\end{itemize}
+
+% ------------------------------------------------------------
+
+\section{Practical discretization formula}
+
+On a grid $t_n = nh$, define $f_n=f(t_n)$.
+A common GL approximation is:
+\begin{equation}
+(D^\alpha f)(t_n)
+\approx
+\frac{1}{h^\alpha}\sum_{k=0}^{n}c_k^{(\alpha)}f_{n-k},
+\qquad
+c_k^{(\alpha)}=(-1)^k\binom{\alpha}{k}.
+\end{equation}
+
+\paragraph{Computational cost.}
+This is $O(n)$ work per time step if done directly, since all history values appear.
+This is the numerical manifestation of \textbf{nonlocal memory}.
+
+% ------------------------------------------------------------
+
+\section{High-yield summary}
+
+\begin{itemize}
+\item Finite differences define integer derivatives; GL extends them to fractional order.
+\item Grünwald--Letnikov derivative:
+\[
+D_{GL}^\alpha f(t)
+=
+\lim_{h\to 0^+}\frac{1}{h^\alpha}
+\sum_{k=0}^{\lfloor t/h\rfloor}(-1)^k\binom{\alpha}{k}f(t-kh).
+\]
+\item Coefficients use Gamma functions:
+\[
+\binom{\alpha}{k}=\frac{\Gamma(\alpha+1)}{\Gamma(k+1)\Gamma(\alpha-k+1)}.
+\]
+\item GL derivative is \textbf{explicitly nonlocal} (depends on entire history).
+\item Numerically:
+\[
+D^\alpha f(t_n)\approx h^{-\alpha}\sum_{k=0}^n c_k^{(\alpha)}f_{n-k},
+\]
+so fractional dynamics naturally carries memory cost.
+\end{itemize}

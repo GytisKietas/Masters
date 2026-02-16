@@ -1,0 +1,232 @@
+% ============================================================
+% Notes: Fractional oscillator + Fractional wave equations
+% Topics: fractional harmonic oscillator, intrinsic damping,
+%         fractional wave equation, relaxation/localization, properties
+% Source: Herrmann, Fractional Calculus: An Introduction for Physicists
+% ============================================================
+
+\section{Fractional oscillator model}
+
+\subsection{Classical harmonic oscillator}
+The classical oscillator is
+\begin{equation}
+\ddot{x}(t) + \omega^2 x(t)=0,
+\end{equation}
+with solutions $x(t)=A\cos(\omega t)+B\sin(\omega t)$.
+
+\subsection{Fractional harmonic oscillator (general idea)}
+A fractional oscillator replaces integer derivatives by fractional ones.
+A standard prototype is
+\begin{equation}
+\boxed{
+{}^{C}D_t^{2\alpha}x(t)+\omega^{2}x(t)=0,
+\qquad 0<\alpha\le 1,
+}
+\end{equation}
+where ${}^{C}D_t^{2\alpha}$ is the Caputo fractional derivative.
+For $\alpha=1$ this reduces to the classical oscillator.
+
+\subsection{Caputo fractional trigonometric functions (Herrmann)}
+Herrmann constructs two linearly independent solutions of the fractional oscillator
+and denotes them in analogy to sine/cosine:
+\begin{align}
+\boxed{
+C\sin(\alpha,t)
+=
+\sum_{n=0}^{\infty}
+(-1)^n
+\frac{t^{(2n+1)\alpha}}{\Gamma(1+(2n+1)\alpha)},
+}
+\\[4pt]
+\boxed{
+C\cos(\alpha,t)
+=
+\sum_{n=0}^{\infty}
+(-1)^n
+\frac{t^{2n\alpha}}{\Gamma(1+2n\alpha)}.
+}
+\end{align}
+These satisfy the key derivative relations (Caputo derivative):
+\begin{align}
+\boxed{
+{}^{C}D_t^\alpha\,C\sin(\alpha,\omega t)=\omega^\alpha\,C\cos(\alpha,\omega t),
+}
+\\[4pt]
+\boxed{
+{}^{C}D_t^\alpha\,C\cos(\alpha,\omega t)=-\omega^\alpha\,C\sin(\alpha,\omega t).
+}
+\end{align}
+Herrmann emphasizes these as the natural fractional analogues of trig functions. :contentReference[oaicite:4]{index=4}
+
+\subsection{Mittag--Leffler representation}
+The above series are special cases of Mittag--Leffler functions:
+\begin{equation}
+C\cos(\alpha,t)=E(2\alpha,-t^{2\alpha}),
+\qquad
+C\sin(\alpha,t)=t^\alpha\,E(2\alpha,1+\alpha,-t^{2\alpha}).
+\end{equation}
+Mittag--Leffler functions play the role of exponentials in fractional dynamics. :contentReference[oaicite:5]{index=5}
+
+\subsection{Intrinsic damping (relaxation of oscillations)}
+A crucial physical observation in Herrmann:
+\begin{quote}
+For $\alpha<1$, fractional oscillator solutions behave like \emph{damped oscillations}
+even without adding an external friction term.
+\end{quote}
+So the damping is \textbf{intrinsic} to the fractional time evolution, not due to external forces. :contentReference[oaicite:6]{index=6} :contentReference[oaicite:7]{index=7}
+
+\subsection{Definition-independence (robust qualitative behavior)}
+Herrmann compares solutions for different fractional derivative definitions
+and notes:
+\begin{itemize}
+\item for $\alpha\lesssim 1$, oscillations have similar frequency across definitions,
+\item the main differences appear in the number of zeros (important for boundary problems).
+\end{itemize}
+:contentReference[oaicite:8]{index=8}
+
+% ------------------------------------------------------------
+
+\section{Fractional wave equations}
+
+\subsection{Classical wave equation}
+In 3D:
+\begin{equation}
+\left(\Delta - \frac{1}{c^2}\frac{\partial^2}{\partial t^2}\right)\psi(\mathbf{x},t)=0.
+\end{equation}
+
+\subsection{Fractional extension (spatial fractionalization)}
+Herrmann proposes a fractional wave equation by replacing spatial second derivatives
+with fractional ones (time kept second order):
+\begin{equation}
+\boxed{
+\left(
+\frac{d^{2\alpha}}{dx^{2\alpha}}
++
+\frac{d^{2\alpha}}{dy^{2\alpha}}
++
+\frac{d^{2\alpha}}{dz^{2\alpha}}
+-\mu^2\frac{d^2}{dt^2}
+\right)\psi(x,y,z,t)=0.
+}
+\end{equation}
+Here $\mu$ carries dimensions $[s/m^\alpha]$. :contentReference[oaicite:9]{index=9}
+
+\subsection{Separation of variables}
+Using the product ansatz
+\begin{equation}
+\psi(x,y,z,t)=X(x)Y(y)Z(z)T(t),
+\end{equation}
+the PDE reduces to uncoupled ODEs:
+\begin{align}
+\boxed{
+\frac{d^{2\alpha}}{dx^{2\alpha}}X = -\kappa_x^2 X,
+\qquad
+\frac{d^{2\alpha}}{dy^{2\alpha}}Y = -\kappa_y^2 Y,
+\qquad
+\frac{d^{2\alpha}}{dz^{2\alpha}}Z = -\kappa_z^2 Z,
+}
+\\[4pt]
+\boxed{
+\frac{d^2}{dt^2}T = \frac{\omega^2}{\mu^2}T.
+}
+\end{align}
+The separation constants satisfy:
+\begin{equation}
+\boxed{
+\omega=\mu\sqrt{\kappa_x^2+\kappa_y^2+\kappa_z^2}.
+}
+\end{equation}
+:contentReference[oaicite:10]{index=10} :contentReference[oaicite:11]{index=11}
+
+\subsection{Boundary conditions viewpoint}
+Wave problems are often determined by boundary conditions (Dirichlet/Neumann/mixed),
+not initial conditions.
+Herrmann highlights that this makes Riemann-type solutions (even if singular at $t=0$)
+still useful in wave contexts. :contentReference[oaicite:12]{index=12}
+
+% ------------------------------------------------------------
+
+\section{Parity, regularization, and localization}
+
+\subsection{Why parity becomes nontrivial}
+Fractional powers like $x^\alpha$ are multivalued for $x<0$:
+\[
+(-x)^\alpha = (-1)^\alpha |x|^\alpha
+\]
+which causes issues for defining physical wave solutions on domains containing $x<0$. :contentReference[oaicite:13]{index=13}
+
+\subsection{Herrmann's parity-regularized coordinate}
+To preserve parity behavior, Herrmann introduces a regularized coordinate
+\begin{equation}
+\boxed{
+\hat{x}^\alpha := \mathrm{sign}(x)|x|^\alpha,
+}
+\end{equation}
+and replaces
+\begin{equation}
+\boxed{
+\frac{d}{dx}\ \longrightarrow\ \frac{d^\alpha}{d\hat{x}^\alpha}=: \hat{D}_x^\alpha.
+}
+\end{equation}
+This yields a \emph{regularized fractional wave equation} with proper parity properties:
+\begin{equation}
+\boxed{
+\left(
+(\hat{D}_x^\alpha)^2+(\hat{D}_y^\alpha)^2+(\hat{D}_z^\alpha)^2
+-\mu^2\frac{d^2}{dt^2}
+\right)\psi(x,y,z,t)=0.
+}
+\end{equation}
+Free solutions then transform under parity similarly to the classical ($\alpha=1$) case. :contentReference[oaicite:14]{index=14}
+
+\subsection{Localization (qualitative meaning)}
+In fractional wave/quantum problems, solutions may exhibit stronger localization due to:
+\begin{itemize}
+\item nonlocal spatial operators (long-range coupling),
+\item altered nodal structure (different zero distributions),
+\item modified dispersion relations (effective $k^{2\alpha}$ scaling).
+\end{itemize}
+In Herrmann's framework, the number/location of zeros is a major qualitative difference
+between fractional and classical oscillatory solutions. :contentReference[oaicite:15]{index=15}
+
+% ------------------------------------------------------------
+
+\section{Relaxation vs localization}
+
+\subsection{Relaxation (temporal damping)}
+Fractional oscillators with $\alpha<1$ show \textbf{relaxation}:
+\begin{itemize}
+\item oscillations decay even without explicit friction,
+\item decay is governed by Mittag--Leffler-type behavior,
+\item memory effects are intrinsic to fractional derivatives.
+\end{itemize}
+This is one of the central physical signatures of fractional time dynamics. :contentReference[oaicite:16]{index=16}
+
+\subsection{Localization (spatial fractionalization)}
+Spatial fractional wave equations modify eigenmodes.
+Under boundary conditions, the spatial fractional eigenfunctions can:
+\begin{itemize}
+\item deviate from ordinary sines/cosines,
+\item show different node counts and spacing,
+\item depend more sensitively on parity/regularization choices.
+\end{itemize}
+These effects can be interpreted as a form of localization/shape deformation
+compared to classical wave modes. :contentReference[oaicite:17]{index=17} :contentReference[oaicite:18]{index=18}
+
+% ------------------------------------------------------------
+
+\section{Main properties (high-yield)}
+
+\begin{itemize}
+\item Fractional oscillator solutions are expressed via Mittag--Leffler functions
+(the fractional analogue of exponentials). :contentReference[oaicite:19]{index=19}
+\item For $\alpha<1$, the fractional harmonic oscillator behaves like a \textbf{damped oscillator}
+with \textbf{intrinsic absorption} (no external friction needed). :contentReference[oaicite:20]{index=20}
+\item Fractional wave equations can be formed by fractionalizing spatial derivatives,
+keeping time second order. :contentReference[oaicite:21]{index=21}
+\item Separation of variables still works and yields fractional eigenvalue ODEs. :contentReference[oaicite:22]{index=22}
+\item Parity and negative arguments require care; Herrmann introduces a regularization
+$\hat{x}^\alpha=\mathrm{sign}(x)|x|^\alpha$ to preserve parity symmetry. :contentReference[oaicite:23]{index=23}
+\item Boundary conditions are central for wave problems; fractional solutions may differ
+strongly in zero structure (important for mode spectra). :contentReference[oaicite:24]{index=24}
+\end{itemize}

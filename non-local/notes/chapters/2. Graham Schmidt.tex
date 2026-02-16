@@ -1,0 +1,189 @@
+\section{Graham Schmidt}
+% ============================================================
+% Notes: Gram--Schmidt Orthogonalization (functions)
+% Topic: Construct orthogonal / orthonormal set from a
+%        linearly independent non-orthogonal set
+% Source: Arfken & Weber (6th ed.), Ch. 10.3
+% ============================================================
+
+\section{Gram--Schmidt orthogonalization of functions}
+
+\subsection{Goal and setting}
+Given a set of \textbf{linearly independent} functions
+\[
+\{f_1(x), f_2(x), \dots, f_N(x)\}
+\]
+that are not necessarily orthogonal, we want to construct an \textbf{orthogonal}
+(or orthonormal) set
+\[
+\{\phi_1(x), \phi_2(x), \dots, \phi_N(x)\}
+\]
+that spans the same subspace.
+
+\subsection{Inner product and norm (weighted)}
+In Sturm--Liouville theory the natural inner product is
+\begin{equation}
+\langle g|f\rangle := \int_a^b g^*(x)\,w(x)\,f(x)\,dx,
+\qquad w(x)>0.
+\end{equation}
+The corresponding norm is
+\begin{equation}
+\|f\| := \sqrt{\langle f|f\rangle}.
+\end{equation}
+
+Orthogonality means
+\begin{equation}
+\langle \phi_m|\phi_n\rangle = 0,\qquad m\neq n.
+\end{equation}
+Orthonormality means
+\begin{equation}
+\langle \phi_m|\phi_n\rangle = \delta_{mn}.
+\end{equation}
+
+% ------------------------------------------------------------
+
+\subsection{Gram--Schmidt construction (orthogonal set)}
+Define recursively:
+\begin{align}
+u_1 &:= f_1,\\[4pt]
+u_2 &:= f_2 - \frac{\langle u_1|f_2\rangle}{\langle u_1|u_1\rangle}\,u_1,\\[6pt]
+u_3 &:= f_3
+- \frac{\langle u_1|f_3\rangle}{\langle u_1|u_1\rangle}\,u_1
+- \frac{\langle u_2|f_3\rangle}{\langle u_2|u_2\rangle}\,u_2,\\[6pt]
+&\ \vdots\\[4pt]
+u_n &:= f_n - \sum_{k=1}^{n-1}
+\frac{\langle u_k|f_n\rangle}{\langle u_k|u_k\rangle}\,u_k.
+\end{align}
+
+Then the set $\{u_1,\dots,u_N\}$ is orthogonal:
+\[
+\langle u_m|u_n\rangle = 0 \quad (m\neq n).
+\]
+
+\subsection{Compact projection form}
+Define the projection of $f$ onto $u_k$ as
+\begin{equation}
+\mathrm{proj}_{u_k}(f) :=
+\frac{\langle u_k|f\rangle}{\langle u_k|u_k\rangle}\,u_k.
+\end{equation}
+Then Gram--Schmidt is simply
+\begin{equation}
+u_n = f_n - \sum_{k=1}^{n-1}\mathrm{proj}_{u_k}(f_n).
+\end{equation}
+
+% ------------------------------------------------------------
+
+\subsection{Orthonormalization step}
+To normalize each $u_n$, define
+\begin{equation}
+\phi_n := \frac{u_n}{\|u_n\|} =
+\frac{u_n}{\sqrt{\langle u_n|u_n\rangle}}.
+\end{equation}
+Then
+\[
+\langle \phi_m|\phi_n\rangle = \delta_{mn}.
+\]
+
+% ------------------------------------------------------------
+
+\subsection{Why Gram--Schmidt works (key identity)}
+At step $n$, we subtract off all components of $f_n$ parallel to the already-built
+orthogonal vectors $u_1,\dots,u_{n-1}$.
+Thus $u_n$ lies in the span of $\{f_1,\dots,f_n\}$ but is orthogonal to the previous ones.
+
+Specifically, for any $j<n$:
+\begin{align}
+\langle u_j|u_n\rangle
+&= \left\langle u_j\left|f_n - \sum_{k=1}^{n-1}
+\frac{\langle u_k|f_n\rangle}{\langle u_k|u_k\rangle}u_k\right.\right\rangle\\
+&= \langle u_j|f_n\rangle - \sum_{k=1}^{n-1}
+\frac{\langle u_k|f_n\rangle}{\langle u_k|u_k\rangle}\langle u_j|u_k\rangle\\
+&= \langle u_j|f_n\rangle
+- \frac{\langle u_j|f_n\rangle}{\langle u_j|u_j\rangle}\langle u_j|u_j\rangle\\
+&=0.
+\end{align}
+
+% ------------------------------------------------------------
+
+\subsection{Important practical notes}
+\begin{itemize}
+\item \textbf{Linear independence required:}
+If $\{f_n\}$ are linearly dependent, then some $u_n$ becomes the zero function
+($\|u_n\|=0$) and the algorithm breaks.
+\item \textbf{Order matters:}
+Different ordering of $\{f_n\}$ produces different orthogonal bases.
+\item \textbf{Same subspace:}
+For each $n$,
+\[
+\mathrm{span}\{u_1,\dots,u_n\} = \mathrm{span}\{f_1,\dots,f_n\}.
+\]
+\item \textbf{Degenerate eigenspaces:}
+If an eigenvalue is degenerate, Gram--Schmidt produces an orthonormal basis
+inside the degenerate subspace.
+\end{itemize}
+
+% ------------------------------------------------------------
+
+\subsection{Two-function special case (fast formula)}
+Given two linearly independent functions $f_1,f_2$:
+\begin{align}
+u_1 &= f_1,\\
+u_2 &= f_2 - \frac{\langle f_1|f_2\rangle}{\langle f_1|f_1\rangle}\,f_1,\\
+\phi_1 &= \frac{f_1}{\|f_1\|},\qquad
+\phi_2 = \frac{u_2}{\|u_2\|}.
+\end{align}
+
+% ------------------------------------------------------------
+
+\subsection{Example (typical weight)}
+On $[-1,1]$ with weight $w(x)=1$:
+\[
+\langle g|f\rangle = \int_{-1}^{1} g(x)f(x)\,dx.
+\]
+Start with non-orthogonal polynomials:
+\[
+f_1(x)=1,\qquad f_2(x)=x,\qquad f_3(x)=x^2.
+\]
+Then
+\[
+u_1=1,
+\qquad
+u_2=x-\frac{\langle 1|x\rangle}{\langle 1|1\rangle}\cdot 1
+= x,
+\]
+since $\int_{-1}^1 x\,dx=0$.
+Next,
+\[
+u_3 = x^2 - \frac{\langle 1|x^2\rangle}{\langle 1|1\rangle}\cdot 1
+      - \frac{\langle x|x^2\rangle}{\langle x|x\rangle}\cdot x.
+\]
+But $\int_{-1}^1 x^3\,dx=0$, so the $x$-projection vanishes and
+\[
+u_3 = x^2 - \frac{\int_{-1}^1 x^2 dx}{\int_{-1}^1 1\,dx}
+= x^2 - \frac{2/3}{2}
+= x^2 - \frac{1}{3}.
+\]
+These are proportional to the first Legendre polynomials:
+\[
+P_0=1,\quad P_1=x,\quad P_2=\frac{1}{2}(3x^2-1).
+\]
+
+% ------------------------------------------------------------
+
+\subsection{Final high-yield summary}
+\begin{itemize}
+\item Gram--Schmidt turns $\{f_n\}$ into orthogonal $\{u_n\}$ by subtracting projections.
+\item Weighted inner product:
+\[
+\langle g|f\rangle = \int_a^b g^*wf\,dx.
+\]
+\item Core recursion:
+\[
+u_n = f_n - \sum_{k=1}^{n-1}\frac{\langle u_k|f_n\rangle}{\langle u_k|u_k\rangle}u_k.
+\]
+\item Normalize:
+\[
+\phi_n = \frac{u_n}{\sqrt{\langle u_n|u_n\rangle}}.
+\]
+\item Used to build orthonormal bases in degenerate eigenspaces.
+\end{itemize}

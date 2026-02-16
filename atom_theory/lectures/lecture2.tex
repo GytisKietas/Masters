@@ -1,0 +1,220 @@
+\section{Vienelektronės Būsenos}
+
+Sukinys ir sukinė funkcija
+
+Elektronas turi dar sabajį judėjimo kiekio momentą - sukinį, kuris neturi analogo klasikinėje fizikoje. Nereliatyvistinėje teorijoje sukinio egzistavimą yra postuluojamas. Sukinio kvadrato $\hat{\bm{s}}^2$ ir šio momento projekcijos į $z$ ašį $\hat{s}_z$ operatoriai tenkina tikrinių verčių lygtis, analogiškai kaip $\hat{\bm{l}}^2$, $\hat{l}_z$:
+
+\begin{align*}
+    \hat{\bm{s}}^2 \chi_{\mu} (\sigma) = \hbar^2 s(s+1) \chi_{\mu} (\sigma)\\
+    \hat{s}_z \chi_{\mu} (\sigma) = \hbar \mu \chi_{\mu} (\sigma)
+\end{align*}
+čia $\chi_{\mu}(\sigma)$ -šių operatorių tikrinė funkcija, $s$- sukinio kvantinis skaičius, lygus 1/2, o $\mu$ - sukinio projekcijos kvantinis skaičius, įgyjantis dvi vertes 1/2 ir -1/2
+...
+
+Nereliatyvistinis vienelektronis hamiltonianas $\hbar$ neveikia 5 sukinė kintamajį, tad $\hat{h}$, $\hat{\bm{s}}^2$ ir $\hat{s}_z$ komutuoja tarpusavyje, ir $\chi_{\mu}(\sigma)$ yra tikrinė $\hat{h}$ funckija. Taigi, atsižvelgiant į sukinį, vienelektronė nereliatyvistinė banginė funkcija užrašoma;
+
+\begin{equation*}
+    \psi_{}
+\end{equation*}
+...
+
+Lyginumo transformacija - erdvinių koordinačių ženklo pakeitimas
+
+\begin{equation*}
+    x \rightarrow -x, \quad y \rightarrow -y, \quad z \rightarrow -z
+\end{equation*}
+Hamiltonianas $\hat{h}$ nesikei2ia, tad lyginumo operacij1 atitinkantis operatorius $\hat{P}$ komutuoja su hamiltonianu:
+
+\begin{equation*}
+    [\hat{P}, \hat{h}] = 0.
+\end{equation*}
+
+Vadinasi, hamiltoniano tikrin4 funkcija kartu yra ir $\hat{P}$ operatoriaus tikrin4 funkcija
+
+\begin{equation*}
+    \hat{P} \psi = c \psi
+\end{equation*}
+čia $c$ - lyginumo tikrinė vertė, kuri lygi -1 ir +1, nes $\hat{P}^2 \psi = c^2 \phi = \psi$
+
+Banginės
+...
+
+Tikimybė rasti elektroną pasiskirstymas
+\begin{equation*}
+    \rho_{n l m \mu}(r, \theta, \phi, \sigma) = |\psi_{n l m \mu} (r, \theta, \phi, \sigma)|^2 = |\Theta_{lm}(\theta)|^2 \frac{P_{nl}^2 (r)}{r^2} \chi_{\mu}^2 (\sigma)
+\end{equation*}
+
+Atsižvelgiant, kad $Y_{lm} (\theta \phi) = \Theta_{lm} (\theta) e^{im \phi}$
+
+
+\section(Daugiaelektronių atomų būsenos)
+
+\subsection{Dvielektronio atomo hamiltonianas ir judėjimo kiekio momentai}
+
+Atomo su dviem elektronais nereliatyvistinis hamiltonianas
+
+\begin{equation*}
+    \hat{H} = \frac{\hat{p}_1^2}{2m} +\frac{\hat{p}_2^2}{2m} - \frac{Z e^2}{4 \pi \epsilon_0 r_1} -\frac{Z e^2}{4 \pi \epsilon_0 r_2} + \frac{e^2}{4 \pi \epsilon_0 r_{12}}
+\end{equation*}
+čia $r_{12} = |\bm{r}_1 - \bm{r}_2 = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2 + (z_1 - z_2)^2} = \sqrt{r_1^2 + r_2^2 - 2 r_1 r_2 \cos \omega}$ 
+
+...
+
+Komutuojančių operatorių rinkinys. Hamiltonianas $\hat{H}$ neveikia 5 sukinius kintamuosius, tas jis komutuoja ne tik su $\hat{\bm{J}}^2$, $\hat{J}_z$, bet ir su $\hat{L}^2, \hat{L}_z$. Be to, $\hat{L}^2$ ir $\hat{L}_z$ komutuoja su atskirų eletroknų operatoriais $\hat{l}_i^2$, bet nekomutuoja su projekcijų operatoriais $\hat{l}_{iz}$:
+
+Vadinasi, $\hat{\bm{L}}$, $\hat{L}_z$, $\hat{l}_1^2$, $\hat{l}_2^2$ sudaro komutuojančių operatorių rinkinį. Arsižvelgiant į elektronų sukinius, prasideda $\hat{\bm{S}}^2$, $\hat{S}_z$, $\hat{\bm{s}}_2$
+
+...
+
+Ji sudaroma iš atskirų elektronų banginių funkcijų. Jų sandaugos
+
+\begin{equation*}
+    \psi (l_1 m_1 | \bm{r}_1) \psi(l_2 m_2 | \bm{r}_2)
+\end{equation*}
+nėra tikrinės operatorių $\hat{\bm{L}}^2$ it $\hat{L}_z$ funkcijos, bet pastarosios gaunamos, imant toki7 sandaug7 tiesines kombinacijas:
+
+\begin{equation*}
+    \Psi(l_1, l_2 LM|\bm{r}_1 \bm{r}_2) = \sum_{m_1, m_2} 
+    \begin{bmatrix*}
+        l_1 & l_2 & L\\
+        m_1 & m_2 & M
+    \end{bmatrix*}
+    \psi (l_1, m_1 | \bm{r}_1) \psi (l_2, m_2 | \bm{r}_2)
+\end{equation*}
+
+Skleidimo koeficientai yra vadinami Clebsch-Gordano (Klebšo ir Gordano) koeficientais.
+Atsižvelgiant ir į sukinius:
+
+\begin{equation*}
+    \Psi(l_1, s_1, l_2 s_2 L S M_L M_S |\tau_1 \tau_2) = \sum_{m_1, m_2, \mu_1, \mu_2} 
+    \begin{bmatrix*}
+        l_1 & l_2 & L\\
+        m_1 & m_2 & M_L
+    \end{bmatrix*}
+    \begin{bmatrix*}
+        s_1 & s_2 & S\\
+        m_1 & m_2 & M_S
+    \end{bmatrix*}
+    \psi (l_1 s_1, m_1 \mu_1 | \tau_1 ) \psi (l_2 s_2, m_2 \mu_2 | \tau_2 )
+\end{equation*}
+
+\subsubsection*{Clebsch-Gordano koeficientas}
+
+\begin{equation*}
+    \begin{bmatrix*}[c]
+        j_1 & j_2 & j \\
+        m_1 & m_2 & m
+    \end{bmatrix*}
+\end{equation*}
+
+Savybės:
+
+$j_i$, $m_i$, taip pat $j$, $m_i$ turi b8ti abu sveiki abu pusiniai skaičiai.
+
+\begin{itemize}
+    \item $|j_1 - j_2| \leq j \leq j_1 + j_2$
+    \item $m_i \leq j_i$
+    \item $m = m_1 + m_2$
+\end{itemize}
+
+\begin{equation*}
+  \begin{bmatrix*}[c]
+    j_1 & j_2 & j \\
+    m_1 & m_2 & m
+  \end{bmatrix*}
+  = \delta_{m_1+m_2,\,m}\,\Delta(j_1 j_2 j)\,
+  \left[\frac{(j+m)!\,(j-m)!\,(2j+4)!}{\cdots}\right]
+\end{equation*}
+
+...
+
+Surištų momentų funkcija $\Psi(l_1 s_1 l_2 s_2 L S M_L M_S)$ netenkina:
+\begin{itemize}
+    \item Paulio principo: du elektronai negali būsenose su visais tais pačiais kvantiniais skaičiais;
+    \item tapatingumo principo: elektronų sustemoje dalelei, esančiai tam tikroje būsenoje, negalima priskirti konkreių koordinačių.
+\end{itemize}
+
+Abu principus tenkina determinantas:
+\begin{equation*}
+    \Psi^a(\gamma_1 \gamma_2 | \tau_1, \tau_2) = \frac{1}{\sqrt{2}}
+    \det \left( 
+    \begin{bmatrix*}[c]
+        \psi(\gamma_1 | \tau_1) & \psi(\gamma_1 | \tau_2) \\
+        \psi(\gamma_2 | \tau_1) & \psi(\gamma_2 | \tau_2)
+    \end{bmatrix*}
+    \right) = \frac{1}{\sqrt{2}} [\psi(\gamma_1 | \tau_1) \psi(\gamma_2 | \tau_2) - \psi(\gamma_2 | \tau_1) \psi(\gamma_1 | \tau_2)]
+\end{equation*}
+čia $\gamma_i \equiv n_i l_i m_i \mu_i$ ir $\tau_i \equiv \theta_i, \phi_i, r_i, \sigma_i$. Funkcija keičia ženklą, sukeičiant elektronų koordinates, tokia funkcija vadinama antisimetrine.
+
+...
+
+Determinantinę funkciją galima transformuoti į surištų
+
+...
+
+Antisimetrinė $N$ elektronų nesurištų momentų banginė funkcija
+
+\begin{equation*}
+    \Psi^{a} (\gamma_1 \gamma_2 \dots \gamma_N | \tau_1, \tau_2, \dots \tau_N) = 
+
+    \frac{1}{\sqrt{N!}} \det \left(  \right)
+\end{equation*}
+...
+
+Surištų momentų $N$ ekvivalentinių elektronų antisimetrinė banginė funkcija yra gaunama iš $N-1$ elektrono antisimetrin4s funkcijos ir vieno elektrono funkcijos sandaugų, sudarant tokias jų tiesines kombinacijas, kurios užtikrintų funkcijos antisimetriškumą prijungiamo elektrono atžvilgiu:
+
+\begin{equation*}
+    \Psi( l^N \gamma LSM_LM_S) = \sum_{\bar{\gamma} \bat{L} \bar{S}} (l^N \gamma L S || l^{N-1} \bar{\gamma} )
+\end{equation*}
+
+...
+
+Pilnutinio jud4jimo kiekio momento banginės funkcijos
+Surišant resultatinius momentus $L$ ir $S$, galima pereiti nuo $\Psi(\gamma LSM_LM_S)$ bazė prie $\Psi(\gamma LSJM)$ bazės:
+\begin{equation*}
+    \Psi(\gamma LSJM) = \Sum_{M_L M_S}
+    \begin{bmatrix*}[c]
+        L & S & J \\
+        M_L & M_S & M
+    \end{bmatrix*}
+    \Psi(\gamma LSM_L M_S).
+\end{equation*}
+Kvantinis skaičius $J$ keičiasi nuo $|L-S|$ ligi $L+S$ per vienetą:
+
+\begin{equation*}
+    J = |L-S|, |L-S| + 1, \dots, L+S
+\end{equation*}
+o jo projekcijos įgyja vertes nuo $-J$ ligi $J$, irgi kisdama per vienetą.
+
+
+\section{Atomo struktūra}
+
+\subsection*{Elektronų sluoksnis ir jo charakteristika}
+Elektrono būseną atome aprašo keturi kvantiniai skaičiai:
+\begin{itemize}
+    \item Pagrindinis kvantinis skaičius $n$,
+    \item Orbitinis kvantinis skaičius $l = 0,1,2, \dots, n+1$
+    \item Orbitinio momento projekcija $m=0, \pm 1, \dots , \pm l$,
+    \item Sukinio projekcija $\mu = \pm 1/2$
+\end{itemize}
+
+Atomo elektronai, kurie turi tuos pačius kvantinius skaičius $n,l$ sudaro elektronų sluoksnį. Jie vadinami ekvivalentiniais elektronais.
+
+Pauli principas: du atomo elektronai negali turėti to pačio kvantinių skaičių rinkinio. Tad sluoksnyje gali būti tik tam tikras nedidelis elektronų skaičius.
+
+Projekcija $m$ įgyja $2l+1$ verčių, o $\mu$ - dvi, taigi sluoksnyje $nl^{N}$ gali būti ne daugiau kaip $4l+2$ elektronų. Užpildytas elektronų sluoksnis $l^{4l+2}$. Atviras sluoksnis $l^{N}$ $(0 < N < 5l+2)$:
+\begin{itemize}
+    \item dalinai užpildytas $N < 2l + 1$
+    \item beveik užpildytas $N > 2l + 1$
+    \item pusiau užpildytas $N = 2l + 1$
+\end{itemize}
+Taigi $s^N$ sluoksnyje gali būti ne daugiau...
+
+\subsection*{Būsena, lygmuo ir termas}
+Būseną apibūdina pilnas daugiaelektronių kvantinių skaičių rinkinys $\gamma LSJM$, $\gamma$ - kai kurių sluoksnių būsenoms apibūdinti reikalingi papildomi kvantiniai skaičiai. Energijos lygmuo (lygmuo) charakterizuojamas kvantiniais skaičiais $\gamma LSJ$. Būsenų skaičius sluoksnyje:
+\begin{equation*}
+    g(l^N) = 
+\end{equation*}
+
+\subsection*{Termų ir lygmenų nustatymas}
+Vienas elektronas $l$ turi vienintelį termą ${}^2K$, pvz

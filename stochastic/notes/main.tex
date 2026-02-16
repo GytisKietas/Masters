@@ -1,0 +1,110 @@
+\documentclass[titlepage]{article}
+\usepackage{graphicx,wrapfig} % Required for inserting images and arranging them in text
+\usepackage{amsmath} % For matrices and other maths stuff, very good
+\usepackage{amsthm} % For \newtheorem stuff. Makes nice definitions and theorems
+\usepackage{amssymb} % For does not exists \nexists
+\usepackage{multicol} % For side - by - side equations/text
+\usepackage{amsfonts} %For set notation, like R
+\usepackage{xfrac} %fraction sideways
+\usepackage{hyperref} %Clickable table of contents and references and hyperlinks
+\usepackage{tikz, pgfplots} %Nice diagrams and graphics
+\usepackage{mdframed} %Boxes around theorems
+\usepackage{fancyhdr} %Fancy Header and Footer
+\usepackage{tensor} %For tensor indices. Used mainly with \indices{}
+\usepackage{physics} %For dirac notation
+\usepackage{mathtools} %Text above \rightarrow
+\usepackage{enumitem} %Editable enumerate items
+\usepackage{xparse} %For Definition
+%\usepackage{newpxmath} %For improved spacing between math symbols
+\usepackage[compat=1.1.0]{tikz-feynman} %For Feynman diagrams
+\usetikzlibrary{positioning}
+
+%This is where header and footer is constructed
+\usepackage[a4paper, total={6in, 8in}]{geometry} %Formating margins
+\pagestyle{fancy}
+\setlength{\headheight}{15pt}
+\fancyhead[l]{Gytis Vejelis}
+\fancyhead[r]{}
+\fancyhead[c]{\textbf{Symmetries And Quantum Mechanics}}
+\fancyfoot[c]{\thepage}
+
+\NewDocumentCommand{\Definition}{ O{Definition} m m }{%
+  \par\noindent\textbf{#1 #2.}\;#3\par
+}
+
+\newenvironment{definition}[1][Definition]{%
+  \vspace{1em}%
+  \begin{defn}[#1]%
+}{%
+  \end{defn}%
+  \vspace{1em}%
+}
+
+\def\Include#1{%
+        \def\ChapterPath{#1/}%
+        \def\GraphicsPath{\ChapterPath Images/}%
+        \include{\ChapterPath#1}}
+
+\newcommand\IncludeGraphics[2][width=\linewidth]{%
+    \includegraphics[#1]{\GraphicsPath #2}} 
+
+\newcommand\bld[1]{\textbf{#1}}
+\newcommand\basis[1]{\text{$\hat{\textbf{#1}}$}}
+\newcommand\set[1]{\mathbb{#1}}
+\newcommand\setn[2]{\mathbb{#1}^{#2}}
+
+\newcommand\de[2]{\frac{d#1}{d#2}}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+
+\title{Modelling of Stochastic Processes}
+\author{Gytis Vejelis}
+\date{2025}
+
+\pgfplotsset{compat=1.18}
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+% \include{chapters/review.tex}
+
+\include{chapters/1 introduction}
+
+\include{chapters/2 Probabilities}
+
+\include{chapters/3 Markov chains}
+
+\include{chapters/4 Random Walk}
+
+\include{chapters/5 Birth and death process}
+
+\include{chapters/6 Branching Processes}
+
+\include{chapters/7 Continuous-Time markov chain}
+
+\include{chapters/8 Continuous-Time Population Models}
+
+\include{chapters/9 CTMC-times}
+
+\include{chapters/10 Diffusion}
+
+\include{chapters/11 More Diffusion}
+
+\include{chapters/12 Anomalous Diffusion}
+
+\include{chapters/13 More Anomalous diffusion}
+
+\include{chapters/14 Diffusion in Disordered Systems}
+
+\end{document}

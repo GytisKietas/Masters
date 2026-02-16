@@ -1,0 +1,258 @@
+% ============================================================
+% Notes: Random Walks, Normal/Anomalous Diffusion, Lévy Walks
+% + link to fractional calculus / nonlocality
+% Sources:
+%  - Herrmann, Fractional Calculus: An Introduction for Physicists
+%    (motivation: anomalous diffusion + fractional Brownian motion) :contentReference[oaicite:1]{index=1}
+%  - Standard stochastic process theory (Brownian motion, CTRW, Lévy walks)
+% ============================================================
+
+\section{Random walks and diffusion processes}
+
+\subsection{Discrete-time random walk (1D)}
+Let $X_n$ be the position after $n$ steps:
+\begin{equation}
+X_n = \sum_{k=1}^n \xi_k,
+\qquad 
+\xi_k \in \{+a,-a\},
+\qquad 
+\mathbb{P}(\xi_k=+a)=p,\ \mathbb{P}(\xi_k=-a)=q=1-p.
+\end{equation}
+
+Mean and variance:
+\begin{equation}
+\mathbb{E}[X_n] = n a (p-q),
+\qquad
+\mathrm{Var}(X_n)=4npq\,a^2.
+\end{equation}
+
+Symmetric walk ($p=q=1/2$):
+\begin{equation}
+\mathbb{E}[X_n]=0,
+\qquad
+\mathrm{Var}(X_n)=na^2.
+\end{equation}
+
+\subsection{Central limit theorem (Gaussian scaling)}
+If $\xi_k$ are i.i.d. with finite variance $\sigma^2$, then for large $n$:
+\begin{equation}
+\frac{X_n - n\mu}{\sqrt{n\sigma^2}}
+\ \xrightarrow[n\to\infty]{d}\
+\mathcal{N}(0,1),
+\qquad
+\mu=\mathbb{E}[\xi_k].
+\end{equation}
+
+So the displacement distribution approaches a Gaussian.
+
+% ------------------------------------------------------------
+
+\section{Normal diffusion}
+
+\subsection{Mean squared displacement (MSD)}
+For a stochastic process $X(t)$ define
+\begin{equation}
+\langle X^2(t)\rangle := \mathbb{E}[X(t)^2].
+\end{equation}
+
+\textbf{Normal diffusion} is characterized by linear growth:
+\begin{equation}
+\langle X^2(t)\rangle \sim 2Dt \quad \text{(1D)}, 
+\qquad
+\langle r^2(t)\rangle \sim 2dDt \quad \text{(in $d$ dimensions)}.
+\end{equation}
+
+\subsection{Diffusion equation (Fick / heat equation)}
+Let $P(x,t)$ be the probability density of being at $x$ at time $t$.
+Normal diffusion satisfies:
+\begin{equation}
+\frac{\partial P}{\partial t} = D\frac{\partial^2 P}{\partial x^2}.
+\end{equation}
+
+With initial condition $P(x,0)=\delta(x)$, the Green function is Gaussian:
+\begin{equation}
+P(x,t)=\frac{1}{\sqrt{4\pi Dt}}\exp\!\left(-\frac{x^2}{4Dt}\right).
+\end{equation}
+
+% ------------------------------------------------------------
+
+\section{Anomalous diffusion}
+
+\subsection{Definition via MSD scaling}
+\textbf{Anomalous diffusion} is defined by a power-law MSD:
+\begin{equation}
+\langle X^2(t)\rangle \sim t^\alpha,
+\qquad \alpha\neq 1.
+\end{equation}
+
+Classification:
+\begin{itemize}
+\item $0<\alpha<1$: \textbf{subdiffusion} (slower than normal).
+\item $\alpha=1$: \textbf{normal diffusion}.
+\item $1<\alpha<2$: \textbf{superdiffusion}.
+\item $\alpha=2$: \textbf{ballistic transport} ($X(t)\sim vt$).
+\end{itemize}
+
+\subsection{Physical origins}
+Common mechanisms:
+\begin{itemize}
+\item \textbf{Trapping / waiting times} (long rests) $\Rightarrow$ subdiffusion.
+\item \textbf{Long jumps / flights} (rare huge displacements) $\Rightarrow$ superdiffusion.
+\item \textbf{Long-time correlations} (persistent velocity) $\Rightarrow$ superdiffusion.
+\item \textbf{Fractal / disordered media} $\Rightarrow$ anomalous scaling.
+\end{itemize}
+
+\subsection{Connection to fractional calculus (Herrmann motivation)}
+Herrmann highlights that anomalous diffusion and fractional Brownian motion
+became a major physics motivation for fractional methods (especially since the 1980s). :contentReference[oaicite:2]{index=2}
+
+Core idea:
+\begin{itemize}
+\item \textbf{Temporal nonlocality / memory} $\Rightarrow$ fractional \emph{time} derivatives.
+\item \textbf{Spatial nonlocality / long jumps} $\Rightarrow$ fractional \emph{space} derivatives.
+\end{itemize}
+
+% ------------------------------------------------------------
+
+\section{Continuous-time random walk (CTRW) framework}
+
+\subsection{CTRW definition}
+A CTRW consists of:
+\begin{itemize}
+\item jump lengths $\eta_1,\eta_2,\dots$ with PDF $\lambda(\eta)$
+\item waiting times $\tau_1,\tau_2,\dots$ with PDF $\psi(\tau)$
+\end{itemize}
+and position after $N(t)$ jumps:
+\begin{equation}
+X(t)=\sum_{k=1}^{N(t)}\eta_k,
+\qquad
+N(t)=\max\left\{n:\sum_{k=1}^n \tau_k \le t\right\}.
+\end{equation}
+
+\subsection{Normal diffusion condition}
+If $\mathbb{E}[\tau]<\infty$ and $\mathbb{E}[\eta^2]<\infty$,
+then at large times:
+\[
+\langle X^2(t)\rangle \sim t.
+\]
+
+\subsection{Subdiffusion from heavy-tailed waiting times}
+If the waiting time distribution has a power-law tail:
+\begin{equation}
+\psi(\tau)\sim \tau^{-1-\beta},
+\qquad 0<\beta<1,
+\end{equation}
+then $\mathbb{E}[\tau]=\infty$ and typically
+\begin{equation}
+\langle X^2(t)\rangle \sim t^\beta
+\qquad (\text{subdiffusion}).
+\end{equation}
+
+This is a standard route to fractional-in-time diffusion equations.
+
+\subsection{Superdiffusion from heavy-tailed jump lengths}
+If jump lengths have heavy tails:
+\begin{equation}
+\lambda(\eta)\sim |\eta|^{-1-\mu},
+\qquad 0<\mu<2,
+\end{equation}
+then $\mathbb{E}[\eta^2]=\infty$ and the process can become superdiffusive.
+This is associated with Lévy stable statistics and fractional Laplacians.
+
+% ------------------------------------------------------------
+
+\section{Lévy flights vs Lévy walks}
+
+\subsection{Lévy flight (mathematical idealization)}
+A \textbf{Lévy flight} is a random walk with i.i.d.\ heavy-tailed step lengths:
+\begin{equation}
+\lambda(\eta)\sim |\eta|^{-1-\mu},\qquad 0<\mu<2.
+\end{equation}
+
+Key property: the variance diverges:
+\begin{equation}
+\mathbb{E}[\eta^2]=\infty.
+\end{equation}
+
+Problem: steps occur in effectively zero time, so arbitrarily long jumps happen instantly
+(unphysical for finite-speed transport).
+
+\subsection{Lévy walk (physically meaningful)}
+A \textbf{Lévy walk} couples displacement and travel time.
+A typical model:
+\begin{equation}
+\eta = v\,\tau \cdot s,
+\qquad s\in\{+1,-1\},
+\end{equation}
+where $\tau$ is a flight time and $v$ is a finite speed.
+
+If flight times are heavy-tailed:
+\begin{equation}
+\psi(\tau)\sim \tau^{-1-\gamma},
+\end{equation}
+then transport can be superdiffusive but still respects finite propagation speed.
+
+\subsection{Scaling behavior (qualitative)}
+Depending on $\gamma$:
+\begin{itemize}
+\item large $\gamma$ (short flights dominate) $\Rightarrow$ normal diffusion
+\item intermediate $\gamma$ $\Rightarrow$ superdiffusion
+\item very small $\gamma$ $\Rightarrow$ nearly ballistic scaling
+\end{itemize}
+
+\subsection{Why Lévy walks matter}
+Lévy walks provide:
+\begin{itemize}
+\item heavy tails (rare long moves)
+\item finite velocity constraint
+\item realistic superdiffusion model in physics/biology
+\end{itemize}
+
+% ------------------------------------------------------------
+
+\section{Fractional diffusion equations (bridge to anomalous diffusion)}
+
+\subsection{Fractional time diffusion (subdiffusion)}
+Subdiffusion with memory can be modeled by a fractional time derivative:
+\begin{equation}
+\prescript{C}{}D_t^\beta P(x,t)
+=
+D\frac{\partial^2 P}{\partial x^2},
+\qquad 0<\beta<1.
+\end{equation}
+
+This encodes \textbf{nonlocality in time} (history dependence).
+
+\subsection{Fractional space diffusion (superdiffusion)}
+Superdiffusion with long jumps can be modeled using a fractional Laplacian:
+\begin{equation}
+\frac{\partial P}{\partial t}
+=
+- K_\mu\,(-\Delta)^{\mu/2}P,
+\qquad 0<\mu<2.
+\end{equation}
+
+This encodes \textbf{nonlocality in space} (long-range jumps).
+
+\subsection{Combined space-time fractional transport}
+More general anomalous transport can involve both:
+\begin{equation}
+\prescript{C}{}D_t^\beta P(x,t)
+=
+- K_\mu\,(-\Delta)^{\mu/2}P.
+\end{equation}
+
+% ------------------------------------------------------------
+
+\section{High-yield summary}
+\begin{itemize}
+\item \textbf{Random walk} $\Rightarrow$ diffusion in the continuum limit.
+\item \textbf{Normal diffusion:} $\langle X^2(t)\rangle \sim t$ and Gaussian $P(x,t)$.
+\item \textbf{Anomalous diffusion:} $\langle X^2(t)\rangle \sim t^\alpha$, $\alpha\neq 1$.
+\item \textbf{Subdiffusion} comes from long waiting times / trapping $\Rightarrow$ memory.
+\item \textbf{Superdiffusion} comes from long jumps / persistent motion.
+\item \textbf{Lévy flight:} heavy-tailed jumps, infinite variance, infinite-speed issue.
+\item \textbf{Lévy walk:} heavy-tailed \emph{flight times} with finite velocity (physical).
+\item \textbf{Fractional calculus link (Herrmann):} anomalous diffusion motivates fractional operators
+as nonlocal descriptions of transport. :contentReference[oaicite:3]{index=3}
+\end{itemize}

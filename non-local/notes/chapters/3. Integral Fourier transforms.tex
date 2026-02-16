@@ -1,0 +1,184 @@
+% ============================================================
+% Notes: Integral Fourier Transform + Delta + Derivatives + Convolution
+% ============================================================
+
+\section{Integral Fourier transforms}
+
+\subsection{Fourier transform pair (physics convention)}
+Let $f(x)$ be integrable (or in a suitable distribution sense). Define the Fourier transform:
+\begin{equation}
+\tilde f(k) = \mathcal{F}\{f\}(k)
+:= \int_{-\infty}^{\infty} f(x)\,e^{-ikx}\,dx.
+\end{equation}
+The inverse transform is
+\begin{equation}
+f(x) = \mathcal{F}^{-1}\{\tilde f\}(x)
+:= \frac{1}{2\pi}\int_{-\infty}^{\infty} \tilde f(k)\,e^{ikx}\,dk.
+\end{equation}
+
+\paragraph{Interpretation.}
+The Fourier transform expands $f(x)$ in the continuous basis of plane waves $e^{ikx}$.
+
+% ------------------------------------------------------------
+
+\subsection{Basic transform properties}
+\paragraph{Linearity.}
+\begin{equation}
+\mathcal{F}\{af+bg\} = a\tilde f + b\tilde g.
+\end{equation}
+
+\paragraph{Shift in $x$ (translation).}
+If $g(x)=f(x-x_0)$ then
+\begin{equation}
+\tilde g(k) = e^{-ikx_0}\tilde f(k).
+\end{equation}
+
+\paragraph{Modulation (shift in $k$).}
+If $g(x)=e^{ik_0 x}f(x)$ then
+\begin{equation}
+\tilde g(k) = \tilde f(k-k_0).
+\end{equation}
+
+\paragraph{Scaling.}
+If $g(x)=f(ax)$ with $a\neq 0$ then
+\begin{equation}
+\tilde g(k)=\frac{1}{|a|}\tilde f\!\left(\frac{k}{a}\right).
+\end{equation}
+
+% ------------------------------------------------------------
+
+\section{Dirac delta function and its Fourier representation}
+
+\subsection{Defining property}
+The Dirac delta $\delta(x)$ is defined by
+\begin{equation}
+\int_{-\infty}^{\infty}\delta(x-a)\,f(x)\,dx = f(a),
+\end{equation}
+for suitable test functions $f$.
+
+\subsection{Fourier representation of $\delta$}
+Start from the inverse transform of $\tilde f(k)=1$:
+\begin{equation}
+\delta(x) = \frac{1}{2\pi}\int_{-\infty}^{\infty} e^{ikx}\,dk.
+\end{equation}
+More generally,
+\begin{equation}
+\delta(x-x_0) = \frac{1}{2\pi}\int_{-\infty}^{\infty} e^{ik(x-x_0)}\,dk.
+\end{equation}
+
+\subsection{Delta as completeness / orthogonality of plane waves}
+Using the transform pair,
+\begin{equation}
+\int_{-\infty}^{\infty} e^{ikx}\,dx = 2\pi\,\delta(k),
+\end{equation}
+and equivalently,
+\begin{equation}
+\int_{-\infty}^{\infty} e^{i(k-k')x}\,dx = 2\pi\,\delta(k-k').
+\end{equation}
+
+\subsection{Fourier transform of a delta}
+\begin{equation}
+\mathcal{F}\{\delta(x-x_0)\}(k)
+= \int_{-\infty}^{\infty}\delta(x-x_0)e^{-ikx}\,dx
+= e^{-ikx_0}.
+\end{equation}
+
+% ------------------------------------------------------------
+
+\section{Fourier transforms of derivatives}
+
+Assume boundary terms vanish (e.g.\ $f(x)\to 0$ sufficiently fast as $|x|\to\infty$),
+or interpret in the distribution sense.
+
+\subsection{First derivative}
+\begin{align}
+\mathcal{F}\{f'(x)\}(k)
+&= \int_{-\infty}^{\infty} f'(x)e^{-ikx}\,dx\\
+&= \Big[f(x)e^{-ikx}\Big]_{-\infty}^{\infty}
++ik\int_{-\infty}^{\infty}f(x)e^{-ikx}\,dx\\
+&= ik\,\tilde f(k).
+\end{align}
+So:
+\begin{equation}
+\boxed{\mathcal{F}\{f'\}(k)=ik\,\tilde f(k)}.
+\end{equation}
+
+\subsection{Second derivative}
+\begin{equation}
+\mathcal{F}\{f''\}(k)=(ik)^2\tilde f(k)=-k^2\tilde f(k).
+\end{equation}
+
+\subsection{$n$th derivative}
+\begin{equation}
+\boxed{\mathcal{F}\left\{\frac{d^n f}{dx^n}\right\}(k)=(ik)^n\tilde f(k)}.
+\end{equation}
+
+\paragraph{Key use in PDEs.}
+Differential operators become algebraic multipliers in Fourier space:
+\[
+\frac{d}{dx}\to ik,\qquad \frac{d^2}{dx^2}\to -k^2.
+\]
+
+% ------------------------------------------------------------
+
+\section{Convolution theorem}
+
+\subsection{Definition of convolution}
+For functions $f,g$ define their convolution
+\begin{equation}
+(f*g)(x) := \int_{-\infty}^{\infty} f(x-t)\,g(t)\,dt
+= \int_{-\infty}^{\infty} f(t)\,g(x-t)\,dt.
+\end{equation}
+
+\subsection{Fourier transform of a convolution}
+\begin{equation}
+\boxed{\mathcal{F}\{(f*g)(x)\}(k)=\tilde f(k)\,\tilde g(k)}.
+\end{equation}
+
+\subsection{Proof sketch (one-line computation)}
+\begin{align}
+\mathcal{F}\{f*g\}(k)
+&= \int dx\,e^{-ikx}\int dt\,f(x-t)g(t)\\
+&= \int dt\,g(t)\int du\,f(u)e^{-ik(u+t)}\\
+&= \left(\int du\,f(u)e^{-iku}\right)\left(\int dt\,g(t)e^{-ikt}\right)\\
+&= \tilde f(k)\tilde g(k).
+\end{align}
+
+\subsection{Inverse form: product becomes convolution}
+If $h(x)=f(x)g(x)$ then
+\begin{equation}
+\boxed{\tilde h(k)=\mathcal{F}\{fg\}(k)=\frac{1}{2\pi}(\tilde f * \tilde g)(k)}.
+\end{equation}
+
+\subsection{Delta as identity under convolution}
+Using $\delta$,
+\begin{equation}
+(f*\delta)(x)=\int f(x-t)\delta(t)\,dt=f(x).
+\end{equation}
+
+% ------------------------------------------------------------
+
+\section{High-yield summary}
+
+\begin{itemize}
+\item Transform pair:
+\[
+\tilde f(k)=\int_{-\infty}^{\infty}f(x)e^{-ikx}dx,\qquad
+f(x)=\frac{1}{2\pi}\int_{-\infty}^{\infty}\tilde f(k)e^{ikx}dk.
+\]
+\item Delta representation:
+\[
+\delta(x)=\frac{1}{2\pi}\int_{-\infty}^{\infty}e^{ikx}dk,
+\qquad
+\int e^{i(k-k')x}dx=2\pi\delta(k-k').
+\]
+\item Derivatives:
+\[
+\mathcal{F}\{f^{(n)}\}(k)=(ik)^n\tilde f(k).
+\]
+\item Convolution theorem:
+\[
+\mathcal{F}\{f*g\}=\tilde f\,\tilde g,\qquad
+\mathcal{F}\{fg\}=\frac{1}{2\pi}(\tilde f*\tilde g).
+\]
+\end{itemize}

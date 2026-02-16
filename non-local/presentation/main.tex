@@ -1,0 +1,526 @@
+\documentclass[11pt]{beamer}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, physics, bm}
+
+\title[Fractal Electrodynamics]{Electrodynamics of Fractal Distributions of Charges and Fields}
+\subtitle{Fractional Continuous Models and Generalized Maxwell Equations}
+\author{Based on V.E. Tarasov}
+\institute{By Gytis Vėjelis}
+\date{}
+
+\begin{document}
+
+%------------------------------------------------
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Motivation}
+\begin{itemize}
+  \item Classical electrodynamics assumes \textbf{smooth charge and current distributions} in $\mathbb{R}^3$
+  \item Many physical systems are irregular or strongly inhomogeneous:
+  \begin{itemize}
+    \item Turbulent plasmas
+    \item Porous or disordered media
+    \item Percolation clusters
+    \item Space plasmas and astrophysical environments
+  \end{itemize}
+  \item These systems often exhibit \textbf{fractal geometry} with non-integer dimension
+\end{itemize}
+\vspace{0.3cm}
+How should Maxwell's equations be modified when charges live on fractals?
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{What is a Fractal Distribution?}
+\begin{itemize}
+  \item A fractal set has a (typically non-integer) \textbf{Hausdorff dimension} $D$
+  \item Charge does not fill 3D volume uniformly, but resides on a set of dimension $D$
+  \item Scaling law for total charge inside a ball of radius $R$:
+\end{itemize}
+\begin{equation*}
+  Q(R) \propto R^D, \qquad 0 < D \le 3
+\end{equation*}
+\begin{itemize}
+  \item In ordinary media, $D = 3$ for a bulk, $D = 2$ for a surface, $D = 1$ for a line
+  \item Here $D$ can be non-integer and is defined operationally from the scaling
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Standard Electrodynamics}
+\begin{itemize}
+  \item Charge density $\rho(\bm r)$ defined on $\mathbb{R}^3$
+  \item Volume, surface, and line elements:
+\end{itemize}
+\begin{equation*}
+  dV = d^3x, \qquad d\bm S, \qquad d\bm l
+\end{equation*}
+\begin{itemize}
+  \item Total charge in region $W \subset \mathbb{R}^3$:
+\end{itemize}
+\begin{equation*}
+  Q(W) = \int_W \rho(\bm r)\, dV
+\end{equation*}
+\begin{itemize}
+  \item Current density $\bm J(\bm r, t)$ and total current through surface $S$:
+\end{itemize}
+\begin{equation*}
+  I(S) = \int_S \bm J \cdot d\bm S
+\end{equation*}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Standard Electrodynamics}
+Maxwell equations (differential form, in vacuum):
+\begin{align*}
+  \nabla \cdot \bm E &= \frac{\rho}{\varepsilon_0} , \\
+  \nabla \cdot \bm B &= 0 , \\
+  \nabla \times \bm E &= -\frac{\partial \bm B}{\partial t} , \\
+  \nabla \times \bm B &= \mu_0 \bm J + \mu_0 \varepsilon_0 \frac{\partial \bm E}{\partial t} .
+\end{align*}
+Integral form (Gauss and Ampère as examples):
+\begin{align*}
+  \oint_S \bm E \cdot d\bm S &= \frac{Q(W)}{\varepsilon_0} , \\
+  \oint_C \bm B \cdot d\bm l &= \mu_0 I(S) + \mu_0 \varepsilon_0 \frac{d}{dt} \int_S \bm E \cdot d\bm S .
+\end{align*}
+Space is smooth and three-dimensional at all scales.
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}{Where to add Fractional Calculus?}
+\begin{itemize}
+  \item So far, no fractional \emph{derivatives} appeared in Maxwell equations
+  \item If we naively replaced $\partial \rightarrow \partial^{\alpha}$ we would break Lorentz invariance
+  \item But we can use Integration of non-integer order
+  \item This corresponds to \emph{fractional measures} on $\mathbb{R}^3$
+\end{itemize}
+
+\vspace{0.2cm}
+This approach follows Tarasov’s
+\[
+\text{``fractional continuous model of fractal distributions.''}
+\]
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}{Fractional Integrals and Fractal Measures}
+For a function $f(\bm r)$, the Riesz fractional integral in $\mathbb{R}^3$ is
+\begin{equation*}
+  (I^D f)(\bm r)
+  =
+  C(D)
+  \int_{\mathbb{R}^3}
+  \frac{f(\bm r')}{|\bm r - \bm r'|^{3-D}}
+  \, d^3 r' ,
+  \qquad 0 < D < 3
+\end{equation*}
+
+\begin{itemize}
+  \item This integral has the same scaling as a $D$-dimensional volume
+  \item It defines an \textbf{effective integration over a fractal}
+  \item This is important since many fractals are singular sets! (Lebeasgue measure is 0)
+\end{itemize}
+
+\vspace{0.2cm}
+Tarasov shows that
+\[
+  (I^D f)(\bm r)
+  \;\;\Longleftrightarrow\;\;
+  \int_W f(\bm r)\, dV_D
+\]
+\end{frame}
+
+
+
+%------------------------------------------------
+\begin{frame}{Density of States as Fractional Kernel}
+Let's introduce the fractional volume element
+\begin{equation*}
+  dV_D = c_3(D,\bm r)\, d^3x
+  \qquad
+  c_3(D,r) \propto r^{D-3}
+\end{equation*}
+
+It is exactly the kernel of a Riesz-type fractional integral
+
+
+\begin{itemize}
+  \item Fractional integration replaces
+  \[
+    \int d^3x \;\;\to\;\; \int r^{D-3} d^3x
+  \]
+  \item The order of integration $D$ equals the fractal dimension
+  \item Replace the fractal by an \textbf{effective continuous distribution} in $\mathbb{R}^3$
+\end{itemize}
+
+For a ball of radius $R$ one has
+\begin{equation*}
+  \int_{|\bm r| \le R} dV_D \propto R^D
+\end{equation*}
+
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}{Density of States $c_n(D,\bm r)$}
+\begin{itemize}
+  \item $c_n(D,\bm r)$: \textbf{density of states} in $n$-dimensional Euclidean space
+  \item Tells us how densely “available positions” for charges are packed
+  \item For $n=3$, a typical choice (Riemann--Liouville type) is
+    \begin{equation*}
+      c_3(D,r) = C(D)\, r^{D-3}
+    \end{equation*}
+  where $r = |\bm r|$ and $C(D)$ is a dimension-dependent normalization factor
+  \item For $D = 3$, $c_3(3,r) = 1$ and we recover the usual volume element
+  \item Similar definitions exist for $c_2(d,\bm r)$ on surfaces and $c_1(\gamma,\bm r)$ on curves
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Generalized Gauss and Stokes Theorems}
+\begin{itemize}
+  \item For a vector field $\bm F(\bm r)$, Gauss theorem in this model is schematically
+    \begin{equation*}
+      \oint_{\partial W} \bm F \cdot d\bm S_d
+      = \int_W \nabla \cdot \bigl( c_2(d,\bm r)\, \bm F(\bm r) \bigr)\, c_3(D,\bm r)\, d^3x
+    \end{equation*}
+  \item Stokes theorem similarly becomes
+    \begin{equation*}
+      \oint_{\partial S} \bm F \cdot d\bm l_\gamma
+      = \int_S \bigl[ \nabla \times \bigl( c_1(\gamma,\bm r)\, \bm F(\bm r) \bigr) \bigr] \cdot d\bm S_d
+    \end{equation*}
+  \item The \emph{form} of the theorems is preserved, but the divergence and curl are effectively weighted by $c_n$.
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Charge and Current in Fractal Media}
+\begin{itemize}
+  \item Total fractal charge in region $W$:
+    \begin{equation*}
+      Q_D(W,t) = \int_W \rho(\bm r,t)\, c_3(D,\bm r)\, d^3x
+    \end{equation*}
+  \item Current density remains
+    \begin{equation*}
+      \bm J(\bm r,t) = \rho(\bm r,t)\, \bm u(\bm r,t)
+    \end{equation*}
+  \item but the total current through a fractal surface $S$ of dimension $d$ is
+    \begin{equation*}
+      I_d(S,t) = \int_S \bm J(\bm r,t) \cdot d\bm S_d, \qquad
+      d\bm S_d = c_2(d,\bm r)\, d\bm S
+    \end{equation*}
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Charge Conservation}
+Global charge conservation for a region $W$:
+\begin{equation*}
+  \frac{d}{dt} Q_D(W,t) = - I_d(\partial W,t) .
+\end{equation*}
+In terms of densities:
+\begin{equation*}
+  \frac{d}{dt} \int_W \rho(\bm r,t)\, c_3(D,\bm r)\, d^3x
+  = - \int_{\partial W} \bm J(\bm r,t) \cdot d\bm S_d
+\end{equation*}
+Using generalized Gauss theorem and assuming $W$ is fixed in time, this leads to a continuity equation:
+\begin{equation*}
+  c_3(D,\bm r)\, \frac{\partial \rho}{\partial t}
+  + \nabla \cdot \bigl( c_2(d,\bm r)\, \bm J(\bm r,t) \bigr) = 0
+\end{equation*}
+For $D = 3$ and $d = 2$, $c_3 = c_2 = 1$ and we recover
+\begin{equation*}
+  \frac{\partial \rho}{\partial t} + \nabla \cdot \bm J = 0
+\end{equation*}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Coulomb’s Law for Fractal Sources}
+For a charge distribution $\rho(\bm r')$ with fractal dimension $D$, the electric field at $\bm r$ is
+\begin{equation*}
+  \bm E(\bm r) = \frac{1}{4\pi \varepsilon_0}
+  \int_W \frac{\bm r - \bm r'}{\lvert \bm r - \bm r' \rvert^3}\,
+  \rho(\bm r')\, c_3(D,\bm r')\, d^3x'
+\end{equation*}
+\begin{itemize}
+  \item The kernel is the same as in standard 3D electrostatics
+  \item The \emph{measure} $c_3(D,\bm r')\, d^3x'$ carries information about fractal geometry
+  \item For homogeneous fractal distributions, one obtains field scalings like $E(R) \propto R^{D-3}$
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Biot--Savart Law for Fractal Currents}
+For a steady current distribution $\bm J(\bm r')$ with fractal dimension $D$:
+\begin{equation*}
+  \bm B(\bm r) = \frac{\mu_0}{4\pi}
+  \int_W \frac{\bm J(\bm r') \times (\bm r - \bm r')}{\lvert \bm r - \bm r' \rvert^3}\,
+  c_3(D,\bm r')\, d^3x'
+\end{equation*}
+\begin{itemize}
+  \item Again, the kernel is unchanged
+  \item Fractal integration modifies how strongly regions contribute as a function of distance
+  \item In symmetric cases, one can get magnetic fields that decay with non-standard exponents or even stay constant
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Gauss and Amp\`ere Laws with Fractal Measures}
+Electric flux through a fractal surface $S = \partial W$:
+\begin{equation*}
+  \Phi_E(S,t) = \oint_S \bm E(\bm r,t) \cdot d\bm S_d
+  = \frac{1}{\varepsilon_0} \int_W \rho(\bm r,t)\, dV_D
+\end{equation*}
+Amp\`ere’s law (without displacement current, for steady currents):
+\begin{equation*}
+  \oint_C \bm B(\bm r) \cdot d\bm l_\gamma
+  = \mu_0 \int_S \bm J(\bm r)\cdot d\bm S_d
+\end{equation*}
+\begin{itemize}
+  \item For homogeneous fractal distributions, these lead to simple power-law fields
+  \item Example: for suitable $D$ and $d$, $E(R)$ or $B(R)$ can be constant with $R$
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Maxwell Equations for Fractal Distributions (Integral Form)}
+Assuming charges and fields are defined on the fractal set:
+\begin{align*}
+  \oint_S \bm E \cdot d\bm S_d
+    &= \frac{1}{\varepsilon_0} \int_W \rho(\bm r,t)\, dV_D \\
+  \oint_S \bm B \cdot d\bm S_d
+    &= 0 \\
+  \oint_C \bm E \cdot d\bm l_\gamma
+    &= -\frac{d}{dt} \oint_S \bm B \cdot d\bm S_d \\
+  \oint_C \bm B \cdot d\bm l_\gamma
+    &= \mu_0 \int_S \bm J(\bm r,t)\cdot d\bm S_d
+       + \mu_0 \varepsilon_0 \frac{d}{dt} \oint_S \bm E \cdot d\bm S_d
+\end{align*}
+\begin{itemize}
+  \item Same structure as standard Maxwell equations, but with $dV_D$, $d\bm S_d$, $d\bm l_\gamma$.
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Maxwell Equations for Fractal Distributions (Differential Form)}
+Using generalized Gauss and Stokes theorems, the integral equations lead to:
+\begin{align*}
+  \nabla \cdot \bigl( c_2(d,\bm r)\, \bm E(\bm r,t) \bigr)
+    &= \frac{1}{\varepsilon_0} c_3(D,\bm r)\, \rho(\bm r,t) \\
+  \nabla \cdot \bigl( c_2(d,\bm r)\, \bm B(\bm r,t) \bigr)
+    &= 0 \\
+  \nabla \times \bigl( c_1(\gamma,\bm r)\, \bm E(\bm r,t) \bigr)
+    &= - c_2(d,\bm r)\, \frac{\partial \bm B}{\partial t} \\
+  \nabla \times \bigl( c_1(\gamma,\bm r)\, \bm B(\bm r,t) \bigr)
+    &= \mu_0 c_2(d,\bm r)\, \bm J(\bm r,t)
+     + \mu_0 \varepsilon_0 c_2(d,\bm r)\, \frac{\partial \bm E}{\partial t}
+\end{align*}
+\begin{itemize}
+  \item These are ordinary differential equations in space and time, but with position-dependent weights from geometry.
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Apparent Magnetic Monopoles from Fractality}
+From
+\begin{equation*}
+  \nabla \cdot \bigl( c_2(d,\bm r)\, \bm B \bigr) = 0
+\end{equation*}
+we can write
+\begin{equation*}
+  c_2(d,\bm r)\, \nabla \cdot \bm B + \bm B \cdot \nabla c_2(d,\bm r) = 0
+\end{equation*}
+If $c_2$ varies in space (true fractal case), then
+\begin{equation*}
+  \nabla \cdot \bm B = - \frac{\bm B \cdot \nabla c_2}{c_2} \neq 0
+\end{equation*}
+in general.
+\begin{itemize}
+  \item The field behaves \emph{as if} there were effective magnetic charges
+  \item These are not fundamental monopoles, but artifacts of the fractal geometry
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Effective Medium Interpretation}
+Define effective fields
+\begin{equation*}
+  \bm E_{\text{eff}} = c_1(\gamma,\bm r)\, \bm E, \qquad
+  \bm B_{\text{eff}} = c_2(d,\bm r)\, \bm B
+\end{equation*}
+Then we can rewrite Maxwell equations in a more standard form using
+\begin{equation*}
+  \bm D = \varepsilon_{\text{eff}}(\bm r)\, \bm E_{\text{eff}}, \qquad
+  \bm H = \frac{1}{\mu_{\text{eff}}(\bm r)}\, \bm B_{\text{eff}}
+\end{equation*}
+\begin{itemize}
+  \item Fractal distribution behaves like a medium with spatially varying
+  \begin{equation*}
+    \varepsilon_{\text{eff}}(\bm r), \qquad \mu_{\text{eff}}(\bm r),
+  \end{equation*}
+  determined by $c_n(D,\bm r)$ and the fractal dimensions.
+  \item Geometry (fractal) and material response become deeply intertwined.
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Electric Multipole Expansion on Fractals}
+Scalar potential for a static fractal charge distribution:
+\begin{equation*}
+  \phi(\bm R) =
+  \frac{1}{4\pi \varepsilon_0}
+  \int_W \frac{\rho(\bm r)\, dV_D}{\lvert \bm R - \bm r \rvert}
+\end{equation*}
+For $R = |\bm R|$ large compared to $|\bm r|$, expand
+\begin{equation*}
+  \frac{1}{\lvert \bm R - \bm r \rvert}
+  = \sum_{n=0}^\infty \frac{r^n}{R^{n+1}} P_n(\cos\theta),
+\end{equation*}
+where $\theta$ is the angle between $\bm R$ and $\bm r$.
+\begin{itemize}
+  \item Leads to usual monopole, dipole, quadrupole, \dots\ terms
+  \item Coefficients are now integrals with respect to $dV_D$
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Monopole and Dipole Moments}
+Monopole term (total charge):
+\begin{equation*}
+  \phi_0(\bm R) = \frac{1}{4\pi \varepsilon_0} \frac{Q_D(W)}{R}, \qquad
+  Q_D(W) = \int_W \rho(\bm r)\, dV_D
+\end{equation*}
+Dipole moment for fractal distribution:
+\begin{equation*}
+  \bm p^{(D)} = \int_W \bm r\, \rho(\bm r)\, dV_D
+\end{equation*}
+Dipole contribution:
+\begin{equation*}
+  \phi_1(\bm R) = \frac{1}{4\pi \varepsilon_0}
+  \frac{\bm p^{(D)} \cdot \bm R}{R^3}
+\end{equation*}
+\begin{itemize}
+  \item Structure identical to standard EM
+  \item Numerical values change because $dV_D$ redistributes weight in space
+  \item In simple homogeneous examples, deviations from the $D=3$ dipole are typically of order $10\text{--}20\%$.
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Comparison with Standard Electrodynamics}
+\begin{center}
+\begin{tabular}{l|l}
+\textbf{Standard EM} & \textbf{Fractal EM} \\\hline
+Space dimension $3$ & Effective dimension $D$ (non-integer) \\
+Ordinary measure $d^3x$ & Fractional measure $dV_D = c_3(D,\bm r)\, d^3x$ \\
+Uniform media & Geometrically inhomogeneous media \\
+$\nabla \cdot \bm B = 0$ & $\nabla \cdot (c_2 \bm B) = 0$ (effective monopoles) \\
+Field scaling $E \sim 1/R^2$ & $E \sim R^{D-3}$ (in simple symmetric cases)
+\end{tabular}
+\end{center}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Magnetohydrodynamics on Fractal Media}
+\begin{itemize}
+  \item Consider a plasma or conducting fluid whose \emph{charged particles}
+        are distributed on a fractal set of dimension $D$
+  \item The electromagnetic field interacts with a \textbf{collective medium},
+        not isolated charges
+\end{itemize}
+
+\textbf{Mass (or charge) conservation:}
+\begin{equation*}
+  c_3(D,\bm r)\, \frac{\partial \rho}{\partial t}
+  + \nabla \cdot \bigl( c_2(d,\bm r)\, \rho\, \bm u \bigr) = 0
+\end{equation*}
+
+\vspace{0.2cm}
+\textbf{Momentum balance (Euler equation):}
+\begin{equation*}
+  c_3(D,\bm r)\, \rho
+  \left(
+    \frac{\partial \bm u}{\partial t}
+    + (\bm u \cdot \nabla)\bm u
+  \right)
+  = - c_3(D,\bm r)\, \nabla p
+    + \rho\, \bm E
+    + \bm J \times \bm B
+\end{equation*}
+
+\begin{itemize}
+  \item Same structure as standard fluid dynamics
+  \item Inertia and pressure are weighted by the fractal measure
+  \item Lorentz force keeps its usual form
+\end{itemize}
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}{Induction Equation for Fractal Conducting Media}
+Using generalized Maxwell equations and Ohm's law
+\[
+  \bm J = \sigma \left( \bm E + \bm u \times \bm B \right),
+\]
+where $\sigma$ is conductivity, one obtains the \textbf{fractal induction equation}:
+\begin{equation*}
+  \frac{\partial}{\partial t}
+  \bigl( c_2(d,\bm r)\, \bm B \bigr)
+  = \nabla \times
+  \Bigl[
+    c_1(\gamma,\bm r)\,
+    \bigl( \bm u \times \bm B \bigr)
+  \Bigr]
+  +
+  \eta\, \nabla^2
+  \bigl( c_2(d,\bm r)\, \bm B \bigr)
+\end{equation*}
+where $\eta = 1/(\mu_0 \sigma)$ is the magnetic diffusivity.
+
+\begin{itemize}
+  \item Geometry modifies magnetic flux conservation
+  \item Even ideal MHD ($\eta \to 0$) is affected by fractality
+  \item Flux freezing becomes \emph{scale-dependent}
+\end{itemize}
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}{Physical Interpretation and Limits}
+\begin{itemize}
+  \item Fractal geometry acts as an \textbf{effective medium}
+  \item Transport, diffusion, and field amplification depend on $D$, $d$, $\gamma$
+  \item Standard MHD is recovered for
+  \[
+    D = 3, \quad d = 2, \quad \gamma = 1
+    \;\Rightarrow\;
+    c_n = 1
+  \]
+  \item Deviations become important in:
+  \begin{itemize}
+    \item Turbulent plasmas
+    \item Percolating current networks
+    \item Space and astrophysical plasmas
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}
+  \centering
+  {\Huge Thank you!}
+\end{frame}
+
+
+
+\end{document}

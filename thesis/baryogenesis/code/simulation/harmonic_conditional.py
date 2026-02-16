@@ -7,9 +7,9 @@ from integrators.rk4 import RK4Integrator
 logger = logging.getLogger(__name__)
 
 def run(args, ic):
-    integrator = RK4Integrator(harmonic.coupled_oscillators_rhs)
+    integrator = RK4Integrator(harmonic.harmonic_rhs)
 
-    header = ["x", "v"]
+    header = ["t", "x", "v"]
 
     init = ic["initial_state"]
     x0 = init["x0"]

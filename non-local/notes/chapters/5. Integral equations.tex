@@ -1,0 +1,270 @@
+% ============================================================
+% Notes: Integral Equations (A&W Ch. 16.3--16.4)
+% Topics: types, kernels, Neumann series, separable kernels,
+%         eigenvalues/eigenfunctions of homogeneous Fredholm II
+% ============================================================
+
+\section{Integral equations}
+
+\subsection{General form}
+An integral equation is an equation where the unknown function $\phi(x)$ appears under
+an integral sign. A standard linear form is
+\begin{equation}
+\phi(x) = f(x) + \lambda \int_a^b K(x,t)\,\phi(t)\,dt,
+\end{equation}
+where
+\begin{itemize}
+\item $f(x)$ is known (driving term),
+\item $K(x,t)$ is the kernel,
+\item $\lambda$ is a constant parameter,
+\item $\phi(x)$ is the unknown.
+\end{itemize}
+
+% ------------------------------------------------------------
+
+\section{Types of integral equations}
+
+\subsection{Fredholm vs Volterra}
+\paragraph{Fredholm.}
+Limits are constants:
+\begin{equation}
+\phi(x) = f(x) + \lambda \int_a^b K(x,t)\phi(t)\,dt.
+\end{equation}
+
+\paragraph{Volterra.}
+One limit depends on $x$ (typical causal structure):
+\begin{equation}
+\phi(x) = f(x) + \lambda \int_a^x K(x,t)\phi(t)\,dt.
+\end{equation}
+
+\subsection{First kind vs second kind}
+\paragraph{First kind.}
+Unknown appears only inside the integral:
+\begin{equation}
+f(x) = \int_a^b K(x,t)\phi(t)\,dt.
+\end{equation}
+These are often ill-conditioned / non-unique.
+
+\paragraph{Second kind.}
+Unknown appears both outside and inside:
+\begin{equation}
+\phi(x) = f(x) + \lambda \int_a^b K(x,t)\phi(t)\,dt.
+\end{equation}
+This is typically better posed and supports iterative solution methods.
+
+% ------------------------------------------------------------
+
+\section{Neumann series (successive approximations)}
+
+\subsection{Setup (Fredholm second kind)}
+Consider the Fredholm equation of the second kind
+\begin{equation}
+\phi(x) = f(x) + \lambda \int_a^b K(x,t)\phi(t)\,dt.
+\end{equation}
+Neumann's idea: iterate the equation by substituting approximations into the integral.
+A natural first guess is
+\begin{equation}
+\phi_0(x) = f(x).
+\end{equation}
+Then define recursively
+\begin{equation}
+\phi_{n+1}(x) = f(x) + \lambda \int_a^b K(x,t)\phi_n(t)\,dt.
+\end{equation}
+
+\subsection{Series form}
+Iterating generates a power series in $\lambda$:
+\begin{equation}
+\phi(x) = \sum_{i=0}^{\infty} \lambda^i u_i(x),
+\end{equation}
+with
+\begin{align}
+u_0(x) &= f(x),\\
+u_1(x) &= \int_a^b K(x,t_1)f(t_1)\,dt_1,\\
+u_2(x) &= \int_a^b\!\!\int_a^b K(x,t_1)K(t_1,t_2)f(t_2)\,dt_2\,dt_1,\\
+u_n(x) &= \int_a^b\cdots\int_a^b
+K(x,t_1)K(t_1,t_2)\cdots K(t_{n-1},t_n)\,f(t_n)\,dt_n\cdots dt_1.
+\end{align}
+This is exactly the Neumann series structure developed in Arfken \& Weber. :contentReference[oaicite:2]{index=2}
+
+\subsection{Kernel iterates (iterated kernels)}
+Define the iterated kernels
+\begin{align}
+K_1(x,t) &= K(x,t),\\
+K_{n+1}(x,t) &= \int_a^b K(x,z)\,K_n(z,t)\,dz.
+\end{align}
+Then the Neumann series may be written compactly as
+\begin{equation}
+\phi(x)=f(x)+\lambda\int_a^b K_1(x,t)f(t)\,dt
++\lambda^2\int_a^b K_2(x,t)f(t)\,dt+\cdots.
+\end{equation}
+
+\subsection{Convergence idea}
+The Neumann series converges if the integral operator is ``small enough'' (in operator norm),
+or more precisely (as emphasized in the text) convergence is controlled by the eigenvalues
+of the corresponding homogeneous equation. :contentReference[oaicite:3]{index=3}
+
+\subsection{Volterra case (important simplification)}
+For Volterra equations of the second kind,
+\begin{equation}
+\phi(x)=f(x)+\lambda\int_a^x K(x,t)\phi(t)\,dt,
+\end{equation}
+the Neumann series converges for all $\lambda$ provided $K$ is square integrable. :contentReference[oaicite:4]{index=4}
+
+% ------------------------------------------------------------
+
+\section{Separable (degenerate) kernels}
+
+\subsection{Definition}
+A kernel is \textbf{separable} (degenerate) if it can be written as a finite sum
+\begin{equation}
+K(x,t)=\sum_{j=1}^n M_j(x)\,N_j(t),
+\end{equation}
+as in A\&W. :contentReference[oaicite:5]{index=5}
+Example:
+\begin{equation}
+\cos(t-x)=\cos t\cos x+\sin t\sin x.
+\end{equation}
+
+\subsection{Fredholm second kind with separable kernel}
+Substitute into
+\begin{equation}
+\phi(x)=f(x)+\lambda\int_a^b K(x,t)\phi(t)\,dt
+\end{equation}
+to obtain
+\begin{equation}
+\phi(x)=f(x)+\lambda\sum_{j=1}^n M_j(x)\int_a^b N_j(t)\phi(t)\,dt.
+\end{equation}
+Define constants
+\begin{equation}
+c_j:=\int_a^b N_j(t)\phi(t)\,dt.
+\end{equation}
+Then the solution has the form
+\begin{equation}
+\phi(x)=f(x)+\lambda\sum_{j=1}^n c_j M_j(x).
+\end{equation}
+
+\subsection{Reduction to linear algebra}
+Multiply by $N_i(x)$ and integrate to obtain a finite linear system:
+\begin{equation}
+c_i=b_i+\lambda\sum_{j=1}^n a_{ij}c_j,
+\end{equation}
+where
+\begin{equation}
+b_i=\int_a^b N_i(x)f(x)\,dx,
+\qquad
+a_{ij}=\int_a^b N_i(x)M_j(x)\,dx.
+\end{equation}
+Matrix form:
+\begin{equation}
+b=(1-\lambda A)c,
+\qquad
+c=(1-\lambda A)^{-1}b.
+\end{equation}
+This makes explicit the correspondence between integral equations and matrix equations. :contentReference[oaicite:6]{index=6}
+
+\subsection{Homogeneous case and eigenvalues}
+For the homogeneous equation $f(x)=0$, we have $b=0$ and
+\begin{equation}
+(1-\lambda A)c=0.
+\end{equation}
+Nontrivial solutions exist only if
+\begin{equation}
+\boxed{\det(1-\lambda A)=0.}
+\end{equation}
+This is the \textbf{secular equation} giving eigenvalues $\lambda$. :contentReference[oaicite:7]{index=7}
+
+% ------------------------------------------------------------
+
+\section{Homogeneous Fredholm equation of the second kind}
+
+\subsection{Eigenvalue formulation}
+The homogeneous Fredholm equation of the second kind is
+\begin{equation}
+\boxed{
+\phi(x)=\lambda\int_a^b K(x,t)\phi(t)\,dt.
+}
+\end{equation}
+A nontrivial solution $\phi(x)\neq 0$ exists only for special values $\lambda=\lambda_n$.
+These are the \textbf{eigenvalues}, and the corresponding solutions $\phi_n(x)$ are
+the \textbf{eigenfunctions}. :contentReference[oaicite:8]{index=8}
+
+\subsection{Symmetric kernels and Hilbert--Schmidt theory}
+Assume
+\begin{equation}
+K(x,t)=K(t,x),\qquad K\in\mathbb{R}.
+\end{equation}
+Then (Hilbert--Schmidt theory):
+\begin{itemize}
+\item eigenvalues $\lambda_n$ are real,
+\item eigenfunctions corresponding to distinct eigenvalues are orthogonal,
+\item eigenfunctions form a complete set in a suitable sense.
+\end{itemize}
+This parallels Hermitian matrices and Sturm--Liouville ODEs. :contentReference[oaicite:9]{index=9}
+
+\subsection{Orthogonality of eigenfunctions}
+Let $\phi_i,\phi_j$ satisfy
+\[
+\phi_i(x)=\lambda_i\int_a^b K(x,t)\phi_i(t)\,dt,
+\qquad
+\phi_j(x)=\lambda_j\int_a^b K(x,t)\phi_j(t)\,dt.
+\]
+For a symmetric kernel, one obtains
+\begin{equation}
+(\lambda_j-\lambda_i)\int_a^b \phi_i(x)\phi_j(x)\,dx = 0.
+\end{equation}
+Thus if $\lambda_i\neq \lambda_j$,
+\begin{equation}
+\boxed{
+\int_a^b \phi_i(x)\phi_j(x)\,dx = 0.
+}
+\end{equation}
+This is the Fredholm integral-equation analog of Sturm--Liouville orthogonality. :contentReference[oaicite:10]{index=10}
+
+\subsection{Normalization and degeneracy}
+One may normalize eigenfunctions so that
+\begin{equation}
+\int_a^b \phi_i(x)\phi_j(x)\,dx=\delta_{ij}.
+\end{equation}
+If an eigenvalue is degenerate, the corresponding eigenfunctions may be orthogonalized
+by Gram--Schmidt. :contentReference[oaicite:11]{index=11}
+
+\subsection{Reality of eigenvalues}
+For Hermitian kernels $K(x,t)=K^*(t,x)$ (general complex case), eigenvalues are real. :contentReference[oaicite:12]{index=12}
+
+% ------------------------------------------------------------
+
+\section{Kernel expansion in eigenfunctions (bilinear expansion)}
+
+For symmetric kernels, the kernel itself can be expanded in eigenfunctions:
+\begin{equation}
+\boxed{
+K(x,t)=\sum_{n=1}^{\infty}\frac{\phi_n(x)\phi_n(t)}{\lambda_n},
+\qquad (0\ \text{not an eigenvalue}).
+}
+\end{equation}
+This is the bilinear eigenfunction expansion stated in A\&W. :contentReference[oaicite:13]{index=13}
+
+% ------------------------------------------------------------
+
+\section{High-yield summary}
+
+\begin{itemize}
+\item Fredholm: fixed limits; Volterra: variable limit.
+\item First kind: $f=\int K\phi$ (often non-unique/ill-conditioned).
+\item Second kind: $\phi=f+\lambda\int K\phi$ (iterative methods work).
+\item Neumann series: iterate substitution to get a power series in $\lambda$:
+\[
+\phi=\sum_{n=0}^\infty \lambda^n u_n.
+\]
+\item Separable (degenerate) kernels reduce the integral equation to a finite matrix equation:
+\[
+(1-\lambda A)c=b.
+\]
+\item Homogeneous Fredholm II: $\phi=\lambda\int K\phi$ has nontrivial solutions only for
+eigenvalues $\lambda_n$.
+\item For symmetric kernels: eigenvalues real, eigenfunctions orthogonal, completeness holds.
+\item Kernel eigenfunction expansion:
+\[
+K(x,t)=\sum_n \frac{\phi_n(x)\phi_n(t)}{\lambda_n}.
+\]
+\end{itemize}

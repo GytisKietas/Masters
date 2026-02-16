@@ -1,0 +1,226 @@
+\section{The Dirac Equation}
+
+\subsection{The Lorentz Group (Quick Facts)}
+Lorentz transformations preserve the Minkowski metric:
+\begin{equation}
+\eta_{\rho\sigma}\Lambda^\rho_{\ \mu}\Lambda^\sigma_{\ \nu}=\eta_{\mu\nu}.
+\end{equation}
+Infinitesimally,
+\begin{equation}
+\Lambda^\mu_{\ \nu}=\delta^\mu_{\ \nu}+\omega^\mu_{\ \nu}, 
+\qquad \omega_{\mu\nu}=-\omega_{\nu\mu}.
+\end{equation}
+Generators in the vector representation satisfy the Lorentz algebra:
+\begin{equation}
+[J^{\mu\nu},J^{\rho\sigma}]
+=
+i\left(
+\eta^{\nu\rho}J^{\mu\sigma}
+-\eta^{\mu\rho}J^{\nu\sigma}
+-\eta^{\nu\sigma}J^{\mu\rho}
++\eta^{\mu\sigma}J^{\nu\rho}
+\right).
+\end{equation}
+
+\subsection{Clifford Algebra and Gamma Matrices}
+The Dirac gamma matrices $\gamma^\mu$ satisfy the Clifford algebra:
+\begin{equation}
+\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}\mathbf{1}.
+\end{equation}
+Define
+\begin{equation}
+\gamma^5 := i\gamma^0\gamma^1\gamma^2\gamma^3,
+\end{equation}
+which obeys
+\begin{equation}
+(\gamma^5)^2=\mathbf{1}, 
+\qquad
+\{\gamma^5,\gamma^\mu\}=0.
+\end{equation}
+
+Useful matrices:
+\begin{equation}
+\sigma^{\mu\nu}:=\frac{i}{2}[\gamma^\mu,\gamma^\nu].
+\end{equation}
+
+\subsection{Spinor Representation of Lorentz Transformations}
+Dirac spinors transform as
+\begin{equation}
+\psi(x)\to \psi'(x') = S(\Lambda)\psi(x),
+\qquad x'=\Lambda x,
+\end{equation}
+with
+\begin{equation}
+S(\Lambda)=\exp\left(-\frac{i}{4}\omega_{\mu\nu}\sigma^{\mu\nu}\right).
+\end{equation}
+Consistency condition:
+\begin{equation}
+S^{-1}(\Lambda)\gamma^\mu S(\Lambda)=\Lambda^\mu_{\ \nu}\gamma^\nu.
+\end{equation}
+
+\subsection{The Dirac Equation and Dirac Lagrangian}
+The Dirac equation:
+\begin{equation}
+(i\gamma^\mu\partial_\mu-m)\psi=0.
+\end{equation}
+Dirac Lagrangian:
+\begin{equation}
+\mathcal{L}_D=\bar{\psi}(i\gamma^\mu\partial_\mu-m)\psi,
+\qquad
+\bar{\psi}:=\psi^\dagger\gamma^0.
+\end{equation}
+Euler--Lagrange gives
+\begin{equation}
+(i\gamma^\mu\partial_\mu-m)\psi=0,
+\qquad
+\bar{\psi}(i\overleftarrow{\partial}_\mu\gamma^\mu+m)=0.
+\end{equation}
+
+\paragraph{Klein--Gordon relation.}
+Multiply the Dirac operator:
+\begin{equation}
+(i\gamma^\mu\partial_\mu-m)(i\gamma^\nu\partial_\nu+m)\psi
+=
+(-\partial^2-m^2)\psi=0,
+\end{equation}
+so each component satisfies the KG equation.
+
+\subsection{Chiral Projectors and Chiral Spinors}
+Define projectors:
+\begin{equation}
+P_L=\frac{1-\gamma^5}{2},\qquad P_R=\frac{1+\gamma^5}{2}.
+\end{equation}
+Decompose:
+\begin{equation}
+\psi=\psi_L+\psi_R,
+\qquad
+\psi_{L,R}=P_{L,R}\psi.
+\end{equation}
+For $m\neq 0$, left and right components mix in the Dirac equation.
+For $m=0$, they decouple.
+
+\subsection{The Weyl Equation (Massless Spinors)}
+For $m=0$:
+\begin{equation}
+i\gamma^\mu\partial_\mu\psi=0.
+\end{equation}
+Chiral components satisfy separate Weyl equations:
+\begin{equation}
+i\gamma^\mu\partial_\mu\psi_L=0,
+\qquad
+i\gamma^\mu\partial_\mu\psi_R=0.
+\end{equation}
+Interpretation: massless fermions can have definite chirality.
+
+\subsection{Parity}
+Parity acts on coordinates:
+\begin{equation}
+\mathsf{P}:\quad (t,\mathbf{x})\to (t,-\mathbf{x}).
+\end{equation}
+On spinors (standard convention):
+\begin{equation}
+\psi(t,\mathbf{x})\xrightarrow{\mathsf{P}}
+\psi'(t,\mathbf{x})=\gamma^0\psi(t,-\mathbf{x}).
+\end{equation}
+Under parity, chirality flips:
+\begin{equation}
+\psi_L \leftrightarrow \psi_R.
+\end{equation}
+Thus parity is incompatible with purely chiral theories (e.g. weak interaction).
+
+\subsection{Majorana Spinors (Idea)}
+A Majorana spinor satisfies a reality condition:
+\begin{equation}
+\psi^c=\psi,
+\end{equation}
+where
+\begin{equation}
+\psi^c := C\bar{\psi}^{\,T},
+\end{equation}
+and $C$ is the charge conjugation matrix (representation-dependent).
+
+\paragraph{Physical meaning.}
+A Majorana fermion is its own antiparticle.
+Majorana mass terms schematically look like
+\begin{equation}
+\mathcal{L}_M \sim -\frac{m}{2}\left(\bar{\psi}\psi^c+\bar{\psi}^c\psi\right),
+\end{equation}
+and require neutral fermions (no conserved $U(1)$ charge).
+
+\subsection{Symmetries and Conserved Currents}
+\paragraph{Global $U(1)$ phase symmetry.}
+\begin{equation}
+\psi \to e^{i\alpha}\psi,
+\qquad
+\bar{\psi}\to \bar{\psi}e^{-i\alpha}.
+\end{equation}
+Noether current:
+\begin{equation}
+j^\mu=\bar{\psi}\gamma^\mu\psi,
+\qquad
+\partial_\mu j^\mu=0.
+\end{equation}
+Conserved charge:
+\begin{equation}
+Q=\int d^3x\, j^0.
+\end{equation}
+
+\paragraph{Axial (chiral) current.}
+For $m=0$, the Lagrangian is also invariant under
+\begin{equation}
+\psi \to e^{i\alpha\gamma^5}\psi,
+\end{equation}
+with axial current
+\begin{equation}
+j_5^\mu=\bar{\psi}\gamma^\mu\gamma^5\psi.
+\end{equation}
+Classically,
+\begin{equation}
+\partial_\mu j_5^\mu = 0 \quad (m=0),
+\end{equation}
+but quantum mechanically this symmetry can be broken by anomalies (important in gauge theories).
+
+\subsection{Plane Wave Solutions}
+Seek solutions of the form
+\begin{equation}
+\psi(x)=u(p)e^{-ip\cdot x},
+\qquad p^0=E_{\mathbf{p}}.
+\end{equation}
+Plugging into Dirac equation gives
+\begin{equation}
+(\slashed{p}-m)u(p)=0,
+\qquad
+\slashed{p}:=\gamma^\mu p_\mu.
+\end{equation}
+Similarly for negative-frequency solutions:
+\begin{equation}
+\psi(x)=v(p)e^{ip\cdot x},
+\qquad
+(\slashed{p}+m)v(p)=0.
+\end{equation}
+
+\paragraph{Spin sums (very useful).}
+\begin{equation}
+\sum_s u^{(s)}(p)\bar{u}^{(s)}(p)=\slashed{p}+m,
+\qquad
+\sum_s v^{(s)}(p)\bar{v}^{(s)}(p)=\slashed{p}-m.
+\end{equation}
+
+\paragraph{Normalization (common covariant choice).}
+\begin{equation}
+\bar{u}^{(s)}(p)u^{(r)}(p)=2m\,\delta^{sr},
+\qquad
+\bar{v}^{(s)}(p)v^{(r)}(p)=-2m\,\delta^{sr}.
+\end{equation}
+
+\subsection{Summary (Exam Checklist)}
+\begin{itemize}
+\item Gamma matrices satisfy $\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}$.
+\item Dirac equation: $(i\slashed{\partial}-m)\psi=0$.
+\item Lorentz transformations on spinors: $S(\Lambda)=\exp(-\frac{i}{4}\omega_{\mu\nu}\sigma^{\mu\nu})$.
+\item Chirality projectors: $P_{L,R}=(1\mp\gamma^5)/2$.
+\item Weyl spinors: massless chiral components decouple.
+\item Parity: $\psi(t,\mathbf{x})\to \gamma^0\psi(t,-\mathbf{x})$, flips chirality.
+\item Conserved current: $j^\mu=\bar{\psi}\gamma^\mu\psi$ from global $U(1)$.
+\item Plane waves: $(\slashed{p}\mp m)u,v=0$ and spin sums $\sum u\bar{u}=\slashed{p}+m$.
+\end{itemize}

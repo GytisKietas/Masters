@@ -1,0 +1,227 @@
+\section{Quantum Electrodynamics (QED)}
+
+\subsection{Gauge Invariance (Classical EM)}
+The electromagnetic field is described by a 4-potential $A_\mu$ with field strength
+\begin{equation}
+F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu.
+\end{equation}
+Gauge transformation:
+\begin{equation}
+A_\mu(x)\to A_\mu'(x)=A_\mu(x)+\partial_\mu\alpha(x).
+\end{equation}
+Since $F_{\mu\nu}$ is invariant, Maxwell theory can be written as
+\begin{equation}
+\mathcal{L}_{\mathrm{EM}}=-\frac14 F_{\mu\nu}F^{\mu\nu}.
+\end{equation}
+
+\subsection{Inclusion of Matter: Minimal Coupling (QED Lagrangian)}
+Start from the free Dirac Lagrangian and impose \emph{local} $U(1)$ invariance:
+\begin{equation}
+\psi(x)\to e^{ie\alpha(x)}\psi(x).
+\end{equation}
+Introduce the covariant derivative
+\begin{equation}
+D_\mu := \partial_\mu + ie A_\mu,
+\end{equation}
+which transforms covariantly:
+\begin{equation}
+D_\mu\psi \to e^{ie\alpha(x)}D_\mu\psi.
+\end{equation}
+The full QED Lagrangian:
+\begin{equation}
+\mathcal{L}_{\mathrm{QED}}
+=
+\bar{\psi}(i\gamma^\mu D_\mu - m)\psi
+-\frac14 F_{\mu\nu}F^{\mu\nu}.
+\end{equation}
+Expanding:
+\begin{equation}
+\mathcal{L}_{\mathrm{QED}}
+=
+\bar{\psi}(i\gamma^\mu\partial_\mu-m)\psi
+-\frac14 F_{\mu\nu}F^{\mu\nu}
+-e\,\bar{\psi}\gamma^\mu\psi\,A_\mu.
+\end{equation}
+The interaction term is:
+\begin{equation}
+\mathcal{L}_{\mathrm{int}}=-e\,\bar{\psi}\gamma^\mu\psi\,A_\mu.
+\end{equation}
+
+\subsection{Conserved Current}
+Gauge invariance implies a conserved $U(1)$ current:
+\begin{equation}
+j^\mu=\bar{\psi}\gamma^\mu\psi,
+\qquad
+\partial_\mu j^\mu=0,
+\end{equation}
+and Maxwell's equation becomes
+\begin{equation}
+\partial_\mu F^{\mu\nu}=e\,j^\nu.
+\end{equation}
+
+\subsection{Quantization of the EM Field (Key Issue)}
+A massless spin-1 field has gauge redundancy, so naive canonical quantization is subtle.
+The physical photon has only \textbf{two} transverse polarizations.
+
+To quantize covariantly, introduce a gauge-fixing term. In Lorenz gauge:
+\begin{equation}
+\partial_\mu A^\mu=0.
+\end{equation}
+A standard gauge-fixed Lagrangian (covariant gauges):
+\begin{equation}
+\mathcal{L}
+=
+-\frac14 F_{\mu\nu}F^{\mu\nu}
+-\frac{1}{2\xi}(\partial_\mu A^\mu)^2.
+\end{equation}
+Here $\xi$ is the gauge parameter. The most common choice:
+\begin{equation}
+\xi=1 \quad \text{(Feynman gauge)}.
+\end{equation}
+
+\subsection{Lorentz-Invariant Propagators}
+\paragraph{Fermion propagator.}
+\begin{equation}
+S_F(p)=\frac{i(\slashed{p}+m)}{p^2-m^2+i\epsilon}.
+\end{equation}
+
+\paragraph{Photon propagator (covariant gauge).}
+In momentum space:
+\begin{equation}
+D_{\mu\nu}(k)
+=
+\frac{-i}{k^2+i\epsilon}
+\left(
+\eta_{\mu\nu}-(1-\xi)\frac{k_\mu k_\nu}{k^2}
+\right).
+\end{equation}
+In Feynman gauge ($\xi=1$):
+\begin{equation}
+D_{\mu\nu}(k)=\frac{-i\eta_{\mu\nu}}{k^2+i\epsilon}.
+\end{equation}
+
+\subsection{QED Feynman Rules (Momentum Space)}
+From
+\begin{equation}
+\mathcal{L}_{\mathrm{int}}=-e\,\bar{\psi}\gamma^\mu\psi\,A_\mu,
+\end{equation}
+the vertex factor is:
+\begin{equation}
+-ie\gamma^\mu.
+\end{equation}
+
+\paragraph{Summary of rules.}
+\begin{itemize}
+\item Fermion propagator:
+\[
+\frac{i(\slashed{p}+m)}{p^2-m^2+i\epsilon}.
+\]
+\item Photon propagator (Feynman gauge):
+\[
+\frac{-i\eta_{\mu\nu}}{k^2+i\epsilon}.
+\]
+\item Vertex:
+\[
+-ie\gamma^\mu.
+\]
+\item External fermion legs:
+\[
+u^{(s)}(p),\ \bar{u}^{(s)}(p),\ v^{(s)}(p),\ \bar{v}^{(s)}(p).
+\]
+\item Momentum conservation at each vertex:
+\[
+(2\pi)^4\delta^{(4)}\Big(\sum p_{\mathrm{in}}-\sum p_{\mathrm{out}}\Big).
+\]
+\item Closed fermion loop: extra factor $(-1)$.
+\end{itemize}
+
+\subsection{QED Processes (Core Examples)}
+\subsubsection{Electron--Muon Scattering: $e^-\mu^-\to e^-\mu^-$}
+Tree-level diagram: single photon exchange ($t$-channel).
+
+Invariant amplitude:
+\begin{equation}
+i\mathcal{M}
+=
+\bar{u}(p_3)(-ie\gamma^\mu)u(p_1)
+\left(\frac{-i\eta_{\mu\nu}}{(p_1-p_3)^2+i\epsilon}\right)
+\bar{u}(p_4)(-ie\gamma^\nu)u(p_2).
+\end{equation}
+So
+\begin{equation}
+\mathcal{M}
+=
+(-ie)^2
+\left[
+\bar{u}(p_3)\gamma^\mu u(p_1)
+\right]
+\frac{\eta_{\mu\nu}}{q^2}
+\left[
+\bar{u}(p_4)\gamma^\nu u(p_2)
+\right],
+\qquad q=p_1-p_3.
+\end{equation}
+
+\subsubsection{$e^+e^-\to \mu^+\mu^-$ (Annihilation)}
+Tree-level diagram: $s$-channel photon exchange.
+
+Amplitude:
+\begin{equation}
+i\mathcal{M}
+=
+\bar{v}(p_2)(-ie\gamma^\mu)u(p_1)
+\left(\frac{-i\eta_{\mu\nu}}{(p_1+p_2)^2+i\epsilon}\right)
+\bar{u}(p_3)(-ie\gamma^\nu)v(p_4).
+\end{equation}
+
+\subsubsection{Compton Scattering: $\gamma e^- \to \gamma e^-$}
+Two tree-level diagrams:
+\begin{itemize}
+\item $s$-channel: intermediate electron after absorbing photon
+\item $u$-channel: intermediate electron after emitting photon
+\end{itemize}
+Key point: both are required by gauge invariance.
+
+\subsubsection{M\o ller and Bhabha Scattering}
+\begin{itemize}
+\item M\o ller: $e^-e^-\to e^-e^-$ (exchange + identical fermion effects)
+\item Bhabha: $e^-e^+\to e^-e^+$ (both $s$ and $t$ channels)
+\end{itemize}
+
+\subsection{Gauge Invariance and Ward Identity (Essential Idea)}
+Gauge invariance implies relations between amplitudes.
+A key practical consequence: physical amplitudes are unchanged under
+\begin{equation}
+\epsilon_\mu(k)\to \epsilon_\mu(k)+c\,k_\mu
+\end{equation}
+for external photons (with polarization vector $\epsilon_\mu$).
+
+This leads to the Ward identity (schematically):
+\begin{equation}
+k_\mu \mathcal{M}^\mu = 0.
+\end{equation}
+This ensures consistency of the theory and cancellation of unphysical polarizations.
+
+\subsection{Summary (Exam Checklist)}
+\begin{itemize}
+\item QED Lagrangian:
+\[
+\mathcal{L}=\bar{\psi}(i\gamma^\mu D_\mu-m)\psi-\frac14F_{\mu\nu}F^{\mu\nu}.
+\]
+\item Gauge transformation:
+\[
+A_\mu\to A_\mu+\partial_\mu\alpha,\quad \psi\to e^{ie\alpha}\psi.
+\]
+\item Interaction vertex:
+\[
+-ie\gamma^\mu.
+\]
+\item Propagators:
+\[
+S_F(p)=\frac{i(\slashed{p}+m)}{p^2-m^2+i\epsilon},
+\qquad
+D_{\mu\nu}(k)=\frac{-i\eta_{\mu\nu}}{k^2+i\epsilon}\ (\xi=1).
+\]
+\item Typical tree-level processes: scattering via photon exchange, annihilation, Compton scattering.
+\item Ward identity expresses gauge invariance: demonstrate $k_\mu \mathcal{M}^\mu=0$.
+\end{itemize}

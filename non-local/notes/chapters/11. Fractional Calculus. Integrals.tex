@@ -1,0 +1,183 @@
+% ============================================================
+% Notes: Fractional Integration (Fractional Calculus)
+% Topics: RL fractional integral, semigroup property, kernels,
+%         Laplace transform, basic examples
+% Source: Richard Herrmann, Fractional Calculus: An Introduction for Physicists
+% ============================================================
+
+\section{Fractional calculus: fractional integration}
+
+\subsection{Motivation}
+Fractional integration generalizes the $n$-fold integral
+\[
+I^n f(t)=\underbrace{\int_0^t\int_0^{\tau_1}\cdots\int_0^{\tau_{n-1}}}_{n\ \text{times}}
+f(\tau_n)\,d\tau_n\cdots d\tau_1
+\]
+to non-integer order $\alpha>0$:
+\[
+I^n \ \longrightarrow\ I^\alpha.
+\]
+Fractional integrals are \textbf{nonlocal operators}: $(I^\alpha f)(t)$ depends on all
+values of $f(\tau)$ for $0\le \tau\le t$. :contentReference[oaicite:1]{index=1}
+
+% ------------------------------------------------------------
+
+\section{Riemann--Liouville (RL) fractional integral}
+
+\subsection{Definition}
+For $\alpha>0$, the (left-sided) RL fractional integral is
+\begin{equation}
+\boxed{
+(I_{0+}^\alpha f)(t)
+=
+\frac{1}{\Gamma(\alpha)}
+\int_0^t (t-\tau)^{\alpha-1}f(\tau)\,d\tau,
+\qquad t>0.
+}
+\end{equation}
+The kernel is a power law:
+\[
+M_\alpha(t-\tau)=\frac{(t-\tau)^{\alpha-1}}{\Gamma(\alpha)}.
+\]
+Thus $I^\alpha$ is a Volterra-type convolution operator.
+
+\subsection{Integer-order consistency}
+If $\alpha=n\in\mathbb{N}$, then
+\begin{equation}
+(I^n f)(t)
+=
+\frac{1}{(n-1)!}\int_0^t (t-\tau)^{n-1}f(\tau)\,d\tau,
+\end{equation}
+which reproduces the standard $n$-fold integral.
+
+\subsection{Semigroup property}
+For suitable $f$,
+\begin{equation}
+\boxed{
+I^\alpha I^\beta f = I^{\alpha+\beta}f,
+\qquad \alpha,\beta>0.
+}
+\end{equation}
+
+\subsection{Identity element}
+\begin{equation}
+I^0 f = f.
+\end{equation}
+
+% ------------------------------------------------------------
+
+\section{Right-sided RL fractional integral}
+
+On an interval $[a,b]$, the right-sided RL fractional integral is
+\begin{equation}
+\boxed{
+(I_{b-}^\alpha f)(t)
+=
+\frac{1}{\Gamma(\alpha)}
+\int_t^b (\tau-t)^{\alpha-1}f(\tau)\,d\tau.
+}
+\end{equation}
+This is useful in boundary-value problems and symmetric formulations.
+
+% ------------------------------------------------------------
+
+\section{Fractional integral as convolution}
+
+\subsection{Convolution form}
+Define
+\[
+g_\alpha(t)=\frac{t^{\alpha-1}}{\Gamma(\alpha)},\qquad t>0.
+\]
+Then
+\begin{equation}
+(I^\alpha f)(t) = (g_\alpha * f)(t)
+:= \int_0^t g_\alpha(t-\tau)f(\tau)\,d\tau.
+\end{equation}
+
+\subsection{Laplace transform rule}
+Let $F(s)=\mathcal{L}\{f(t)\}(s)$. Then
+\begin{equation}
+\boxed{
+\mathcal{L}\{I^\alpha f\}(s) = s^{-\alpha}F(s).
+}
+\end{equation}
+This is one of the most useful operational formulas.
+
+% ------------------------------------------------------------
+
+\section{Examples}
+
+\subsection{Fractional integral of a constant}
+Let $f(t)=1$. Then
+\begin{equation}
+(I^\alpha 1)(t)
+=
+\frac{1}{\Gamma(\alpha)}
+\int_0^t (t-\tau)^{\alpha-1}\,d\tau
+=
+\frac{t^\alpha}{\Gamma(\alpha+1)}.
+\end{equation}
+
+\subsection{Fractional integral of a power}
+Let $f(t)=t^\mu$ with $\mu>-1$. Then
+\begin{equation}
+\boxed{
+(I^\alpha t^\mu)(t)
+=
+\frac{\Gamma(\mu+1)}{\Gamma(\mu+\alpha+1)}\,t^{\mu+\alpha}.
+}
+\end{equation}
+
+\subsection{Fractional integral of an exponential (series form)}
+Using $e^{at}=\sum_{n=0}^\infty \frac{(at)^n}{n!}$ and linearity:
+\begin{equation}
+I^\alpha e^{at}
+=
+\sum_{n=0}^\infty \frac{a^n}{n!}\,I^\alpha t^n
+=
+\sum_{n=0}^\infty \frac{a^n}{n!}\frac{\Gamma(n+1)}{\Gamma(n+\alpha+1)}t^{n+\alpha}.
+\end{equation}
+
+% ------------------------------------------------------------
+
+\section{Important remarks}
+
+\subsection{Nonlocality / memory}
+Because
+\[
+(I^\alpha f)(t)=\frac{1}{\Gamma(\alpha)}\int_0^t (t-\tau)^{\alpha-1}f(\tau)\,d\tau,
+\]
+the value at time $t$ depends on the full past history $0\le\tau\le t$ with a power-law weight.
+This is the origin of memory effects in fractional models. :contentReference[oaicite:2]{index=2}
+
+\subsection{Kernel behavior}
+For $0<\alpha<1$, the kernel behaves like $(t-\tau)^{\alpha-1}$ which is integrable but singular
+near $\tau=t$:
+\[
+(t-\tau)^{\alpha-1}\to \infty \quad \text{as }\tau\to t^-.
+\]
+So recent history has the strongest weight, but all past contributes.
+
+% ------------------------------------------------------------
+
+\section{High-yield summary}
+
+\begin{itemize}
+\item RL fractional integral ($\alpha>0$):
+\[
+(I^\alpha f)(t)=\frac{1}{\Gamma(\alpha)}\int_0^t (t-\tau)^{\alpha-1}f(\tau)\,d\tau.
+\]
+\item Semigroup property:
+\[
+I^\alpha I^\beta = I^{\alpha+\beta}.
+\]
+\item Laplace transform:
+\[
+\mathcal{L}\{I^\alpha f\}=s^{-\alpha}F(s).
+\]
+\item Examples:
+\[
+I^\alpha 1 = \frac{t^\alpha}{\Gamma(\alpha+1)},\qquad
+I^\alpha t^\mu = \frac{\Gamma(\mu+1)}{\Gamma(\mu+\alpha+1)}t^{\mu+\alpha}.
+\]
+\end{itemize}

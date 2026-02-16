@@ -4,13 +4,17 @@ from simulation import harmonic_rk4
 from simulation import phi_rk4
 from simulation import slowroll
 from simulation import phi_homogeneous
+from simulation import harmonic_conditional
+from simulation import phi_chi
 from utils import io
 
 simulations = {
     "harmonic" : harmonic_rk4,
+    "harmonic_conditional" : harmonic_conditional,
     "phi" : phi_rk4,
     "slowroll" : slowroll,
-    "homogeneous" : phi_homogeneous
+    "homogeneous" : phi_homogeneous,
+    "phi_chi" : phi_chi,
 }
 
 

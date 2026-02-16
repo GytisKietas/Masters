@@ -1,0 +1,264 @@
+% ============================================================
+% Notes: Linear Operators, Self-Adjoint ODEs, Eigenfunctions
+% Topics: linear differential operators, Sturm–Liouville,
+%         Hermitian/self-adjoint operators, orthogonality,
+%         uniqueness, degeneracy
+% Source: Arfken & Weber (6th ed.), Ch. 9--10
+% ============================================================
+
+\section{Differential equations as linear operators}
+
+\subsection{Linear operators and the superposition principle}
+A (differential) operator $L$ is \textbf{linear} if
+\begin{equation}
+L(a\phi + b\psi) = a\,L(\phi) + b\,L(\psi),
+\qquad a,b \in \mathbb{R}\ \text{or}\ \mathbb{C}.
+\end{equation}
+A linear ODE/PDE can be written abstractly as
+\begin{equation}
+L\psi = F,
+\end{equation}
+where $F$ is a known ``source'' function and $\psi$ is the unknown solution.
+For the homogeneous equation
+\begin{equation}
+L\psi = 0,
+\end{equation}
+the \textbf{superposition principle} holds:
+if $\psi_1,\psi_2$ solve $L\psi=0$, then $c_1\psi_1+c_2\psi_2$ also solves it.
+
+\subsection{Second-order linear ODE as an operator equation}
+A general second-order linear differential operator can be written as
+\begin{equation}
+Lu(x) = p_0(x)\,u''(x) + p_1(x)\,u'(x) + p_2(x)\,u(x),
+\end{equation}
+with real coefficient functions $p_0,p_1,p_2$ (smooth enough on the interval of interest).
+
+\subsection{Eigenvalue problems}
+Many physics problems are eigenvalue problems:
+\begin{equation}
+Lu + \lambda w(x)u = 0,
+\qquad w(x)>0\ \text{(except possibly isolated points)}.
+\end{equation}
+A nontrivial solution $u_\lambda$ that satisfies the required boundary conditions is called an
+\textbf{eigenfunction} and the corresponding $\lambda$ is an \textbf{eigenvalue}.
+Typically, boundary conditions restrict $\lambda$ to a \textbf{discrete spectrum}.
+
+\paragraph{Quantum mechanics example.}
+The time-independent Schr\"odinger equation is an eigenvalue equation:
+\begin{equation}
+H\psi = E\psi,
+\end{equation}
+where $H$ is the Hamiltonian operator and $E$ is the energy eigenvalue.
+
+% ------------------------------------------------------------
+
+\section{Self-adjoint ODEs (Sturm--Liouville form)}
+
+\subsection{Adjoint operator and self-adjointness}
+Define an inner-product-like bilinear form (real case for simplicity)
+\begin{equation}
+\langle u,Lu\rangle := \int_a^b u(x)\,Lu(x)\,dx.
+\end{equation}
+Starting from
+\begin{equation}
+Lu = p_0u'' + p_1u' + p_2u,
+\end{equation}
+one defines an \textbf{adjoint operator} $\overline{L}$ such that (schematically)
+\begin{equation}
+\int_a^b v\,Lu\,dx = \int_a^b (\overline{L}v)\,u\,dx
+\quad \text{(plus boundary terms)}.
+\end{equation}
+If the boundary terms vanish under the imposed boundary conditions and
+\begin{equation}
+\overline{L} = L,
+\end{equation}
+then $L$ is called \textbf{self-adjoint}.
+
+\subsection{Self-adjoint (Sturm--Liouville) operator form}
+A second-order differential operator is in \textbf{self-adjoint form} if it can be written as
+\begin{equation}
+Lu = \frac{d}{dx}\!\left(p(x)\frac{du}{dx}\right) + q(x)\,u(x),
+\end{equation}
+with real functions $p(x),q(x)$.
+
+\subsection{Converting a general ODE to self-adjoint form}
+Given
+\begin{equation}
+Lu = p_0u'' + p_1u' + p_2u,
+\end{equation}
+one can multiply by a suitable integrating factor to obtain a self-adjoint form.
+Define
+\begin{equation}
+f(x) = \exp\!\left(\int^x \frac{p_1(t)}{p_0(t)}\,dt\right),
+\end{equation}
+then
+\begin{equation}
+\frac{f(x)}{p_0(x)}Lu
+=
+\frac{d}{dx}\!\left(f(x)\frac{du}{dx}\right)
++
+\frac{p_2(x)}{p_0(x)}f(x)\,u,
+\end{equation}
+which is self-adjoint.
+
+\subsection{Sturm--Liouville eigenvalue problem}
+The standard Sturm--Liouville problem is
+\begin{equation}
+\frac{d}{dx}\!\left(p(x)\frac{du}{dx}\right) + q(x)u + \lambda w(x)u = 0,
+\qquad a\le x\le b,
+\end{equation}
+with boundary conditions chosen so that the operator is Hermitian/self-adjoint.
+
+\paragraph{Important note.}
+Self-adjointness is not only about the differential expression:
+it depends crucially on the \textbf{function space} and \textbf{boundary conditions}.
+
+% ------------------------------------------------------------
+
+\section{Inner product, orthogonality, and normalization}
+
+\subsection{Weighted inner product}
+For Sturm--Liouville problems the natural inner product is
+\begin{equation}
+\langle v|u\rangle := \int_a^b v^*(x)\,w(x)\,u(x)\,dx,
+\end{equation}
+where $w(x)$ is the weight function.
+
+\subsection{Orthogonality of eigenfunctions}
+Let $u_i,u_j$ satisfy
+\begin{equation}
+Lu_i + \lambda_i w u_i = 0,
+\qquad
+Lu_j + \lambda_j w u_j = 0.
+\end{equation}
+If $L$ is Hermitian (with boundary conditions) then for $\lambda_i\neq \lambda_j$:
+\begin{equation}
+\int_a^b u_i(x)\,u_j^*(x)\,w(x)\,dx = 0.
+\end{equation}
+So eigenfunctions with distinct eigenvalues are orthogonal under the weight $w$.
+
+\subsection{Normalization}
+If $u_n$ is an eigenfunction, scaling is arbitrary for homogeneous equations:
+\begin{equation}
+u_n \to c\,u_n.
+\end{equation}
+We often choose orthonormality:
+\begin{equation}
+\int_a^b u_m(x)\,u_n^*(x)\,w(x)\,dx = \delta_{mn}.
+\end{equation}
+
+% ------------------------------------------------------------
+
+\section{Hermitian operators: reality of eigenvalues}
+
+\subsection{Hermitian condition}
+An operator $L$ is \textbf{Hermitian} if
+\begin{equation}
+\int \psi_1^*(x)\,L\psi_2(x)\,dx
+=
+\int (L\psi_1(x))^*\,\psi_2(x)\,dx
+\end{equation}
+for all functions in the domain satisfying the boundary conditions.
+
+\subsection{Eigenvalues are real}
+If
+\begin{equation}
+Lu_i + \lambda_i w u_i = 0
+\end{equation}
+and $L$ is Hermitian, then $\lambda_i\in\mathbb{R}$.
+Sketch: multiply the equation by $u_i^*$, subtract the conjugate equation times $u_i$,
+integrate, and use the Hermitian property to force
+\begin{equation}
+\lambda_i^* = \lambda_i.
+\end{equation}
+
+\subsection{Expectation values in quantum mechanics}
+For a Hermitian operator $L$ and wavefunction $\psi$,
+\begin{equation}
+\langle L\rangle := \int \psi^*(x)\,L\psi(x)\,dx
+\end{equation}
+is real, even if $\psi$ is not an eigenfunction.
+
+% ------------------------------------------------------------
+
+\section{Uniqueness, linear independence, and degeneracy}
+
+\subsection{Uniqueness for second-order linear ODEs (idea)}
+For a second-order linear homogeneous ODE, the solution space is 2-dimensional:
+there are exactly two linearly independent solutions locally (given appropriate regularity).
+Imposing two boundary/initial conditions typically selects a unique solution.
+
+\subsection{Linear independence of eigenfunctions (distinct eigenvalues)}
+If $L$ has eigenfunctions $u_1,u_2$ with distinct eigenvalues $\lambda_1\neq\lambda_2$,
+then $u_1$ and $u_2$ must be linearly independent.
+Reason: if $u_2=c\,u_1$, then applying $L$ forces $\lambda_2=\lambda_1$.
+
+\subsection{Degeneracy}
+An eigenvalue $\lambda$ is \textbf{$N$-fold degenerate} if there exist $N$ linearly independent
+eigenfunctions corresponding to the same eigenvalue.
+
+\paragraph{Key point.}
+If $\lambda_i=\lambda_j$ (degenerate case), orthogonality is \emph{not automatic}.
+The Sturm--Liouville orthogonality proof only forces orthogonality for
+$\lambda_i\neq \lambda_j$.
+
+\subsection{Orthogonalizing degenerate eigenfunctions}
+Even if eigenfunctions are degenerate, one can always choose an orthogonal basis
+within the degenerate subspace using Gram--Schmidt.
+
+\subsection{Degeneracy from symmetry (physics intuition)}
+Degeneracy is often caused by symmetry.
+Example: hydrogen atom energy depends on $n$ but not on $(\ell,m)$ in the Coulomb potential,
+leading to an $n^2$-fold degeneracy (ignoring spin).
+Breaking symmetry (e.g.\ magnetic field) can split levels (Zeeman effect).
+
+% ------------------------------------------------------------
+
+\section{Concrete example: Fourier eigenfunctions (periodic interval)}
+
+Consider
+\begin{equation}
+\frac{d^2u}{dx^2} + n^2u = 0,
+\end{equation}
+on an interval of length $2\pi$ with periodic boundary conditions.
+Eigenfunctions:
+\begin{equation}
+u_n(x)=\cos(nx),\qquad v_n(x)=\sin(nx),
+\end{equation}
+and the eigenvalue is $\lambda=n^2$.
+This eigenvalue is \textbf{two-fold degenerate} for $n\ge 1$ because both $\sin(nx)$ and
+$\cos(nx)$ correspond to the same $n^2$.
+
+Orthogonality relations (on $[x_0,x_0+2\pi]$):
+\begin{align}
+\int_{x_0}^{x_0+2\pi}\sin(mx)\sin(nx)\,dx &= C_n\delta_{mn},\\
+\int_{x_0}^{x_0+2\pi}\cos(mx)\cos(nx)\,dx &= D_n\delta_{mn},\\
+\int_{x_0}^{x_0+2\pi}\sin(mx)\cos(nx)\,dx &= 0.
+\end{align}
+
+% ------------------------------------------------------------
+
+\section{What to remember (high-yield summary)}
+
+\begin{itemize}
+\item Linear DEs can be written as $L\psi=F$; if $F=0$ then superposition holds.
+\item Self-adjoint form is
+\[
+Lu=(pu')'+qu.
+\]
+\item Sturm--Liouville eigenvalue equation:
+\[
+(pu')'+qu+\lambda w u=0.
+\]
+\item Weighted inner product:
+\[
+\langle v|u\rangle=\int_a^b v^*wu\,dx.
+\]
+\item If $L$ is Hermitian/self-adjoint (with boundary conditions):
+\begin{itemize}
+\item eigenvalues are real,
+\item eigenfunctions with distinct eigenvalues are orthogonal,
+\item degeneracy means same eigenvalue can have multiple independent eigenfunctions.
+\end{itemize}
+\item Degenerate eigenfunctions are not automatically orthogonal, but can be orthogonalized.
+\end{itemize}

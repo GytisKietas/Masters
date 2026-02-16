@@ -3,7 +3,7 @@ import logging
 
 from utils import io
 
-from RHS import phi
+from RHS import phi_N
 from integrators.rk4 import RK4Integrator
 
 logger = logging.getLogger(__name__)
@@ -12,7 +12,7 @@ np.seterr(over='raise', invalid='raise', divide='raise')
 
 #This is an old version where I integrate with some initial conditions of phi and phi prime that I chose basically randomly. This should be used a reference, but not as actual run
 def run(args, ic):
-    integrator = RK4Integrator(phi.phi_rhs)
+    integrator = RK4Integrator(phi_N.phi_rhs)
     header = ["N", "phi", "phi_prime"]
 
     init = ic["initial_state"]

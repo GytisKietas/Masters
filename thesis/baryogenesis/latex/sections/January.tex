@@ -1,4 +1,5 @@
 \section*{January}
+\addcontentsline{toc}{section}{January}
 
 Notes from end of January
 
@@ -33,7 +34,7 @@ Switching the integration variable to the number of efolds
 where we used $\mpl=1$. With $V(\phi) = V_0 \exp \left[ - \kappa e^{\frac{\phi}{b}} \right]$ and $V(\phi)_{, \phi} = V(\phi) \frac{-\kappa}{b} \exp \left({\frac{\phi}{b}} \right) $  we're left with
 
 \begin{equation*}
-    \phi^{\prime} = \frac{\kappa}{b} \exp \left({\frac{\phi}{b}} \right) \Rightarrow \int_{\phi_i}^{\phi_f} \frac{b}{\kappa} \exp \left(-{\frac{\phi}{b}} \right) d \phi = N_{i} - N_{f} = \Delta N
+    \phi^{\prime} = \frac{\kappa}{b} \exp \left({\frac{\phi}{b}} \right) \Rightarrow \int_{\phi_i}^{\phi_f} \frac{b}{\kappa} \exp \left(-{\frac{\phi}{b}} \right) d \phi = N_{f} - N_{i} = \Delta N
 \end{equation*}
 
 Integrating and inverting to obtain phi, we have
@@ -48,7 +49,7 @@ At the start of inflation, by definition $N_i = 0$ (if we define $N(t) \equiv \l
 
 Implemented the numerical solution and compared with analytic solution:
 \begin{center}
-    \includegraphics[width=250pt]{../plot/PLOTS/slowroll.png}
+    \includegraphics[width=250pt]{images/slowroll.png}
 \end{center}
 They are so extremely close you can't even see the analytic solution. Next, I want to learn a bit about perturbations. I've found slides \href{https://tu-dresden.de/mn/physik/iktp/ressourcen/dateien/seminar/2017_06_19_JinsuKIM_minilecture.pdf?lang=en}{"Cosmic Inflation - Mini Lecture" by Jinsu Kim}
  
@@ -226,3 +227,7 @@ where I intentionally left the exponential in the denominator, for later conveni
     \phi^{\prime} (0) = \frac{1}{\frac{N_{\rm end}}{b} - \frac{1}{\sqrt{2}}}
 \end{equation*}
 Now that we have all of the inital conditions we're able to integrate!!! For convenience here are all of the important formulas with $b=\sqrt{\alpha}$ inserted
+
+\begin{equation*}
+    \phi(0) = -\sqrt{\alpha} \ln \left( \frac{\kappa}{\sqrt{2 \alpha}} - \frac{\kappa}{\alpha}N_{\rm end} \right) \quad \text{and} \quad \phi^{\prime} (0) = \frac{1}{\frac{N_{\rm end}}{\sqrt{\alpha}} - \frac{1}{\sqrt{2}}}
+\end{equation*}

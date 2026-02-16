@@ -1,0 +1,198 @@
+% ============================================================
+% Notes: Self-similarity, Power Laws, Fractals
+% + link to anomalous diffusion / fractional calculus
+% Source motivation: Herrmann, Fractional Calculus (Mandelbrot + fractals)
+% ============================================================
+
+\section{Concept of self-similarity}
+
+\subsection{Exact self-similarity (scale invariance)}
+A function/object is \textbf{self-similar} if it reproduces its form under rescaling.
+
+\paragraph{Functional form.}
+A function $f(x)$ is scale invariant if
+\begin{equation}
+f(\lambda x)=\lambda^{k} f(x)
+\qquad \text{for all }\lambda>0,
+\end{equation}
+for some exponent $k\in\mathbb{R}$.
+
+\paragraph{Solution.}
+The only (nontrivial) continuous solutions are power laws:
+\begin{equation}
+f(x)=C\,x^{k}.
+\end{equation}
+
+\subsection{Self-similarity in stochastic processes}
+A stochastic process $X(t)$ is \textbf{self-similar} with parameter $H$ (Hurst exponent) if
+\begin{equation}
+X(\lambda t)\ \overset{d}{=}\ \lambda^{H}X(t),
+\qquad \lambda>0,
+\end{equation}
+where $\overset{d}{=}$ means equality in distribution.
+
+Typical consequences:
+\begin{equation}
+\mathbb{E}[X(t)]\sim t^{H},
+\qquad
+\mathbb{E}[X^2(t)]\sim t^{2H}.
+\end{equation}
+
+\paragraph{Diffusion scaling link.}
+If MSD scales as
+\[
+\langle X^2(t)\rangle\sim t^\alpha,
+\]
+then typically
+\begin{equation}
+\alpha = 2H.
+\end{equation}
+
+% ------------------------------------------------------------
+
+\section{Power-law functions}
+
+\subsection{Definition}
+A \textbf{power law} is any relation of the form
+\begin{equation}
+y(x)=C\,x^{k},
+\qquad x>0.
+\end{equation}
+
+\subsection{Key properties}
+\begin{itemize}
+\item \textbf{Scale invariance:}
+\[
+y(\lambda x)=C(\lambda x)^k=\lambda^k y(x).
+\]
+\item \textbf{Straight line on log--log plot:}
+\begin{equation}
+\log y = \log C + k\log x.
+\end{equation}
+So slope in a $\log y$ vs $\log x$ plot equals $k$.
+\item \textbf{No intrinsic scale:} power laws do not define a characteristic length/time.
+\end{itemize}
+
+\subsection{Power-law tails (heavy tails)}
+A probability density can have a power-law tail:
+\begin{equation}
+p(x)\sim \frac{1}{|x|^{1+\mu}}
+\qquad (|x|\to\infty).
+\end{equation}
+
+Moments may diverge:
+\begin{equation}
+\mathbb{E}[|X|^q] < \infty \iff q<\mu.
+\end{equation}
+
+Example: if $0<\mu<2$, then variance diverges.
+
+\subsection{Why power laws appear}
+Power laws typically arise from:
+\begin{itemize}
+\item scale invariance / self-similarity
+\item multiplicative processes
+\item critical phenomena (no characteristic scale)
+\item fractal geometry
+\item long-memory kernels (e.g. $t^{-\alpha}$)
+\end{itemize}
+
+% ------------------------------------------------------------
+
+\section{Fractals}
+
+\subsection{Basic idea}
+A \textbf{fractal} is a set/geometry with:
+\begin{itemize}
+\item structure at many scales (self-similarity),
+\item non-integer (fractional) dimension,
+\item often power-law scaling of measured quantities.
+\end{itemize}
+
+\subsection{Self-similar fractals and fractal dimension}
+Suppose a set is made of $N$ self-similar copies of itself,
+each scaled by a factor $r$ (with $0<r<1$).
+
+Then the \textbf{similarity dimension} $D$ satisfies
+\begin{equation}
+N = r^{-D}
+\qquad\Longleftrightarrow\qquad
+D=\frac{\log N}{\log(1/r)}.
+\end{equation}
+
+\paragraph{Examples.}
+\begin{itemize}
+\item \textbf{Cantor set:} $N=2$, $r=1/3$
+\[
+D=\frac{\log 2}{\log 3}\approx 0.6309.
+\]
+\item \textbf{Koch curve:} $N=4$, $r=1/3$
+\[
+D=\frac{\log 4}{\log 3}\approx 1.2619.
+\]
+\item \textbf{Sierpiński triangle:} $N=3$, $r=1/2$
+\[
+D=\frac{\log 3}{\log 2}\approx 1.585.
+\]
+\end{itemize}
+
+\subsection{Box-counting (Minkowski) dimension}
+Cover the set $S$ with boxes of side length $\varepsilon$.
+Let $N(\varepsilon)$ be the minimal number needed.
+
+The \textbf{box-counting dimension} is
+\begin{equation}
+D_B = \lim_{\varepsilon\to 0}\frac{\log N(\varepsilon)}{\log(1/\varepsilon)},
+\end{equation}
+if the limit exists.
+
+\subsection{Scaling laws on fractals}
+On fractals, measured quantities often scale with non-integer exponents.
+
+Example: ``mass'' or number of points inside radius $R$:
+\begin{equation}
+M(R)\sim R^{D},
+\end{equation}
+where $D$ is the fractal dimension.
+
+\subsection{Random walks on fractals (important physics link)}
+Diffusion on fractal/disordered structures often becomes anomalous:
+\begin{equation}
+\langle r^2(t)\rangle \sim t^\alpha,
+\qquad \alpha\neq 1.
+\end{equation}
+
+This is one route to \textbf{fractional} models of transport.
+
+% ------------------------------------------------------------
+
+\section{Connection to fractional calculus (Herrmann motivation)}
+
+Herrmann notes that Mandelbrot's fractal geometry (1980s) strongly attracted physicists
+and produced major interest in fractional Brownian motion and anomalous diffusion,
+which are key motivations for fractional calculus methods in physics. :contentReference[oaicite:1]{index=1}
+
+\subsection{Why fractals naturally lead to fractional operators}
+Heuristic links:
+\begin{itemize}
+\item \textbf{Fractal geometry} $\Rightarrow$ effective non-integer dimension / scaling.
+\item \textbf{Power-law memory kernels} $\Rightarrow$ nonlocal time operators.
+\item \textbf{Long-range jump statistics} $\Rightarrow$ fractional Laplacians in space.
+\end{itemize}
+
+Thus, fractional derivatives are natural mathematical tools to encode
+\textbf{scale-free} and \textbf{nonlocal} behavior.
+
+% ------------------------------------------------------------
+
+\section{High-yield summary}
+\begin{itemize}
+\item \textbf{Self-similarity} = invariance under scaling.
+\item \textbf{Scale invariance equation:} $f(\lambda x)=\lambda^k f(x)$.
+\item \textbf{Power laws} are the unique continuous solutions: $f(x)=Cx^k$.
+\item \textbf{Power laws} appear as straight lines on log--log plots.
+\item \textbf{Fractals} = self-similar sets with non-integer dimension.
+\item \textbf{Similarity dimension:} $D=\log N/\log(1/r)$.
+\item \textbf{Box-counting dimension:} $D_B=\lim_{\varepsilon\to 0}\log N(\varepsilon)/\log(1/\varepsilon)$.
+\item \textbf{Physics link:} fractals $\Rightarrow$ anomalous diffusion $\Rightarrow$ fractional calculus models. :contentReference[oaicite:2]{index=2}
+\end{itemize}

@@ -1,0 +1,241 @@
+% ============================================================
+% Notes: Fractional Calculus + Definitions of Fractional Derivatives
+% Source: Richard Herrmann, Fractional Calculus: An Introduction for Physicists
+% ============================================================
+
+\section{Fractional calculus}
+
+\subsection{Core idea}
+Fractional calculus extends differentiation/integration from integer order $n\in\mathbb{N}$
+to non-integer order $\alpha\in\mathbb{R}$ (and sometimes complex $\alpha$):
+\begin{equation}
+\frac{d^n}{dx^n} \quad\longrightarrow\quad \frac{d^\alpha}{dx^\alpha}.
+\end{equation}
+This provides a systematic framework for \textbf{nonlocal operators} and
+\textbf{power-law memory} in physics. :contentReference[oaicite:2]{index=2}
+
+\subsection{Gamma function (replaces factorials)}
+Fractional calculus heavily uses the Gamma function:
+\begin{equation}
+\Gamma(z)=\int_0^\infty t^{z-1}e^{-t}\,dt,
+\qquad \Gamma(n+1)=n!.
+\end{equation}
+
+% ------------------------------------------------------------
+
+\section{Fractional integrals (Riemann--Liouville)}
+
+\subsection{Riemann--Liouville fractional integral}
+For $\alpha>0$, define the fractional integral:
+\begin{equation}
+\boxed{
+(I_{0+}^\alpha f)(t)
+=
+\frac{1}{\Gamma(\alpha)}\int_0^t (t-\tau)^{\alpha-1}f(\tau)\,d\tau.
+}
+\end{equation}
+This is a Volterra convolution with a power-law kernel, hence it is \textbf{nonlocal in time}.
+
+\subsection{Semigroup property}
+For suitable $f$,
+\begin{equation}
+I^\alpha I^\beta f = I^{\alpha+\beta}f.
+\end{equation}
+
+% ------------------------------------------------------------
+
+\section{Fractional derivatives: main definitions}
+
+There is no unique definition of a fractional derivative.
+Different definitions agree on broad classes of functions but differ in:
+\begin{itemize}
+\item how initial conditions are handled,
+\item whether constants differentiate to zero,
+\item regularity requirements.
+\end{itemize}
+
+\subsection{Riemann--Liouville (RL) fractional derivative}
+For $n-1<\alpha<n$ with $n\in\mathbb{N}$:
+\begin{equation}
+\boxed{
+(D_{0+}^\alpha f)(t)
+=
+\frac{d^n}{dt^n}\left(I_{0+}^{\,n-\alpha}f\right)(t)
+=
+\frac{1}{\Gamma(n-\alpha)}\frac{d^n}{dt^n}
+\int_0^t (t-\tau)^{n-\alpha-1}f(\tau)\,d\tau.
+}
+\end{equation}
+
+\paragraph{Key feature.}
+RL derivative is naturally tied to fractional integrals and is mathematically clean,
+but it gives (typically)
+\begin{equation}
+D_{0+}^\alpha (1)\neq 0.
+\end{equation}
+This can be inconvenient in physics initial-value problems.
+
+% ------------------------------------------------------------
+
+\subsection{Caputo fractional derivative}
+For $n-1<\alpha<n$:
+\begin{equation}
+\boxed{
+({}^{C}D_{0+}^\alpha f)(t)
+=
+I_{0+}^{\,n-\alpha}\left(\frac{d^n f}{dt^n}\right)(t)
+=
+\frac{1}{\Gamma(n-\alpha)}
+\int_0^t (t-\tau)^{n-\alpha-1}f^{(n)}(\tau)\,d\tau.
+}
+\end{equation}
+
+For $0<\alpha<1$ this simplifies to
+\begin{equation}
+{}^{C}D_{0+}^\alpha f(t)
+=
+\frac{1}{\Gamma(1-\alpha)}
+\int_0^t (t-\tau)^{-\alpha}f'(\tau)\,d\tau.
+\end{equation}
+
+\paragraph{Key feature (physics advantage).}
+Caputo derivative satisfies
+\begin{equation}
+{}^{C}D_{0+}^\alpha (1)=0,
+\end{equation}
+and initial conditions appear in the usual form $f(0),f'(0),\dots$.
+Herrmann emphasizes this as a major motivation for Caputo-type derivatives. :contentReference[oaicite:3]{index=3}
+
+% ------------------------------------------------------------
+
+\subsection{Grünwald--Letnikov (GL) fractional derivative}
+A definition closer to the discrete difference quotient:
+\begin{equation}
+\boxed{
+(D^\alpha f)(t)
+=
+\lim_{h\to 0^+}\frac{1}{h^\alpha}
+\sum_{k=0}^{\lfloor t/h\rfloor}(-1)^k\binom{\alpha}{k}\,f(t-kh),
+}
+\end{equation}
+where the generalized binomial coefficient is
+\begin{equation}
+\binom{\alpha}{k}=\frac{\Gamma(\alpha+1)}{\Gamma(k+1)\Gamma(\alpha-k+1)}.
+\end{equation}
+
+\paragraph{Use.}
+GL is useful for numerical discretizations and shows explicitly the \textbf{memory}
+structure: $f(t)$ depends on all past values $f(t-kh)$.
+
+% ------------------------------------------------------------
+
+\subsection{Fourier/Laplace definitions (spectral characterization)}
+Fractional derivatives can be defined via transforms.
+
+\paragraph{Fourier-space (spatial derivative).}
+If $\mathcal{F}\{f(x)\}(k)=\tilde f(k)$, define
+\begin{equation}
+\mathcal{F}\left\{\frac{d^\alpha f}{dx^\alpha}\right\}(k)
+=
+(ik)^\alpha\,\tilde f(k),
+\end{equation}
+with a suitable branch choice for $(ik)^\alpha$.
+
+\paragraph{Laplace-space (time derivative).}
+For Caputo derivative ($0<\alpha<1$),
+\begin{equation}
+\boxed{
+\mathcal{L}\left\{{}^{C}D_t^\alpha f(t)\right\}(s)
+=
+s^\alpha F(s) - s^{\alpha-1}f(0).
+}
+\end{equation}
+This is one of the most useful formulas in solving fractional ODEs.
+
+% ------------------------------------------------------------
+
+\section{Herrmann's ``historical'' motivation / consistency conditions}
+
+Herrmann motivates fractional derivatives by demanding that standard derivative rules
+extend smoothly to non-integer order for simple eigenfunctions. :contentReference[oaicite:4]{index=4}
+
+\subsection{Exponentials as eigenfunctions}
+\begin{equation}
+\boxed{
+\frac{d^\alpha}{dx^\alpha}e^{kx} = k^\alpha e^{kx},
+\qquad k\ge 0.
+}
+\end{equation}
+
+\subsection{Trigonometric functions}
+\begin{equation}
+\boxed{
+\frac{d^\alpha}{dx^\alpha}\sin(kx)
+=
+k^\alpha\sin\!\left(kx+\frac{\pi\alpha}{2}\right),
+\qquad k\ge 0.
+}
+\end{equation}
+
+\subsection{Power functions}
+For $x\ge 0$,
+\begin{equation}
+\boxed{
+\frac{d^\alpha}{dx^\alpha}x^m
+=
+\frac{\Gamma(m+1)}{\Gamma(m+1-\alpha)}x^{m-\alpha}.
+}
+\end{equation}
+
+These identities are consistent with integer derivatives when $\alpha=n\in\mathbb{N}$.
+
+% ------------------------------------------------------------
+
+\section{RL vs Caputo (quick comparison)}
+
+For $0<\alpha<1$:
+\begin{itemize}
+\item RL:
+\[
+D^\alpha f(t)=\frac{d}{dt}\left[\frac{1}{\Gamma(1-\alpha)}\int_0^t (t-\tau)^{-\alpha}f(\tau)\,d\tau\right].
+\]
+\item Caputo:
+\[
+{}^{C}D^\alpha f(t)=\frac{1}{\Gamma(1-\alpha)}\int_0^t (t-\tau)^{-\alpha}f'(\tau)\,d\tau.
+\]
+\end{itemize}
+
+Relation (for sufficiently smooth $f$):
+\begin{equation}
+{}^{C}D^\alpha f(t)
+=
+D^\alpha\big(f(t)-f(0)\big).
+\end{equation}
+
+% ------------------------------------------------------------
+
+\section{High-yield summary}
+
+\begin{itemize}
+\item Fractional calculus extends derivatives/integrals to order $\alpha\notin\mathbb{N}$.
+\item RL fractional integral:
+\[
+(I^\alpha f)(t)=\frac{1}{\Gamma(\alpha)}\int_0^t (t-\tau)^{\alpha-1}f(\tau)\,d\tau.
+\]
+\item RL derivative:
+\[
+D^\alpha f=\frac{d^n}{dt^n}I^{n-\alpha}f,\quad n-1<\alpha<n.
+\]
+\item Caputo derivative:
+\[
+{}^{C}D^\alpha f=I^{n-\alpha}f^{(n)},\quad n-1<\alpha<n,
+\]
+and ${}^{C}D^\alpha(\text{const})=0$.
+\item GL derivative gives a discrete memory sum and is useful numerically.
+\item Transform rule:
+\[
+\mathcal{L}\{{}^{C}D_t^\alpha f\}=s^\alpha F(s)-s^{\alpha-1}f(0).
+\]
+\item Herrmann motivation: preserve eigenfunction rules
+(e.g.\ $d^\alpha e^{kx}/dx^\alpha=k^\alpha e^{kx}$). :contentReference[oaicite:5]{index=5}
+\end{itemize}

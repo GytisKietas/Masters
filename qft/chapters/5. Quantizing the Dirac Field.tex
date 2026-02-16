@@ -1,0 +1,259 @@
+\section{Quantizing the Dirac Field}
+
+\subsection{A Glimpse at the Spin--Statistics Theorem (What You Need)}
+Empirical + theoretical result:
+\begin{equation}
+\text{integer spin} \Rightarrow \text{bosons (commutators)}, 
+\qquad
+\text{half-integer spin} \Rightarrow \text{fermions (anticommutators)}.
+\end{equation}
+
+Why it matters (minimal statement):
+\begin{itemize}
+\item Using commutators for spin-$\frac12$ fields leads to negative-norm states or violation of causality.
+\item Using anticommutators ensures positivity of energy and consistent relativistic causality.
+\end{itemize}
+
+\subsection{Canonical Fermionic Quantization}
+Start from the Dirac Lagrangian:
+\begin{equation}
+\mathcal{L}_D=\bar{\psi}(i\gamma^\mu\partial_\mu-m)\psi.
+\end{equation}
+Canonical momentum conjugate to $\psi$:
+\begin{equation}
+\pi_\psi := \frac{\partial\mathcal{L}}{\partial(\partial_0\psi)} = i\psi^\dagger.
+\end{equation}
+
+Impose equal-time \textbf{anticommutation relations}:
+\begin{equation}
+\{\psi_\alpha(\mathbf{x},t),\psi_\beta^\dagger(\mathbf{y},t)\}
+=
+\delta_{\alpha\beta}\,\delta^{(3)}(\mathbf{x}-\mathbf{y}),
+\end{equation}
+\begin{equation}
+\{\psi_\alpha(\mathbf{x},t),\psi_\beta(\mathbf{y},t)\}=0,
+\qquad
+\{\psi_\alpha^\dagger(\mathbf{x},t),\psi_\beta^\dagger(\mathbf{y},t)\}=0.
+\end{equation}
+Here $\alpha,\beta$ are spinor indices ($1,\dots,4$).
+
+\subsection{Mode Expansion of the Dirac Field}
+The free Dirac field operator is expanded as
+\begin{equation}
+\psi(x)
+=
+\int \frac{d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_{\mathbf{p}}}}
+\sum_{s=1,2}
+\left(
+b_{\mathbf{p}}^{(s)}u^{(s)}(p)e^{-ip\cdot x}
++
+d_{\mathbf{p}}^{(s)\dagger}v^{(s)}(p)e^{ip\cdot x}
+\right),
+\qquad p^0=E_{\mathbf{p}}.
+\end{equation}
+Interpretation:
+\begin{itemize}
+\item $b_{\mathbf{p}}^{(s)}$ annihilates a particle (fermion).
+\item $d_{\mathbf{p}}^{(s)}$ annihilates an antiparticle (antifermion).
+\end{itemize}
+
+Anticommutators:
+\begin{equation}
+\{b_{\mathbf{p}}^{(r)},b_{\mathbf{q}}^{(s)\dagger}\}
+=
+(2\pi)^3\delta^{(3)}(\mathbf{p}-\mathbf{q})\delta^{rs},
+\qquad
+\{d_{\mathbf{p}}^{(r)},d_{\mathbf{q}}^{(s)\dagger}\}
+=
+(2\pi)^3\delta^{(3)}(\mathbf{p}-\mathbf{q})\delta^{rs},
+\end{equation}
+all others vanish.
+
+\subsection{Fermi--Dirac Statistics and the Pauli Principle}
+Because operators anticommute,
+\begin{equation}
+\left(b_{\mathbf{p}}^{(s)\dagger}\right)^2=0,
+\qquad
+\left(d_{\mathbf{p}}^{(s)\dagger}\right)^2=0,
+\end{equation}
+so no two identical fermions can occupy the same one-particle state:
+\begin{equation}
+n_{\mathbf{p}}^{(s)}\in\{0,1\}.
+\end{equation}
+This is the Pauli exclusion principle.
+
+Number operators:
+\begin{equation}
+N_b=\int\frac{d^3p}{(2\pi)^3}\sum_s b_{\mathbf{p}}^{(s)\dagger}b_{\mathbf{p}}^{(s)},
+\qquad
+N_d=\int\frac{d^3p}{(2\pi)^3}\sum_s d_{\mathbf{p}}^{(s)\dagger}d_{\mathbf{p}}^{(s)}.
+\end{equation}
+
+\subsection{Hamiltonian and Energy Positivity}
+The free Dirac Hamiltonian can be written (after normal ordering) as
+\begin{equation}
+:H:
+=
+\int\frac{d^3p}{(2\pi)^3}\sum_s E_{\mathbf{p}}
+\left(
+b_{\mathbf{p}}^{(s)\dagger}b_{\mathbf{p}}^{(s)}
++
+d_{\mathbf{p}}^{(s)\dagger}d_{\mathbf{p}}^{(s)}
+\right).
+\end{equation}
+Hence both particles and antiparticles contribute positive energy.
+
+\subsection{Particles and Antiparticles}
+Define vacuum:
+\begin{equation}
+b_{\mathbf{p}}^{(s)}|0\rangle=0,
+\qquad
+d_{\mathbf{p}}^{(s)}|0\rangle=0
+\quad \forall\,\mathbf{p},s.
+\end{equation}
+One-particle states:
+\begin{equation}
+|\mathbf{p},s\rangle = b_{\mathbf{p}}^{(s)\dagger}|0\rangle,
+\qquad
+|\overline{\mathbf{p},s}\rangle = d_{\mathbf{p}}^{(s)\dagger}|0\rangle.
+\end{equation}
+
+Conserved $U(1)$ current:
+\begin{equation}
+j^\mu=\bar{\psi}\gamma^\mu\psi,
+\qquad
+Q=\int d^3x\,j^0.
+\end{equation}
+In terms of operators (schematically):
+\begin{equation}
+Q=\int\frac{d^3p}{(2\pi)^3}\sum_s
+\left(
+b_{\mathbf{p}}^{(s)\dagger}b_{\mathbf{p}}^{(s)}
+-
+d_{\mathbf{p}}^{(s)\dagger}d_{\mathbf{p}}^{(s)}
+\right).
+\end{equation}
+Thus antiparticles carry opposite charge.
+
+\subsection{Dirac's Hole Interpretation (Historical Motivation)}
+The Dirac equation has negative-energy solutions. Dirac proposed:
+\begin{itemize}
+\item All negative-energy states are filled in the vacuum (Dirac sea).
+\item A missing negative-energy electron appears as a positively charged particle (the positron).
+\end{itemize}
+Modern QFT interpretation: negative-energy modes are reinterpreted as antiparticles with positive energy.
+
+\subsection{Fermion Propagator}
+The \textbf{Feynman propagator} for the Dirac field:
+\begin{equation}
+S_F(x-y)
+:=
+\langle 0|T\{\psi(x)\bar{\psi}(y)\}|0\rangle.
+\end{equation}
+Momentum-space representation:
+\begin{equation}
+S_F(x-y)
+=
+\int\frac{d^4p}{(2\pi)^4}\,
+\frac{i(\slashed{p}+m)}{p^2-m^2+i\epsilon}\,e^{-ip\cdot(x-y)}.
+\end{equation}
+It satisfies the Green function equation:
+\begin{equation}
+(i\slashed{\partial}_x-m)\,S_F(x-y)=i\delta^{(4)}(x-y).
+\end{equation}
+
+\subsection{Spin Sums (Used Constantly)}
+\begin{equation}
+\sum_s u^{(s)}(p)\bar{u}^{(s)}(p)=\slashed{p}+m,
+\qquad
+\sum_s v^{(s)}(p)\bar{v}^{(s)}(p)=\slashed{p}-m.
+\end{equation}
+
+\subsection{Wick's Theorem for Fermions (Sign Rules)}
+Wick's theorem also holds for fermions, but each exchange of fermionic operators introduces a minus sign.
+
+Fermion contraction:
+\begin{equation}
+\contraction{}{\psi(x)}{}{\bar{\psi}(y)}\psi(x)\bar{\psi}(y)
+=
+\langle 0|T\{\psi(x)\bar{\psi}(y)\}|0\rangle
+=
+S_F(x-y).
+\end{equation}
+Time ordering for fermions includes signs:
+\begin{equation}
+T\{\psi(x)\bar{\psi}(y)\}
+=
+\theta(x^0-y^0)\psi(x)\bar{\psi}(y)
+-\theta(y^0-x^0)\bar{\psi}(y)\psi(x).
+\end{equation}
+
+\subsection{Feynman Rules (Dirac Fermions, Minimal Set)}
+For a theory with interaction $\mathcal{L}_{\mathrm{int}}$:
+\begin{equation}
+S=T\exp\left(i\int d^4x\,\mathcal{L}_{\mathrm{int}}(x)\right).
+\end{equation}
+
+\paragraph{Free fermion line (propagator).}
+Internal fermion line with momentum $p$:
+\begin{equation}
+\frac{i(\slashed{p}+m)}{p^2-m^2+i\epsilon}.
+\end{equation}
+
+\paragraph{External spinors.}
+For external fermion legs:
+\begin{equation}
+\text{incoming fermion: } u^{(s)}(p),
+\qquad
+\text{outgoing fermion: } \bar{u}^{(s)}(p),
+\end{equation}
+\begin{equation}
+\text{incoming antifermion: } \bar{v}^{(s)}(p),
+\qquad
+\text{outgoing antifermion: } v^{(s)}(p).
+\end{equation}
+
+\paragraph{Closed fermion loops.}
+Each closed fermion loop contributes an extra factor:
+\begin{equation}
+(-1).
+\end{equation}
+
+\paragraph{Example: Yukawa vertex.}
+If
+\begin{equation}
+\mathcal{L}_{\mathrm{int}}=-g\,\bar{\psi}\psi\phi,
+\end{equation}
+then the vertex factor is
+\begin{equation}
+-i g.
+\end{equation}
+
+\paragraph{Example: QED vertex.}
+If
+\begin{equation}
+\mathcal{L}_{\mathrm{int}}=-e\,\bar{\psi}\gamma^\mu\psi A_\mu,
+\end{equation}
+then vertex factor:
+\begin{equation}
+-ie\gamma^\mu.
+\end{equation}
+
+\subsection{Summary (Exam Checklist)}
+\begin{itemize}
+\item Fermions must be quantized with anticommutators:
+\[
+\{\psi_\alpha(\mathbf{x}),\psi_\beta^\dagger(\mathbf{y})\}=\delta_{\alpha\beta}\delta^{(3)}(\mathbf{x}-\mathbf{y}).
+\]
+\item Mode expansion introduces particle operators $b$ and antiparticle operators $d$.
+\item Pauli principle: $(b^\dagger)^2=0$ and occupancy $n\in\{0,1\}$.
+\item Dirac propagator:
+\[
+S_F(p)=\frac{i(\slashed{p}+m)}{p^2-m^2+i\epsilon}.
+\]
+\item Spin sums:
+\[
+\sum u\bar{u}=\slashed{p}+m,\quad \sum v\bar{v}=\slashed{p}-m.
+\]
+\item Closed fermion loop $\Rightarrow$ extra factor $(-1)$.
+\end{itemize}

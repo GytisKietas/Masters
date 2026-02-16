@@ -1,0 +1,273 @@
+\section{Interacting Fields}
+
+\subsection{Types of Interaction (Common Examples)}
+Interactions are added to the free Lagrangian:
+\begin{equation}
+\mathcal{L}=\mathcal{L}_0+\mathcal{L}_{\mathrm{int}}.
+\end{equation}
+
+\paragraph{Scalar interactions.}
+\begin{equation}
+\mathcal{L}_{\mathrm{int}}=-\frac{\lambda}{4!}\phi^4,
+\qquad
+\mathcal{L}_{\mathrm{int}}=-\frac{g}{3!}\phi^3.
+\end{equation}
+
+\paragraph{Yukawa interaction (scalar + fermion).}
+\begin{equation}
+\mathcal{L}_{\mathrm{int}}=-g\,\bar{\psi}\psi\,\phi.
+\end{equation}
+
+\paragraph{QED interaction.}
+\begin{equation}
+\mathcal{L}_{\mathrm{int}}=-e\,\bar{\psi}\gamma^\mu\psi\,A_\mu.
+\end{equation}
+
+\paragraph{Key point.}
+The interaction is treated perturbatively when the coupling is small.
+
+\subsection{The Interaction Picture}
+Split the Hamiltonian:
+\begin{equation}
+H = H_0 + H_I,
+\end{equation}
+where $H_0$ is exactly solvable (free theory), $H_I$ is the interaction.
+
+Interaction-picture operators evolve with $H_0$:
+\begin{equation}
+\mathcal{O}_I(t)=e^{iH_0 t}\mathcal{O}_S e^{-iH_0 t}.
+\end{equation}
+States evolve with $H_I$:
+\begin{equation}
+i\frac{d}{dt}|\psi(t)\rangle_I = H_I(t)|\psi(t)\rangle_I,
+\qquad
+H_I(t)=e^{iH_0 t}H_I e^{-iH_0 t}.
+\end{equation}
+
+Define the time-evolution operator in the interaction picture:
+\begin{equation}
+|\psi(t)\rangle_I = U_I(t,t_0)|\psi(t_0)\rangle_I,
+\qquad
+i\frac{d}{dt}U_I(t,t_0)=H_I(t)U_I(t,t_0),
+\quad U_I(t_0,t_0)=\mathbf{1}.
+\end{equation}
+
+\subsection{Dyson's Formula (Dyson Series)}
+Formal solution:
+\begin{equation}
+U_I(t,t_0)=T\exp\left(-i\int_{t_0}^{t} dt'\,H_I(t')\right).
+\end{equation}
+Expanding:
+\begin{align}
+U_I(t,t_0)
+&=\mathbf{1}
+-i\int_{t_0}^{t} dt_1\,H_I(t_1)
++\frac{(-i)^2}{2!}\int_{t_0}^{t} dt_1dt_2\,T\{H_I(t_1)H_I(t_2)\}
++\cdots
+\end{align}
+
+In covariant form, for local interactions:
+\begin{equation}
+S \equiv U_I(\infty,-\infty)
+=
+T\exp\left(i\int d^4x\,\mathcal{L}_{\mathrm{int}}(x)\right).
+\end{equation}
+
+\subsection{Scattering and the $S$-Matrix}
+Define asymptotic in/out states (free particle states):
+\begin{equation}
+|i\rangle = |\text{in}\rangle,
+\qquad
+|f\rangle = |\text{out}\rangle.
+\end{equation}
+The $S$-matrix maps in-states to out-states:
+\begin{equation}
+|f\rangle = S|i\rangle.
+\end{equation}
+Matrix element:
+\begin{equation}
+S_{fi}=\langle f|S|i\rangle.
+\end{equation}
+
+It is conventional to write
+\begin{equation}
+S = \mathbf{1}+iT,
+\end{equation}
+so that the scattering amplitude is encoded in $T$.
+
+\paragraph{Momentum conservation.}
+For translational invariance,
+\begin{equation}
+\langle f|iT|i\rangle
+=
+i(2\pi)^4\delta^{(4)}(p_f-p_i)\,\mathcal{M}_{fi},
+\end{equation}
+where $\mathcal{M}$ is the invariant amplitude.
+
+\subsection{Wick's Theorem}
+For free fields, time-ordered products can be expanded into normal-ordered products plus contractions.
+
+For scalar fields:
+\begin{equation}
+T\{\phi(x)\phi(y)\}
+=
+:\phi(x)\phi(y):
++\contraction{}{\phi(x)}{}{\phi(y)}\phi(x)\phi(y),
+\end{equation}
+where the contraction is defined as
+\begin{equation}
+\contraction{}{\phi(x)}{}{\phi(y)}\phi(x)\phi(y)
+\equiv
+\langle 0|T\{\phi(x)\phi(y)\}|0\rangle
+= \Delta_F(x-y).
+\end{equation}
+
+General statement:
+\begin{equation}
+T\{\phi_1\phi_2\cdots\phi_n\}
+=
+:\phi_1\phi_2\cdots\phi_n:
++\text{(all possible contractions)}.
+\end{equation}
+
+\subsection{Feynman Diagrams (Meaning)}
+In perturbation theory:
+\begin{itemize}
+\item Expand $S$ in powers of the coupling.
+\item Use Wick's theorem to evaluate vacuum expectation values.
+\item Each term corresponds to a sum of diagrams.
+\end{itemize}
+Diagrams provide a bookkeeping method for contractions.
+
+\subsection{Feynman Rules (Scalar $\phi^4$ Theory)}
+Take
+\begin{equation}
+\mathcal{L}=\frac12(\partial\phi)^2-\frac12 m^2\phi^2-\frac{\lambda}{4!}\phi^4.
+\end{equation}
+Momentum-space Feynman rules:
+\begin{itemize}
+\item External line: attach momentum $p$ (on-shell $p^2=m^2$).
+\item Propagator (internal line with momentum $k$):
+\begin{equation}
+\frac{i}{k^2-m^2+i\epsilon}.
+\end{equation}
+\item Vertex ($\phi^4$):
+\begin{equation}
+-i\lambda.
+\end{equation}
+\item Integrate over undetermined loop momenta:
+\begin{equation}
+\int \frac{d^4k}{(2\pi)^4}.
+\end{equation}
+\item Impose momentum conservation at each vertex:
+\begin{equation}
+(2\pi)^4\delta^{(4)}\!\left(\sum p_{\mathrm{in}}-\sum p_{\mathrm{out}}\right).
+\end{equation}
+\item Divide by symmetry factors when needed.
+\end{itemize}
+
+\subsection{Amplitudes and the Invariant Matrix Element}
+For $2\to 2$ scattering:
+\begin{equation}
+\langle p_3,p_4|iT|p_1,p_2\rangle
+=
+i(2\pi)^4\delta^{(4)}(p_1+p_2-p_3-p_4)\,\mathcal{M}.
+\end{equation}
+
+\paragraph{Tree-level example in $\phi^4$.}
+At lowest order,
+\begin{equation}
+\mathcal{M}_{\text{tree}} = -\lambda.
+\end{equation}
+
+\subsection{Decay Rates and Cross Sections (Core Formulas)}
+\paragraph{Lorentz-invariant phase space.}
+For a final state of $n$ particles:
+\begin{equation}
+d\Pi_n = (2\pi)^4\delta^{(4)}\!\left(p_i-\sum_{j=1}^n p_j\right)
+\prod_{j=1}^n \frac{d^3p_j}{(2\pi)^3\,2E_{p_j}}.
+\end{equation}
+
+\paragraph{Decay rate.}
+For $A\to 1+\cdots+n$:
+\begin{equation}
+d\Gamma = \frac{1}{2m_A}\,|\mathcal{M}|^2\, d\Pi_n.
+\end{equation}
+
+\paragraph{Cross section.}
+For $2\to n$:
+\begin{equation}
+d\sigma = \frac{1}{4\sqrt{(p_1\cdot p_2)^2-m_1^2m_2^2}}\,|\mathcal{M}|^2\, d\Pi_n.
+\end{equation}
+In the center-of-mass (COM) frame, the flux factor simplifies to
+\begin{equation}
+4E_1E_2|\mathbf{v}_1-\mathbf{v}_2|.
+\end{equation}
+
+\subsection{Green's Functions (Correlation Functions)}
+Define the $n$-point time-ordered Green function:
+\begin{equation}
+G^{(n)}(x_1,\dots,x_n)
+=
+\langle 0|T\{\phi(x_1)\cdots\phi(x_n)\}|0\rangle.
+\end{equation}
+These are the central objects in perturbation theory.
+
+\subsection{Connected Diagrams and Vacuum Bubbles}
+The vacuum-to-vacuum amplitude:
+\begin{equation}
+\langle 0|S|0\rangle
+=
+\langle 0|T\exp\left(i\int d^4x\,\mathcal{L}_{\mathrm{int}}(x)\right)|0\rangle.
+\end{equation}
+Diagrams with no external legs are \textbf{vacuum bubbles}. They factorize and cancel in
+properly normalized correlation functions:
+\begin{equation}
+\langle \Omega|T\{\phi(x_1)\cdots\phi(x_n)\}|\Omega\rangle
+=
+\frac{\langle 0|T\{\phi(x_1)\cdots\phi(x_n)\,S\}|0\rangle}{\langle 0|S|0\rangle}.
+\end{equation}
+
+\paragraph{Connected vs disconnected.}
+The generating functional (in path integral language) satisfies:
+\begin{equation}
+Z[J]=e^{iW[J]},
+\end{equation}
+where $W[J]$ generates \textbf{connected} diagrams.
+(You may be expected to know this identity even in a canonical approach.)
+
+\subsection{Reduction Formula (LSZ)}
+The LSZ reduction formula relates scattering amplitudes to time-ordered correlators.
+
+For a real scalar field, schematically:
+\begin{equation}
+\langle p_1',\dots,p_m'|S|p_1,\dots,p_n\rangle
+\;\propto\;
+\prod_{i=1}^m \left[\int d^4x_i\, e^{ip_i'\cdot x_i}(\square_{x_i}+m^2)\right]
+\prod_{j=1}^n \left[\int d^4y_j\, e^{-ip_j\cdot y_j}(\square_{y_j}+m^2)\right]
+\langle 0|T\{\phi(x_1)\cdots\phi(y_n)\}|0\rangle.
+\end{equation}
+Interpretation:
+\begin{itemize}
+\item Apply $(\square+m^2)$ to \emph{amputate} external propagators.
+\item Fourier transform to put external legs on-shell.
+\item The result gives the $S$-matrix element (up to normalization factors).
+\end{itemize}
+
+\subsection{Summary (Exam Checklist)}
+\begin{itemize}
+\item Interaction picture: operators evolve with $H_0$, states with $H_I$.
+\item Dyson formula:
+\[
+S=T\exp\left(i\int d^4x\,\mathcal{L}_{\mathrm{int}}(x)\right).
+\]
+\item Wick theorem reduces time-ordered products to contractions $\Delta_F$.
+\item Feynman rules: propagator $i/(p^2-m^2+i\epsilon)$, vertices from $\mathcal{L}_{\mathrm{int}}$.
+\item Scattering:
+\[
+\langle f|iT|i\rangle=i(2\pi)^4\delta^{(4)}(p_f-p_i)\mathcal{M}.
+\]
+\item Decays and cross sections computed from $|\mathcal{M}|^2$ and phase space.
+\item Vacuum bubbles cancel in normalized correlators.
+\item LSZ relates $S$-matrix elements to amputated time-ordered Green functions.
+\end{itemize}

@@ -1,0 +1,86 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+.env/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build files
+build/
+dist/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+
+# Simulation outputs (important for you)
+*.csv
+SAVED_HERE/
+LOGS/
+
+# Large data
+*.dat
+*.out
+
+# Core auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.brf
+*.run.xml
+
+# Glossaries
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+
+# Index files
+*.idx
+*.ilg
+*.ind
+
+# Nomenclature
+*.nlo
+*.nls
+
+# TikZ / PGF
+*.nav
+*.snm
+
+# Latexmk
+latexmkrc
+
+# PDF temporary files
+*.xdv
+
+# Backup files
+*~
+*.bak
+*.swp
+*.tmp

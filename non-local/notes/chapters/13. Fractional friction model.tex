@@ -1,0 +1,182 @@
+% ============================================================
+% Notes: Fractional friction model
+% Topics: fractional damping/friction, relaxation vs amplification,
+%         stability properties, physical interpretation (memory)
+% Source: Herrmann, Fractional Calculus: An Introduction for Physicists
+% ============================================================
+
+\section{Fractional friction model}
+
+\subsection{Motivation: friction with memory}
+Ordinary (local) linear friction is proportional to instantaneous velocity:
+\begin{equation}
+F_{\text{fr}}(t) = -\gamma\,\dot{x}(t).
+\end{equation}
+This is \textbf{local in time}.
+
+In many media (viscoelastic, complex fluids, disordered environments),
+the frictional response depends on the \textbf{history} of motion.
+This is modeled by a \textbf{nonlocal} friction law:
+\begin{equation}
+F_{\text{fr}}(t) = -\int_0^t M(t-\tau)\,\dot{x}(\tau)\,d\tau,
+\end{equation}
+where $M(t)$ is a memory kernel (Volterra-type causal operator).
+
+\subsection{Fractional friction kernel}
+A common long-memory choice is a power-law kernel:
+\begin{equation}
+M(t)\propto t^{-\alpha},
+\qquad 0<\alpha<1.
+\end{equation}
+This leads naturally to a \textbf{fractional derivative} of the velocity.
+
+% ------------------------------------------------------------
+
+\section{Fractional friction equation of motion}
+
+\subsection{Fractional damping force}
+A standard fractional friction model writes the friction force as
+\begin{equation}
+\boxed{
+F_{\text{fr}}(t) = -\gamma_\alpha\,{}^{C}D_t^\alpha x(t),
+\qquad 0<\alpha<1,
+}
+\end{equation}
+or sometimes in terms of a fractional derivative of velocity:
+\begin{equation}
+F_{\text{fr}}(t) = -\gamma_\alpha\,{}^{C}D_t^\alpha \dot{x}(t).
+\end{equation}
+(Exact form depends on the physical convention and units.)
+
+\subsection{Free fractional relaxation (prototype model)}
+The simplest fractional friction dynamics is the fractional relaxation equation:
+\begin{equation}
+\boxed{
+{}^{C}D_t^\alpha x(t) + \lambda\,x(t)=0,
+\qquad 0<\alpha\le 1.
+}
+\end{equation}
+For $\alpha=1$ this reduces to ordinary exponential relaxation:
+\[
+\dot{x}+\lambda x=0.
+\]
+
+\subsection{Solution: Mittag--Leffler relaxation}
+The solution is expressed using the Mittag--Leffler function:
+\begin{equation}
+\boxed{
+x(t)=x(0)\,E_\alpha(-\lambda t^\alpha),
+}
+\end{equation}
+where
+\begin{equation}
+E_\alpha(z)=\sum_{k=0}^\infty \frac{z^k}{\Gamma(\alpha k+1)}.
+\end{equation}
+
+\paragraph{Key property.}
+For $0<\alpha<1$, relaxation is typically \textbf{slower than exponential}
+(power-law tail behavior at late times), reflecting memory.
+
+% ------------------------------------------------------------
+
+\section{Relaxation vs amplification}
+
+\subsection{Relaxation (stable decay)}
+Fractional relaxation corresponds to a negative ``effective rate'' in the argument:
+\begin{equation}
+{}^{C}D_t^\alpha x(t) + \lambda x(t)=0,
+\qquad \lambda>0.
+\end{equation}
+Solution:
+\[
+x(t)=x(0)\,E_\alpha(-\lambda t^\alpha).
+\]
+For $\lambda>0$ this decays to $0$ (stable).
+
+\subsection{Amplification (growth / instability)}
+If the sign is reversed,
+\begin{equation}
+\boxed{
+{}^{C}D_t^\alpha x(t) - \lambda x(t)=0,
+\qquad \lambda>0,
+}
+\end{equation}
+then
+\begin{equation}
+x(t)=x(0)\,E_\alpha(+\lambda t^\alpha),
+\end{equation}
+which grows in time (unstable amplification).
+
+\subsection{Physical interpretation}
+\begin{itemize}
+\item \textbf{Relaxation:} friction/memory dissipates perturbations.
+\item \textbf{Amplification:} energy is effectively injected or feedback dominates.
+\end{itemize}
+
+% ------------------------------------------------------------
+
+\section{Main properties of fractional friction models}
+
+\subsection{Nonlocality (memory)}
+Fractional derivatives depend on the entire past:
+\begin{equation}
+{}^{C}D_t^\alpha x(t)
+=
+\frac{1}{\Gamma(1-\alpha)}
+\int_0^t (t-\tau)^{-\alpha}\dot{x}(\tau)\,d\tau.
+\end{equation}
+Thus fractional friction is inherently \textbf{history-dependent}.
+
+\subsection{Exponential vs Mittag--Leffler decay}
+\begin{itemize}
+\item Classical damping ($\alpha=1$): $x(t)\sim e^{-\lambda t}$.
+\item Fractional damping ($0<\alpha<1$): $x(t)\sim E_\alpha(-\lambda t^\alpha)$
+(decay is typically slower, often with algebraic tail).
+\end{itemize}
+
+\subsection{Frequency response (qualitative)}
+In Fourier/Laplace space, fractional differentiation behaves like a power:
+\begin{equation}
+{}^{C}D_t^\alpha \ \sim\ s^\alpha.
+\end{equation}
+Hence fractional friction produces frequency-dependent dissipation:
+\begin{equation}
+\text{effective damping} \propto \omega^\alpha.
+\end{equation}
+This matches many complex media where damping is not constant in frequency.
+
+\subsection{Interpolation between elastic and viscous behavior}
+Fractional friction often interpolates between:
+\begin{itemize}
+\item purely elastic response (instantaneous / no dissipation),
+\item purely viscous response (local friction proportional to $\dot{x}$),
+\end{itemize}
+by introducing intermediate scaling controlled by $\alpha$.
+
+\subsection{Initial conditions}
+Using Caputo derivatives, initial conditions remain classical:
+\begin{equation}
+x(0)=x_0,
+\qquad
+\dot{x}(0)=v_0 \quad (\text{if needed}).
+\end{equation}
+This is one reason Caputo form is preferred in physical models.
+
+% ------------------------------------------------------------
+
+\section{High-yield summary}
+
+\begin{itemize}
+\item Fractional friction models damping with memory (nonlocal in time).
+\item Prototype fractional relaxation equation:
+\[
+{}^{C}D_t^\alpha x + \lambda x=0,\quad 0<\alpha\le 1.
+\]
+\item Solution uses Mittag--Leffler function:
+\[
+x(t)=x(0)\,E_\alpha(-\lambda t^\alpha).
+\]
+\item Relaxation: $-\lambda$ argument $\Rightarrow$ decay (stable).
+\item Amplification: $+\lambda$ argument $\Rightarrow$ growth (unstable).
+\item Main features: long memory, slower-than-exponential decay, frequency-dependent damping.
+\end{itemize}

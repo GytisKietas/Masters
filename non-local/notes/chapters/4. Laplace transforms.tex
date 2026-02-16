@@ -1,0 +1,219 @@
+% ============================================================
+% Notes: Laplace Transform (A&W style)
+% Topics: definition, derivatives, delta/Heaviside, convolution,
+%         inversion (Bromwich integral)
+% Source: Arfken & Weber, Mathematical Methods for Physicists
+% ============================================================
+
+\section{Laplace transforms}
+
+\subsection{Definition}
+For a function $f(t)$ (typically $t\ge 0$), the Laplace transform is
+\begin{equation}
+F(s) = \mathcal{L}\{f(t)\}(s) := \int_{0}^{\infty} e^{-st} f(t)\,dt,
+\qquad s\in\mathbb{C}.
+\end{equation}
+The integral converges in a half-plane
+\[
+\Re(s) > s_0
+\]
+determined by the growth of $f(t)$ (``region of convergence'').
+
+\paragraph{Linearity.}
+\begin{equation}
+\mathcal{L}\{af+bg\}=a\mathcal{L}\{f\}+b\mathcal{L}\{g\}.
+\end{equation}
+
+\subsection{Useful basic transforms}
+\begin{align}
+\mathcal{L}\{1\} &= \frac{1}{s},\\
+\mathcal{L}\{t^n\} &= \frac{n!}{s^{n+1}}, \qquad n=0,1,2,\dots\\
+\mathcal{L}\{e^{at}\} &= \frac{1}{s-a},\\
+\mathcal{L}\{\cos(\omega t)\} &= \frac{s}{s^2+\omega^2},\\
+\mathcal{L}\{\sin(\omega t)\} &= \frac{\omega}{s^2+\omega^2}.
+\end{align}
+
+% ------------------------------------------------------------
+
+\section{Laplace transform of derivatives}
+
+Assume $f(t)$ is sufficiently smooth and of exponential order so that the transforms exist.
+
+\subsection{First derivative}
+\begin{align}
+\mathcal{L}\{f'(t)\}(s)
+&= \int_0^\infty e^{-st} f'(t)\,dt\\
+&= \Big[e^{-st}f(t)\Big]_{0}^{\infty}
++ s\int_0^\infty e^{-st}f(t)\,dt\\
+&= -f(0) + sF(s).
+\end{align}
+Hence the key identity:
+\begin{equation}
+\boxed{\mathcal{L}\{f'(t)\}(s)=sF(s)-f(0).}
+\end{equation}
+
+\subsection{Second derivative}
+Apply the first-derivative rule to $f'(t)$:
+\begin{equation}
+\boxed{\mathcal{L}\{f''(t)\}(s)=s^2F(s)-sf(0)-f'(0).}
+\end{equation}
+
+\subsection{$n$th derivative}
+By induction:
+\begin{equation}
+\boxed{
+\mathcal{L}\{f^{(n)}(t)\}(s)
+=
+s^nF(s)-s^{n-1}f(0)-s^{n-2}f'(0)-\cdots-f^{(n-1)}(0).
+}
+\end{equation}
+
+\paragraph{High-yield use.}
+Laplace transforms turn ODE initial-value problems into algebra:
+\[
+\text{ODE in }t \quad \longrightarrow \quad \text{algebraic equation in }s.
+\]
+
+% ------------------------------------------------------------
+
+\section{Laplace transform of Dirac delta and Heaviside functions}
+
+\subsection{Dirac delta $\delta(t-a)$}
+Using the defining property of the delta distribution,
+\[
+\int_0^\infty \delta(t-a)\,g(t)\,dt = g(a), \qquad a>0,
+\]
+we obtain
+\begin{equation}
+\boxed{
+\mathcal{L}\{\delta(t-a)\}(s)
+=
+\int_0^\infty e^{-st}\delta(t-a)\,dt
+=
+e^{-as}.
+}
+\end{equation}
+Special case:
+\begin{equation}
+\mathcal{L}\{\delta(t)\}(s)=1.
+\end{equation}
+
+\subsection{Heaviside step function $H(t-a)$}
+Define
+\[
+H(t-a)=
+\begin{cases}
+0, & t<a,\\
+1, & t>a.
+\end{cases}
+\]
+Then
+\begin{align}
+\mathcal{L}\{H(t-a)\}(s)
+&= \int_0^\infty e^{-st}H(t-a)\,dt
+= \int_a^\infty e^{-st}\,dt\\
+&= \boxed{\frac{e^{-as}}{s}}.
+\end{align}
+
+\subsection{Time-shift theorem (with Heaviside)}
+If $g(t)=H(t-a)\,f(t-a)$, then
+\begin{equation}
+\boxed{
+\mathcal{L}\{H(t-a)f(t-a)\}(s)=e^{-as}F(s).
+}
+\end{equation}
+This is the standard tool for piecewise forcing functions.
+
+% ------------------------------------------------------------
+
+\section{Convolution theorem (Laplace)}
+
+\subsection{Definition of convolution on $[0,\infty)$}
+For functions $f,g$ on $t\ge 0$, define
+\begin{equation}
+(f*g)(t) := \int_0^t f(\tau)\,g(t-\tau)\,d\tau.
+\end{equation}
+
+\subsection{Laplace transform of convolution}
+\begin{equation}
+\boxed{
+\mathcal{L}\{(f*g)(t)\}(s)=F(s)\,G(s).
+}
+\end{equation}
+
+\subsection{Inverse statement}
+\begin{equation}
+\boxed{
+\mathcal{L}^{-1}\{F(s)G(s)\}(t)=(f*g)(t).
+}
+\end{equation}
+
+\paragraph{High-yield use.}
+Convolution appears naturally when solving linear ODEs/PDEs with forcing
+and in Green's function methods.
+
+% ------------------------------------------------------------
+
+\section{Inverse Laplace transform and Bromwich integral}
+
+\subsection{Inverse Laplace transform (Bromwich inversion)}
+The inverse Laplace transform is given by the Bromwich integral:
+\begin{equation}
+\boxed{
+f(t) = \mathcal{L}^{-1}\{F(s)\}(t)
+=
+\frac{1}{2\pi i}\int_{\gamma-i\infty}^{\gamma+i\infty}
+e^{st}F(s)\,ds.
+}
+\end{equation}
+Here $\gamma$ is chosen so that the vertical line $\Re(s)=\gamma$
+lies in the region of convergence and to the right of all singularities of $F(s)$.
+
+\subsection{Contour interpretation (complex analysis link)}
+The Bromwich integral is evaluated using residue calculus by closing the contour
+(usually to the left half-plane for $t>0$) and summing residues of $e^{st}F(s)$:
+\begin{equation}
+f(t) = \sum_{\text{poles }s_k}\operatorname{Res}\left(e^{st}F(s),\,s=s_k\right),
+\qquad (t>0),
+\end{equation}
+provided the closing arc contribution vanishes.
+
+\paragraph{Key point.}
+Laplace inversion is essentially a complex Fourier inversion with $s=\sigma+i\omega$,
+and the Bromwich contour integral is the rigorous inversion formula.
+
+% ------------------------------------------------------------
+
+\section{High-yield summary}
+
+\begin{itemize}
+\item Definition:
+\[
+F(s)=\mathcal{L}\{f(t)\}=\int_0^\infty e^{-st}f(t)\,dt.
+\]
+\item Derivatives:
+\[
+\mathcal{L}\{f'\}=sF-f(0),\qquad
+\mathcal{L}\{f''\}=s^2F-sf(0)-f'(0),
+\]
+\[
+\mathcal{L}\{f^{(n)}\}
+=
+s^nF-\sum_{k=0}^{n-1}s^{n-1-k}f^{(k)}(0).
+\]
+\item Delta and Heaviside:
+\[
+\mathcal{L}\{\delta(t-a)\}=e^{-as},\qquad
+\mathcal{L}\{H(t-a)\}=\frac{e^{-as}}{s}.
+\]
+\item Convolution:
+\[
+(f*g)(t)=\int_0^t f(\tau)g(t-\tau)\,d\tau,
+\qquad
+\mathcal{L}\{f*g\}=FG.
+\]
+\item Bromwich inversion:
+\[
+f(t)=\frac{1}{2\pi i}\int_{\gamma-i\infty}^{\gamma+i\infty}e^{st}F(s)\,ds.
+\]
+\end{itemize}

@@ -1,0 +1,288 @@
+\section{Classical Field Theory}
+
+\subsection{Fields and the Action Principle}
+A (classical) field is a function on spacetime:
+\begin{equation}
+\phi_a(x), \qquad x^\mu=(t,\mathbf{x}), \qquad a=1,\dots,N,
+\end{equation}
+where $a$ labels different field components (e.g. internal indices).
+
+The dynamics is determined by an action functional
+\begin{equation}
+S[\phi] = \int d^4x\, \mathcal{L}\big(\phi_a,\partial_\mu\phi_a,x\big),
+\end{equation}
+where $\mathcal{L}$ is the \emph{Lagrangian density}. For local relativistic theories,
+\begin{equation}
+\mathcal{L}=\mathcal{L}\big(\phi_a,\partial_\mu\phi_a\big),
+\end{equation}
+i.e. no explicit $x$ dependence.
+
+\subsection{Euler--Lagrange Equations for Fields}
+Vary the action under $\phi_a\to \phi_a+\delta\phi_a$ with $\delta\phi_a$ vanishing on the boundary:
+\begin{equation}
+\delta S = 0 \quad \Rightarrow \quad
+\frac{\partial\mathcal{L}}{\partial \phi_a}
+-\partial_\mu\left(\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi_a)}\right)=0.
+\end{equation}
+
+\paragraph{Example: Klein--Gordon field.}
+\begin{equation}
+\mathcal{L}_{\mathrm{KG}}
+=\frac{1}{2}\partial_\mu\phi\,\partial^\mu\phi-\frac{1}{2}m^2\phi^2.
+\end{equation}
+Then
+\begin{equation}
+(\square+m^2)\phi=0.
+\end{equation}
+
+\paragraph{Example: complex scalar.}
+\begin{equation}
+\mathcal{L}
+=\partial_\mu\phi^\ast\,\partial^\mu\phi - m^2\phi^\ast\phi.
+\end{equation}
+Treat $\phi$ and $\phi^\ast$ as independent in variation:
+\begin{equation}
+(\square+m^2)\phi=0,\qquad (\square+m^2)\phi^\ast=0.
+\end{equation}
+
+\subsection{Canonical Momentum and Hamiltonian Density}
+Define canonical conjugate momentum fields:
+\begin{equation}
+\pi_a(x) := \frac{\partial\mathcal{L}}{\partial(\partial_0\phi_a)}.
+\end{equation}
+Hamiltonian density:
+\begin{equation}
+\mathcal{H} := \pi_a \dot{\phi}_a - \mathcal{L},
+\qquad \dot{\phi}_a:=\partial_0\phi_a.
+\end{equation}
+Total Hamiltonian:
+\begin{equation}
+H=\int d^3x\,\mathcal{H}.
+\end{equation}
+
+Hamilton's equations (field form):
+\begin{equation}
+\dot{\phi}_a(\mathbf{x},t)=\frac{\delta H}{\delta \pi_a(\mathbf{x},t)},
+\qquad
+\dot{\pi}_a(\mathbf{x},t)=-\frac{\delta H}{\delta \phi_a(\mathbf{x},t)}.
+\end{equation}
+
+\paragraph{Example: Klein--Gordon Hamiltonian.}
+For $\mathcal{L}_{\mathrm{KG}}$:
+\begin{equation}
+\pi=\dot{\phi},
+\end{equation}
+and
+\begin{equation}
+\mathcal{H}
+=\frac{1}{2}\pi^2+\frac{1}{2}(\nabla\phi)^2+\frac{1}{2}m^2\phi^2,
+\qquad
+H=\int d^3x\left[\frac{1}{2}\pi^2+\frac{1}{2}(\nabla\phi)^2+\frac{1}{2}m^2\phi^2\right].
+\end{equation}
+
+\subsection{Lorentz Invariance}
+A theory is Lorentz invariant if the action is invariant under
+\begin{equation}
+x^\mu \to x'^\mu=\Lambda^\mu_{\ \nu}x^\nu,
+\end{equation}
+with fields transforming in some representation:
+\begin{equation}
+\phi_a(x)\to \phi'_a(x') = D(\Lambda)_{ab}\,\phi_b(x).
+\end{equation}
+The action is invariant if
+\begin{equation}
+S[\phi]=S[\phi'].
+\end{equation}
+
+For a scalar field ($D(\Lambda)=1$):
+\begin{equation}
+\phi'(x')=\phi(x).
+\end{equation}
+
+\paragraph{Lorentz-covariant building blocks.}
+Common invariant terms in $\mathcal{L}$:
+\begin{equation}
+\phi^2,\qquad \partial_\mu\phi\,\partial^\mu\phi,\qquad
+\phi^\ast\phi,\qquad \partial_\mu\phi^\ast\,\partial^\mu\phi.
+\end{equation}
+
+\subsection{Spacetime Translations and Energy--Momentum Tensor}
+For an infinitesimal translation
+\begin{equation}
+x^\mu \to x'^\mu = x^\mu + \epsilon^\mu,
+\end{equation}
+the action is invariant if $\mathcal{L}$ has no explicit $x$ dependence.
+
+The \emph{canonical energy--momentum tensor} is
+\begin{equation}
+T^{\mu}_{\ \nu}
+=
+\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi_a)}\partial_\nu\phi_a
+-\delta^\mu_{\ \nu}\mathcal{L}.
+\end{equation}
+Conservation law:
+\begin{equation}
+\partial_\mu T^{\mu}_{\ \nu}=0.
+\end{equation}
+
+Energy and momentum:
+\begin{equation}
+P^\nu = \int d^3x\, T^{0\nu},
+\qquad
+H=P^0=\int d^3x\,T^{00}.
+\end{equation}
+
+\paragraph{Remark (symmetrization).}
+The canonical $T^{\mu\nu}$ is not always symmetric.
+One can construct an improved symmetric tensor (Belinfante):
+\begin{equation}
+T^{\mu\nu}_{\mathrm{sym}} = T^{\mu\nu} + \partial_\lambda B^{\lambda\mu\nu},
+\end{equation}
+where $B^{\lambda\mu\nu}$ is antisymmetric in $\lambda\leftrightarrow \mu$,
+so $\partial_\mu T^{\mu\nu}_{\mathrm{sym}}=0$ still holds.
+
+\subsection{Noether's Theorem (General Form)}
+Suppose the action is invariant under a continuous transformation with
+\begin{equation}
+\phi_a(x)\to \phi_a(x)+\delta\phi_a(x),
+\qquad
+x^\mu\to x^\mu+\delta x^\mu,
+\end{equation}
+such that the Lagrangian changes by a total derivative:
+\begin{equation}
+\delta\mathcal{L} = \partial_\mu K^\mu.
+\end{equation}
+Then there exists a conserved current $j^\mu$:
+\begin{equation}
+\partial_\mu j^\mu=0,
+\end{equation}
+with conserved charge
+\begin{equation}
+Q = \int d^3x\, j^0,
+\qquad
+\frac{dQ}{dt}=0.
+\end{equation}
+
+A useful expression for the Noether current is:
+\begin{equation}
+j^\mu
+=
+\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi_a)}\,\delta\phi_a
++\mathcal{L}\,\delta x^\mu
+- K^\mu.
+\end{equation}
+
+\subsection{Internal Symmetry Example: Global $U(1)$}
+Complex scalar field with
+\begin{equation}
+\mathcal{L}=\partial_\mu\phi^\ast\,\partial^\mu\phi - m^2\phi^\ast\phi.
+\end{equation}
+Global phase symmetry:
+\begin{equation}
+\phi \to e^{i\alpha}\phi,
+\qquad
+\phi^\ast \to e^{-i\alpha}\phi^\ast,
+\qquad
+\alpha=\text{const}.
+\end{equation}
+Infinitesimal:
+\begin{equation}
+\delta\phi = i\alpha\phi,
+\qquad
+\delta\phi^\ast=-i\alpha\phi^\ast.
+\end{equation}
+Noether current:
+\begin{equation}
+j^\mu
+=
+i\left(\phi^\ast\partial^\mu\phi-(\partial^\mu\phi^\ast)\phi\right).
+\end{equation}
+Conservation:
+\begin{equation}
+\partial_\mu j^\mu=0.
+\end{equation}
+Conserved charge:
+\begin{equation}
+Q=\int d^3x\, j^0.
+\end{equation}
+
+\subsection{Rotations and Angular Momentum (Useful Formulas)}
+Lorentz invariance implies conservation of angular momentum (including boosts).
+Define the Lorentz current:
+\begin{equation}
+M^{\lambda\mu\nu}
+=
+x^\mu T^{\lambda\nu} - x^\nu T^{\lambda\mu}
++\text{(spin part, if field has spin)}.
+\end{equation}
+Conservation:
+\begin{equation}
+\partial_\lambda M^{\lambda\mu\nu}=0.
+\end{equation}
+Angular momentum generators:
+\begin{equation}
+J^{\mu\nu} = \int d^3x\, M^{0\mu\nu}.
+\end{equation}
+
+\subsection{Classical Poisson Brackets for Fields}
+At equal time $t$:
+\begin{equation}
+\{\phi_a(\mathbf{x},t),\pi_b(\mathbf{y},t)\}
+=\delta_{ab}\,\delta^{(3)}(\mathbf{x}-\mathbf{y}),
+\end{equation}
+\begin{equation}
+\{\phi_a(\mathbf{x},t),\phi_b(\mathbf{y},t)\}=0,
+\qquad
+\{\pi_a(\mathbf{x},t),\pi_b(\mathbf{y},t)\}=0.
+\end{equation}
+Time evolution of any functional $F[\phi,\pi]$:
+\begin{equation}
+\dot{F}=\{F,H\}+\frac{\partial F}{\partial t}.
+\end{equation}
+
+\subsection{Useful Lagrangians (Most Common)}
+Real scalar ($\phi^4$ theory):
+\begin{equation}
+\mathcal{L}
+=\frac{1}{2}\partial_\mu\phi\,\partial^\mu\phi
+-\frac{1}{2}m^2\phi^2
+-\frac{\lambda}{4!}\phi^4.
+\end{equation}
+
+Complex scalar with interaction:
+\begin{equation}
+\mathcal{L}
+=\partial_\mu\phi^\ast\,\partial^\mu\phi
+-m^2\phi^\ast\phi
+-\frac{\lambda}{4}(\phi^\ast\phi)^2.
+\end{equation}
+
+\subsection{Dimensional Analysis (Quick Exam Tool)}
+In $d=4$ spacetime dimensions:
+\begin{equation}
+[\mathcal{L}] = 4.
+\end{equation}
+For a real scalar kinetic term:
+\begin{equation}
+\mathcal{L}\sim (\partial\phi)^2
+\quad\Rightarrow\quad
+[\phi]=1.
+\end{equation}
+Then:
+\begin{equation}
+[m]=1,\qquad [\lambda_{\phi^4}]=0.
+\end{equation}
+So $\phi^4$ coupling is dimensionless (renormalizable in $4d$).
+
+\subsection{Summary (What to Remember)}
+\begin{itemize}
+\item Field equations follow from $\delta S=0$:
+\[
+\frac{\partial\mathcal{L}}{\partial \phi_a}
+-\partial_\mu\left(\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi_a)}\right)=0.
+\]
+\item Canonical momentum: $\pi_a=\partial\mathcal{L}/\partial\dot{\phi}_a$.
+\item Hamiltonian density: $\mathcal{H}=\pi_a\dot{\phi}_a-\mathcal{L}$.
+\item Noether theorem: continuous symmetry $\Rightarrow$ conserved current $\partial_\mu j^\mu=0$.
+\item Translation invariance $\Rightarrow$ conserved $T^{\mu\nu}$ and $P^\mu$.
+\end{itemize}

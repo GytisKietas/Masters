@@ -1,0 +1,123 @@
+\section{The equations of stellar evolution}
+
+Start of with the mass element
+
+\begin{equation*}
+    dm = \rho dV = \rho 4 \pi r^2 dr
+\end{equation*}
+
+From the first law of thermodynamics (assuming the conservation of mass with $dm \equiv {\rm const}$) 
+
+\begin{equation*}
+    \delta (u dm) = dm \delta u = \delta Q + \delta W
+\end{equation*}
+
+where $u$ is the internal energy per unit mass. We can calculate the work $\delta W$
+
+\begin{equation*}
+    \delta W = - P delta dV = - P \delta \left(\frac{dV}{dm} dm \right) = - P \delta \left( \frac{1}{\rho} \right) dm
+\end{equation*}
+
+Next, note that heat comes from two main sources: release of nuclear energy and the balance of the heat fluxes, going in and out. The rate of nuclear energy per unit mass is $q$ and The heat flowing though the surface is $F(m)$ (units of power), and clearly $F(M) = L$. Thus for heat
+
+\begin{equation*}
+    \delta Q = q dm \delta t + F(m) \delta t - F(m + dm) \delta t
+\end{equation*}
+
+Using $F(m + dm) = F(m) + \frac{\partial F}{\partial m} dm$, leaves us with
+
+\begin{equation*}
+    \partial Q = \left( q - \frac{\partial F}{\partial m} \right) dm \delta t
+\end{equation*}
+
+Inserting everything back into firt law we obtain
+
+\begin{equation*}
+    dm \delta u + P \delta \left( \frac{1}{\rho} \right) dm = \left( q - \frac{\partial F}{\partial m} \right) dm \delta t
+\end{equation*}
+
+It seems that $dm$ cancels and taking the limit $\delta t \rightarrow 0$ we get
+
+\begin{equation*}
+    \dot{u} + P \dot{ \left( \frac{1}{\rho} \right)} = q - \frac{\partial F}{\partial m}
+\end{equation*}
+
+where the dot is a \textbf{partial} derivative wrt time. In thermal equilibrium there is no change in these quantities wrt time, hence the time derivatives vanish
+
+\begin{equation*}
+    q = \frac{dF}{dm} \quad \Rightarrow \quad \int_0^M q dm = \int^M_0 dF = L
+\end{equation*}
+
+This integration gives the total power supplied by nuclear processes, denoted by $L_{\rm nuc}$ as \textbf{nuclear luminosity}. Thermal equilibrium implies that the energy created is radiated away at the same rate (No energy build up).
+
+Next we can derive the equations of motion. Start with some mass
+
+\begin{equation*}
+    \Delta m = \rho dr dS
+\end{equation*}
+
+Any piece of mass feels two opposing forces: gravitational force and force from pressure. Due to spherical symetry we can only consider the radial part of the acceleration
+
+\begin{equation*}
+    \ddot{r} \Delta m = - \frac{G m \delta m}{r^2} + P(r) dS - P(r + dr) dS
+\end{equation*}
+
+Again, $P(r + dr) = P(r) + \frac{\partial P}{\partial r} dr$, so
+
+\begin{equation*}
+    \ddot{r} \Delta m = -\frac{G m \Delta m}{r^2} - \frac{\partial P}{\partial r} \frac{\Delta m}{\rho} \quad \Rightarrow \quad \ddot{r} = \frac{G m}{r^2} - \frac{1}{\rho} \frac{\partial P}{\partial r}
+\end{equation*}
+
+Then using $dr = dm/(4 \pi r^2 \rho)$
+
+\begin{equation*}
+    \ddot{r} = -\frac{G m}{r^2} - 4 \pi r^2 \frac{\partial P}{\partial m}
+\end{equation*}
+
+When acceleration is negligable we get \textbf{hydrostatic equilibrium}
+
+\begin{equation*}
+    \frac{dP}{dr} = -\rho \frac{G m}{r^2} \quad \text{or} \quad \frac{dP}{dm} = - \frac{Gm}{4 \pi r^4}
+\end{equation*}
+
+We can estimate the pressure by integrating from the center to the outside
+
+\begin{equation*}
+    P(M) - P(0) = - \int_0^M \frac{G m dm}{4 \pi r^4} \quad \Rightarrow \quad P_c = \int_0^M \frac{G m dm}{4 \pi r^4} > \int_0^M \frac{G m dm}{4 \pi R^4}
+\end{equation*}
+
+
+\subsection{Virial Theorem}
+Multiplying the hydrostatic equilibrium equation by volume $V$
+
+\begin{equation*}
+    \int_0^{P(R)} V dP = - \frac{1}{3} \int_0^M \frac{G m dm}{r}
+\end{equation*}
+
+But the RHS is just the gravitational potential energy $\Omega$ and we can integrate LHS by parts where boundary terms vanish since $V(0) = 0$ and $P(R) = 0$. Yielding
+
+\begin{equation*}
+    -3 \int_0^{V(R)} P dV = \Omega \quad \Leftrightarrow \quad -3 \int^M_0 \frac{P}{\rho} dm = \Omega
+\end{equation*}
+
+We can use this result, for ideal gas.
+
+\begin{equation*}
+    u = \frac{3}{2} \frac{k T}{m_g} = \frac{3}{2} \frac{P}{\rho}
+\end{equation*}
+
+Then combining these equations and noting that $U = \int u dm$ we get
+
+\begin{equation*}
+    U = -\frac{1}{2} \Omega
+\end{equation*}
+
+We can use these formulas to derive average temperature. For $\Omega = - \alpha \frac{GM^2}{R}$ and $U = \frac{3}{2} \frac{k}{m_g} \bar{T} M$ we obtain
+
+\begin{equation*}
+    \bar{T} = \frac{\alpha}{3} \frac{m_g G}{k} \frac{M}{R}
+\end{equation*}
+
+
+\subsection{Total Energy of the star}
+
